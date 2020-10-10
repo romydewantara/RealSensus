@@ -5,15 +5,21 @@ import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bacodelabs.R;
+import com.example.bacodelabs.support.DevelopersBottomSheet;
+import com.example.bacodelabs.support.RoundedBottomSheetDialog;
 import com.example.bacodelabs.util.Fonts;
 
 
@@ -41,6 +47,7 @@ public class HomeActivity extends AppCompatActivity {
     ImageView btnLogout;
     ImageView btnMenu;
     DrawerLayout drawerLayout;
+    DevelopersBottomSheet developersBottomSheet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,13 +115,15 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 drawerLayout.openDrawer(Gravity.START);
-                //Toast.makeText(getApplicationContext(), "BACODE Burger Menu", Toast.LENGTH_SHORT).show();
             }
         });
         devOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Hello Developers Team 1! \nComing soon.", Toast.LENGTH_SHORT).show();
+                developersBottomSheet = new DevelopersBottomSheet(HomeActivity.this);
+                if (getSupportFragmentManager() != null) {
+                    developersBottomSheet.show(getSupportFragmentManager(), developersBottomSheet.getTag());
+                }
             }
         });
         devTwo.setOnClickListener(new View.OnClickListener() {
