@@ -20,18 +20,27 @@ public class SplashScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        fonts = new Fonts(getApplicationContext());
 
-        splashTitle = findViewById(R.id.splashTitle);
-        splashTitle.setTypeface(fonts.stBold());
+        init();
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
+                goToLogin();
             }
         }, 3000);
+    }
+
+    private void init() {
+        fonts = new Fonts(getApplicationContext());
+        splashTitle = findViewById(R.id.splashTitle);
+        splashTitle.setTypeface(fonts.stBold());
+    }
+
+    private void goToLogin() {
+        Intent intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }

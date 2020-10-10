@@ -26,14 +26,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         init();
-
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentLogin = new Intent(LoginActivity.this, HomeActivity.class);
-                startActivity(intentLogin);
-            }
-        });
+        initListener();
 
     }
 
@@ -45,10 +38,28 @@ public class LoginActivity extends AppCompatActivity {
         tvRegister = findViewById(R.id.tvRegister);
         btnLogin = findViewById(R.id.btnLogin);
 
+        setCosmetic();
+    }
+
+    private void setCosmetic() {
         etEmail.setTypeface(fonts.stRegular());
         etPassword.setTypeface(fonts.stRegular());
         tvRegister.setTypeface(fonts.stRegular());
         btnLogin.setTypeface(fonts.stRegular());
+    }
+
+    private void initListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToHome();
+            }
+        });
+    }
+
+    private void goToHome() {
+        Intent intentLogin = new Intent(LoginActivity.this, HomeActivity.class);
+        startActivity(intentLogin);
     }
 
 }
