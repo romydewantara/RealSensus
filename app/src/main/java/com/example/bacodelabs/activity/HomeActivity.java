@@ -16,7 +16,7 @@ import com.example.bacodelabs.util.Fonts;
 
 public class HomeActivity extends AppCompatActivity {
 
-    // Define/declare all widgets
+    // Define or declare all widgets
     Fonts fonts;
     CardView devOne;
     CardView devTwo;
