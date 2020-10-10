@@ -15,6 +15,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     private TextView splashTitle;
     private Fonts fonts;
+    //testing commit-push
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
