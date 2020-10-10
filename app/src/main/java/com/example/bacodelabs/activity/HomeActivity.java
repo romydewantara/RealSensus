@@ -76,14 +76,14 @@ public class HomeActivity extends AppCompatActivity {
     private void setCosmetic() {
         tvTitlePage.setTypeface(fonts.stBold());
         tvWelcome.setTypeface(fonts.stRegular());
-        tvUsername.setTypeface(fonts.stRegular());
-        tvTitleDevOne.setTypeface(fonts.stRegular());
+        tvUsername.setTypeface(fonts.stBold());
+        tvTitleDevOne.setTypeface(fonts.stBold());
         tvSubtitleDevOne.setTypeface(fonts.stRegular());
-        tvTitleDevTwo.setTypeface(fonts.stRegular());
+        tvTitleDevTwo.setTypeface(fonts.stBold());
         tvSubtitleDevTwo.setTypeface(fonts.stRegular());
-        tvTitleDevThree.setTypeface(fonts.stRegular());
+        tvTitleDevThree.setTypeface(fonts.stBold());
         tvSubtitleDevThree.setTypeface(fonts.stRegular());
-        tvTitleDevFour.setTypeface(fonts.stRegular());
+        tvTitleDevFour.setTypeface(fonts.stBold());
         tvSubtitleDevFour.setTypeface(fonts.stRegular());
         tvBC.setTypeface(fonts.stRegular());
         tvVersion.setTypeface(fonts.stRegular());

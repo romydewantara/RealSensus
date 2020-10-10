@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal"
-            android:background="#1e5f74"
+            android:background="@color/bacode_blue_dark"
             android:gravity="center"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
@@ -39,8 +39,8 @@
                 android:gravity="center"
                 android:textColor="#ffffff"
                 android:textStyle="bold"
-                android:textSize="16dp"
-                android:text="BACODE MENU"/>
+                android:textSize="20dp"
+                android:text="BACODELABS"/>
 
             <ImageView
                 android:id="@+id/btnLogout"
@@ -106,7 +106,7 @@
                 android:id="@+id/tvUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kang Asep"
+                android:text="Romy Dewantara"
                 android:textColor="#30688B"
                 android:textSize="22dp"
                 android:gravity="center" />
@@ -117,6 +117,7 @@
             android:id="@+id/contentMenu"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:background="@color/bacode_blue_dark"
             app:layout_constraintTop_toBottomOf="@id/viewHeader"
             app:layout_constraintBottom_toTopOf="@id/layoutVersion">
 
@@ -124,13 +125,11 @@
                 android:id="@+id/constraintMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="30dp"
-                android:paddingRight="30dp"
                 android:layout_marginTop="20dp">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/devOne"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="120dp"
                     android:clickable="true"
                     android:focusable="true"
@@ -138,9 +137,10 @@
                     app:cardCornerRadius="10dp"
                     app:cardMaxElevation="10dp"
                     app:cardPreventCornerOverlap="false"
-                    app:layout_constraintHeight_percent=".35"
+                    app:layout_constraintWidth_percent=".8"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent">
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/layout1"
@@ -188,7 +188,7 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/devTwo"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="120dp"
                     android:clickable="true"
                     android:focusable="true"
@@ -197,7 +197,7 @@
                     app:cardCornerRadius="10dp"
                     app:cardMaxElevation="10dp"
                     app:cardPreventCornerOverlap="false"
-                    app:layout_constraintHeight_percent=".35"
+                    app:layout_constraintWidth_percent=".8"
                     app:layout_constraintTop_toBottomOf="@id/devOne"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent">
@@ -248,7 +248,7 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/devThree"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="120dp"
                     android:clickable="true"
                     android:focusable="true"
@@ -257,7 +257,7 @@
                     app:cardCornerRadius="10dp"
                     app:cardMaxElevation="10dp"
                     app:cardPreventCornerOverlap="false"
-                    app:layout_constraintHeight_percent=".35"
+                    app:layout_constraintWidth_percent=".8"
                     app:layout_constraintTop_toBottomOf="@id/devTwo"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent">
@@ -308,7 +308,7 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/devFour"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="130dp"
                     android:clickable="true"
                     android:focusable="true"
@@ -318,8 +318,7 @@
                     app:cardCornerRadius="10dp"
                     app:cardMaxElevation="10dp"
                     app:cardPreventCornerOverlap="false"
-                    app:layout_constraintDimensionRatio="1:1"
-                    app:layout_constraintHeight_percent=".35"
+                    app:layout_constraintWidth_percent=".8"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/devThree"
@@ -378,6 +377,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:background="@color/bacode_blue_dark"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
@@ -387,8 +387,9 @@
                 android:layout_height="wrap_content"
                 android:alpha=".5"
                 android:gravity="center"
-                android:paddingTop="10dp"
-                android:text="BACODELABS @2020 All Right Reserved" />
+                android:paddingTop="5dp"
+                android:text="BACODELABS @2020 All Right Reserved"
+                android:textColor="@color/bacode_white"/>
 
             <TextView
                 android:id="@+id/tvVersion"
@@ -396,9 +397,10 @@
                 android:layout_height="wrap_content"
                 android:alpha=".5"
                 android:gravity="center"
-                android:paddingBottom="10dp"
+                android:paddingBottom="5dp"
                 android:textSize="12dp"
-                android:text="v2.0.0 Android Kejar" />
+                android:text="v2.0.0 Android Kejar"
+                android:textColor="@color/bacode_white"/>
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

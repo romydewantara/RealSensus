@@ -7,18 +7,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
+import com.airbnb.lottie.LottieDrawable;
 import com.example.bacodelabs.R;
 import com.example.bacodelabs.util.Fonts;
 
 public class LoginActivity extends AppCompatActivity {
 
     Fonts fonts;
+    Button btnLogin;
     EditText etEmail;
     EditText etPassword;
     TextView tvRegister;
-    Button btnLogin;
+    LottieAnimationView lottieView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,16 +31,18 @@ public class LoginActivity extends AppCompatActivity {
 
         init();
         initListener();
+        playLottieView();
 
     }
 
     // initialize all variables
     private void init() {
         fonts = new Fonts(getApplicationContext());
+        btnLogin = findViewById(R.id.btnLogin);
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         tvRegister = findViewById(R.id.tvRegister);
-        btnLogin = findViewById(R.id.btnLogin);
+        lottieView = findViewById(R.id.lottieView);
 
         setCosmetic();
     }
@@ -60,6 +66,12 @@ public class LoginActivity extends AppCompatActivity {
     private void goToHome() {
         Intent intentLogin = new Intent(LoginActivity.this, HomeActivity.class);
         startActivity(intentLogin);
+        finish();
+    }
+
+    private void playLottieView() {
+        lottieView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        lottieView.setRepeatCount(LottieDrawable.INFINITE);
     }
 
 }

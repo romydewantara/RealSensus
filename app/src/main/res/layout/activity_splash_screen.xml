@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
+    android:background="@color/bacode_blue_dark"
     tools:context=".activity.SplashScreenActivity">
 
     <ImageView
@@ -21,5 +22,6 @@
         android:text="BACODELABS"
         android:gravity="center"
         android:layout_marginTop="10dp"
-        android:textSize="18dp"/>
+        android:textSize="18dp"
+        android:textColor="@color/bacode_white"/>
 </LinearLayout>
