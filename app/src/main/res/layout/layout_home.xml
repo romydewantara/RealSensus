@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/toolbarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:background="@color/bacode_blue_dark"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/btnMenu"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:padding="12dp"
+                android:src="@drawable/burger_menu" />
+
+            <TextView
+                android:id="@+id/tvTitlePage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:text="BACODELABS"/>
+
+            <ImageView
+                android:id="@+id/btnLogout"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:src="@drawable/ic_logout" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/viewHeader"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:background="#8AE7F6F8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbarLayout" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvProfile"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginRight="50dp"
+            app:cardElevation="9dp"
+            app:cardCornerRadius="37.5dp"
+            app:layout_constraintEnd_toEndOf="@id/viewHeader"
+            app:layout_constraintTop_toTopOf="@id/viewHeader"
+            app:layout_constraintBottom_toBottomOf="@id/viewHeader">
+
+            <ImageView
+                android:id="@+id/imageProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_king"
+                android:background="@drawable/circular_image"
+                android:scaleType="centerCrop"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="@id/viewHeader"
+            app:layout_constraintLeft_toLeftOf="@id/viewHeader"
+            app:layout_constraintBottom_toBottomOf="@id/viewHeader"
+            android:layout_marginLeft="30dp">
+
+            <TextView
+                android:id="@+id/tvWelcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello, welcome back"
+                android:textColor="#3A7BA5"
+                android:gravity="center"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/tvUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Romy Dewantara"
+                android:textColor="#30688B"
+                android:textSize="22dp"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/contentMenu"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/bacode_blue_dark"
+            app:layout_constraintTop_toBottomOf="@id/viewHeader"
+            app:layout_constraintBottom_toTopOf="@id/layoutVersion">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/devOne"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardBackgroundColor="#E7F5FB"
+                    app:cardCornerRadius="10dp"
+                    app:cardMaxElevation="10dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:layout_constraintWidth_percent=".8"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/imageDevOne"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_facebook"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            app:layout_constraintWidth_percent=".2"
+                            app:layout_constraintLeft_toLeftOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tvTitleDevOne"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintWidth_percent=".8"
+                            android:layout_marginTop="20dp"
+                            android:textColor="#30688B"
+                            android:text="Developers Team 1"
+                            android:textSize="18dp"
+                            android:textStyle="bold"
+                            app:layout_constraintLeft_toRightOf="@id/imageDevOne"
+                            app:layout_constraintTop_toTopOf="parent"/>
+
+                        <TextView
+                            android:id="@+id/tvSubtitleDevOne"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintWidth_percent=".8"
+                            android:layout_marginTop="5dp"
+                            android:textColor="#803A7BA5"
+                            android:text="Description:\nBadang, Atlas, Valir, Granger, X-Borg"
+                            android:textSize="16dp"
+                            app:layout_constraintLeft_toRightOf="@id/imageDevOne"
+                            app:layout_constraintTop_toBottomOf="@id/tvTitleDevOne"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/devTwo"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_marginTop="20dp"
+                    app:cardBackgroundColor="#F8F1FB"
+                    app:cardCornerRadius="10dp"
+                    app:cardMaxElevation="10dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:layout_constraintWidth_percent=".8"
+                    app:layout_constraintTop_toBottomOf="@id/devOne"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/imageDevTwo"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_instagram"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            app:layout_constraintWidth_percent=".2"
+                            app:layout_constraintLeft_toLeftOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tvTitleDevTwo"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintWidth_percent=".8"
+                            android:layout_marginTop="20dp"
+                            android:textColor="#30688B"
+                            android:text="Developers Team 2"
+                            android:textSize="18dp"
+                            android:textStyle="bold"
+                            app:layout_constraintLeft_toRightOf="@id/imageDevTwo"
+                            app:layout_constraintTop_toTopOf="parent"/>
+
+                        <TextView
+                            android:id="@+id/tvSubtitleDevTwo"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintWidth_percent=".8"
+                            android:layout_marginTop="5dp"
+                            android:textColor="#803A7BA5"
+                            android:text="Description:\nBane, Akai, Luo Yi, Wanwan, Zilong"
+                            android:textSize="16dp"
+                            app:layout_constraintLeft_toRightOf="@id/imageDevTwo"
+                            app:layout_constraintTop_toBottomOf="@id/tvTitleDevTwo"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/devThree"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_marginTop="20dp"
+                    app:cardBackgroundColor="#F8F3F3"
+                    app:cardCornerRadius="10dp"
+                    app:cardMaxElevation="10dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:layout_constraintWidth_percent=".8"
+                    app:layout_constraintTop_toBottomOf="@id/devTwo"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/imageDevThree"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_youtube"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            app:layout_constraintWidth_percent=".2"
+                            app:layout_constraintLeft_toLeftOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tvTitleDevThree"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintWidth_percent=".8"
+                            android:layout_marginTop="20dp"
+                            android:textColor="#30688B"
+                            android:text="Developers Team 3"
+                            android:textSize="18dp"
+                            android:textStyle="bold"
+                            app:layout_constraintLeft_toRightOf="@id/imageDevThree"
+                            app:layout_constraintTop_toTopOf="parent"/>
+
+                        <TextView
+                            android:id="@+id/tvSubtitleDevThree"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintWidth_percent=".8"
+                            android:layout_marginTop="5dp"
+                            android:textColor="#803A7BA5"
+                            android:text="Description:\nSilvanna, Khufra, Change, Lancelot, Chou"
+                            android:textSize="16dp"
+                            app:layout_constraintLeft_toRightOf="@id/imageDevThree"
+                            app:layout_constraintTop_toBottomOf="@id/tvTitleDevThree"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/devFour"
+                    android:layout_width="0dp"
+                    android:layout_height="130dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="50dp"
+                    app:cardBackgroundColor="#E7FAF8"
+                    app:cardCornerRadius="10dp"
+                    app:cardMaxElevation="10dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:layout_constraintWidth_percent=".8"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/devThree"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/imageDevFour"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_twitter"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            app:layout_constraintWidth_percent=".2"
+                            app:layout_constraintLeft_toLeftOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tvTitleDevFour"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintWidth_percent=".8"
+                            android:layout_marginTop="20dp"
+                            android:textColor="#30688B"
+                            android:text="Developers Team 4"
+                            android:textSize="18dp"
+                            android:textStyle="bold"
+                            app:layout_constraintLeft_toRightOf="@id/imageDevFour"
+                            app:layout_constraintTop_toTopOf="parent"/>
+
+                        <TextView
+                            android:id="@+id/tvSubtitleDevFour"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintWidth_percent=".8"
+                            android:layout_marginTop="5dp"
+                            android:textColor="#803A7BA5"
+                            android:text="Description:\nLeomord, Gatotkaca, Rafaela, Gusion, Khaleed"
+                            android:textSize="16dp"
+                            app:layout_constraintLeft_toRightOf="@id/imageDevFour"
+                            app:layout_constraintTop_toBottomOf="@id/tvTitleDevFour"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/layoutVersion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/bacode_blue_dark"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <TextView
+                android:id="@+id/tvBC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha=".5"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:text="BACODELABS @2020 All Right Reserved"
+                android:textColor="@color/bacode_white"/>
+
+            <TextView
+                android:id="@+id/tvVersion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha=".5"
+                android:gravity="center"
+                android:paddingBottom="5dp"
+                android:textSize="12dp"
+                android:text="v2.0.0 Android Kejar"
+                android:textColor="@color/bacode_white"/>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

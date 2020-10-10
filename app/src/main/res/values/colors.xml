@@ -4,7 +4,9 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
 
+    <color name="bacode_transparent">#00FFFFFF</color>
     <color name="bacode_white">#FFFFFF</color>
     <color name="bacode_blue_dark">#1e5f74</color>
     <color name="bacode_blue_light">#31A6CC</color>
+    <color name="bacode_grey_light">#8AE7F6F8</color>
 </resources>

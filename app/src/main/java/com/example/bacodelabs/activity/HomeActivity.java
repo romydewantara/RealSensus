@@ -2,9 +2,12 @@ package com.example.bacodelabs.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -37,6 +40,7 @@ public class HomeActivity extends AppCompatActivity {
     TextView tvVersion;
     ImageView btnLogout;
     ImageView btnMenu;
+    DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +73,7 @@ public class HomeActivity extends AppCompatActivity {
         devFour = findViewById(R.id.devFour);
         btnLogout = findViewById(R.id.btnLogout);
         btnMenu = findViewById(R.id.btnMenu);
+        drawerLayout = findViewById(R.id.drawerLayout);
 
         setCosmetic();
     }
@@ -99,9 +104,11 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
         btnMenu.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("WrongConstant")
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "BACODE Burger Menu", Toast.LENGTH_SHORT).show();
+                drawerLayout.openDrawer(Gravity.START);
+                //Toast.makeText(getApplicationContext(), "BACODE Burger Menu", Toast.LENGTH_SHORT).show();
             }
         });
         devOne.setOnClickListener(new View.OnClickListener() {
