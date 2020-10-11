@@ -22,4 +22,8 @@
         <item name="bottomSheetStyle">@style/BottomSheet</item>
     </style>
 
+    <style name="AlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/bacode_blue_dark</item>
+    </style>
+
 </resources>

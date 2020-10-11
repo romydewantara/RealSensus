@@ -42,15 +42,15 @@ public class RoundedBottomSheetDialog extends BottomSheetDialogFragment {
 
         // Add Items
         List<Developers> developersList = new ArrayList<>();
-        developersList.add(new Developers(0, "Romy Dewantara", "08 October 2020", "Impostor"));
-        developersList.add(new Developers(1, "Aditia Nugraha", "09 November 2020", "Crewmate"));
-        developersList.add(new Developers(2, "Ari Domero", "10 October 2020", "Crewmate"));
-        developersList.add(new Developers(3, "Avip Pebrians", "17 November 2020", "Crewmate"));
-        developersList.add(new Developers(4, "Aku Fakhri", "12 November 2020", "Crewmate"));
-        developersList.add(new Developers(5, "Budi Stwn", "14 December 2020", "Crewmate"));
-        developersList.add(new Developers(6, "Fajar Komar92", "20 December 2020", "Crewmate"));
-        developersList.add(new Developers(7, "Jams", "09 October 2020", "Crewmate"));
-        developersList.add(new Developers(8, "Wibawa Bangkit", "02 December 2020", "Crewmate"));
+        developersList.add(new Developers(0, this.getResources().getString(R.string.name_romy), "08 October 2020", "Impostor"));
+        developersList.add(new Developers(1, this.getResources().getString(R.string.name_adit), "09 November 2020", "Crewmate"));
+        developersList.add(new Developers(2, this.getResources().getString(R.string.name_adom), "10 October 2020", "Crewmate"));
+        developersList.add(new Developers(3, this.getResources().getString(R.string.name_avip), "17 November 2020", "Crewmate"));
+        developersList.add(new Developers(4, this.getResources().getString(R.string.name_bidol), "12 November 2020", "Crewmate"));
+        developersList.add(new Developers(5, this.getResources().getString(R.string.name_budi), "14 December 2020", "Crewmate"));
+        developersList.add(new Developers(6, this.getResources().getString(R.string.name_budi), "20 December 2020", "Crewmate"));
+        developersList.add(new Developers(7, this.getResources().getString(R.string.name_jams), "09 October 2020", "Crewmate"));
+        developersList.add(new Developers(8, this.getResources().getString(R.string.name_wawa), "02 December 2020", "Crewmate"));
 
         DevelopersAdapter developersAdapter = new DevelopersAdapter(context, developersList);
         ListView listDev = layout.findViewById(R.id.listDevelopers);

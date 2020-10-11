@@ -1,53 +1,64 @@
 package com.example.bacodelabs.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.annotation.SuppressLint;
-import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.PixelFormat;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import com.example.bacodelabs.R;
 import com.example.bacodelabs.support.DevelopersBottomSheet;
-import com.example.bacodelabs.support.RoundedBottomSheetDialog;
+import com.example.bacodelabs.util.BCPreference;
 import com.example.bacodelabs.util.Fonts;
 
 
 public class HomeActivity extends AppCompatActivity {
 
-    // Define or declare all widgets
-    Fonts fonts;
-    CardView devOne;
-    CardView devTwo;
-    CardView devThree;
-    CardView devFour;
-    TextView tvTitlePage;
-    TextView tvWelcome;
-    TextView tvUsername;
-    TextView tvTitleDevOne;
-    TextView tvSubtitleDevOne;
-    TextView tvTitleDevTwo;
-    TextView tvSubtitleDevTwo;
-    TextView tvTitleDevThree;
-    TextView tvSubtitleDevThree;
-    TextView tvTitleDevFour;
-    TextView tvSubtitleDevFour;
-    TextView tvBC;
-    TextView tvVersion;
-    ImageView btnLogout;
-    ImageView btnMenu;
-    DrawerLayout drawerLayout;
-    DevelopersBottomSheet developersBottomSheet;
+    // Define or declare all Widgets
+    private Fonts fonts;
+    private CardView devOne;
+    private CardView devTwo;
+    private CardView devThree;
+    private CardView devFour;
+    private TextView tvTitlePage;
+    private TextView tvWelcome;
+    private TextView tvUsername;
+    private TextView tvTitleDevOne;
+    private TextView tvSubtitleDevOne;
+    private TextView tvTitleDevTwo;
+    private TextView tvSubtitleDevTwo;
+    private TextView tvTitleDevThree;
+    private TextView tvSubtitleDevThree;
+    private TextView tvTitleDevFour;
+    private TextView tvSubtitleDevFour;
+    private TextView tvBC;
+    private TextView tvVersion;
+    private ImageView btnLogout;
+    private ImageView btnMenu;
+
+    // Drawer Components
+    private DrawerLayout drawerLayout;
+    private TextView tvName;
+    private TextView tvHome;
+    private TextView tvSetting;
+
+    // Bottom Sheet
+    private DevelopersBottomSheet developersBottomSheet;
+
+    // Animation
+    private Animation fadeInAnimation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,11 +66,13 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         init();
+        setData();
         initListener();
     }
 
     // initialize component
     private void init() {
+        // Layout Home Components
         fonts = new Fonts(getApplicationContext());
         tvTitlePage = findViewById(R.id.tvTitlePage);
         tvWelcome = findViewById(R.id.tvWelcome);
@@ -80,7 +93,14 @@ public class HomeActivity extends AppCompatActivity {
         devFour = findViewById(R.id.devFour);
         btnLogout = findViewById(R.id.btnLogout);
         btnMenu = findViewById(R.id.btnMenu);
+
+        // Layout Drawer Components
         drawerLayout = findViewById(R.id.drawerLayout);
+        tvName = findViewById(R.id.tvName);
+        tvHome = findViewById(R.id.tvHome);
+        tvSetting = findViewById(R.id.tvSetting);
+
+        fadeInAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.anim_fade_in);
 
         setCosmetic();
     }
@@ -97,17 +117,37 @@ public class HomeActivity extends AppCompatActivity {
         tvSubtitleDevThree.setTypeface(fonts.stRegular());
         tvTitleDevFour.setTypeface(fonts.stBold());
         tvSubtitleDevFour.setTypeface(fonts.stRegular());
-        tvBC.setTypeface(fonts.stRegular());
-        tvVersion.setTypeface(fonts.stRegular());
+        tvBC.setTypeface(fonts.stThin());
+        tvVersion.setTypeface(fonts.stThin());
+
+        tvName.setTypeface(fonts.stRegular());
+        tvHome.setTypeface(fonts.stRegular());
+        tvSetting.setTypeface(fonts.stRegular());
+    }
+
+    private void setData() {
+        String developerName = BCPreference.getDeveloperName(getApplicationContext());
+        boolean isLoggedIn = BCPreference.getLoggedIn(getApplicationContext());
+        if (isLoggedIn) {
+            tvWelcome.setText("Hello, welcome back!");
+        }
+        BCPreference.getInstance(getApplicationContext()).setKeyLoggedIn(true);
+        tvUsername.setVisibility(View.INVISIBLE);
+        tvUsername.setText(developerName);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                tvUsername.setVisibility(View.VISIBLE);
+                tvUsername.startAnimation(fadeInAnimation);
+            }
+        }, 1500);
     }
 
     private void initListener() {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentLogout = new Intent(HomeActivity.this, LoginActivity.class);
-                startActivity(intentLogout);
-                finish();
+                logout();
             }
         });
         btnMenu.setOnClickListener(new View.OnClickListener() {
@@ -144,5 +184,27 @@ public class HomeActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Hello Developers Team 4! \nComing soon.", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void logout() {
+        final AlertDialog.Builder dialog = new AlertDialog.Builder(HomeActivity.this, R.style.AlertDialogTheme);
+        dialog.setCancelable(false);
+        dialog.setMessage("Are you sure you want to sign out?");
+        dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                BCPreference.logout(HomeActivity.this);
+                dialogInterface.dismiss();
+                startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+                finish();
+            }
+        });
+        dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        dialog.show();
     }
 }

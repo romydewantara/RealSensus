@@ -79,7 +79,7 @@
         android:layout_height="2dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
-        android:background="@color/bacode_white"
+        android:background="@color/bacode_blue_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

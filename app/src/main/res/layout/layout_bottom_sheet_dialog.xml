@@ -9,7 +9,7 @@
         android:id="@+id/tvTitleBottomSheet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Developers Team"
+        android:text="Developers Registered"
         android:textSize="14dp"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"

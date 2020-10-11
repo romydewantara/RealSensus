@@ -58,6 +58,10 @@ public class DevelopersAdapter extends BaseAdapter {
         tvBirth.setTypeface(fonts.stMedium());
         tvRole.setText(developers.get(i).getRole());
         tvRole.setTypeface(fonts.stThin());
+        icon.setImageResource(R.drawable.ic_king_two);
+        if ((i % 2) == 0) {
+            icon.setImageResource(R.drawable.ic_king);
+        }
 
         layoutItem.setOnClickListener(new View.OnClickListener() {
             @Override

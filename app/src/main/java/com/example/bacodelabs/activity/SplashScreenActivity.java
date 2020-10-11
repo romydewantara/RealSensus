@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.widget.TextView;
 
 import com.example.bacodelabs.R;
+import com.example.bacodelabs.util.BCPreference;
 import com.example.bacodelabs.util.Fonts;
 
 public class SplashScreenActivity extends AppCompatActivity {
@@ -38,7 +39,12 @@ public class SplashScreenActivity extends AppCompatActivity {
     }
 
     private void goToLogin() {
-        Intent intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
+        Intent intent = null;
+        if (BCPreference.getInstance(getApplicationContext()).getLoggedIn(getApplicationContext())) {
+            intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
+        } else {
+            intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
+        }
         startActivity(intent);
         finish();
     }

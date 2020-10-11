@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">BACODELABS</string>
+    <string name="admin_account">admin</string>
+    <string name="admin_password">bacode</string>
+
+    <string name="mail_adit">nugrahaaditia39@gmail.com</string>
+    <string name="mail_adom">aridomero10@gmail.com</string>
+    <string name="mail_avip">pebriansavip@gmail.com</string>
+    <string name="mail_budi">stwn.art20@gmail.com</string>
+    <string name="mail_bidol">ari.japindo@gmail.com</string>
+    <string name="mail_fajar">Fajarkomar@gmail.com</string>
+    <string name="mail_jams">muhammadjamhari1@gmail.com</string>
+    <string name="mail_romy">dewantararomy@gmail.com</string>
+    <string name="mail_wawa">wibawabangkit31@gmail.com</string>
+
+    <string name="name_admin">Administrator</string>
+    <string name="name_adit">Aditia Nugraha</string>
+    <string name="name_adom">Ari Domero Sandi</string>
+    <string name="name_avip">Avip Pebrians</string>
+    <string name="name_budi">Budi Setiawan</string>
+    <string name="name_bidol">Fakhri Pratama</string>
+    <string name="name_fajar">Fajar Komarudin</string>
+    <string name="name_jams">Muhammad Jamhari</string>
+    <string name="name_romy">Romy Dewantara</string>
+    <string name="name_wawa">Wibawa Bangkit</string>
 </resources>
