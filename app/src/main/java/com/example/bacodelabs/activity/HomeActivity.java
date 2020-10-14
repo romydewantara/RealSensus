@@ -58,6 +58,15 @@ public class HomeActivity extends AppCompatActivity {
     private TextView tvTitlePage;
     private TextView tvWelcome;
     private TextView tvUsername;
+    private TextView tvDevOne;
+    private TextView tvDevTwo;
+    private TextView tvDevThree;
+    private TextView tvDevFour;
+    private TextView tvDevFive;
+    private ImageView imageIcon1;
+    private ImageView imageIcon2;
+    private ImageView imageIcon3;
+    private ImageView imageIcon4;
     private FrameLayout frameLayoutContent;
     private RelativeLayout relative1;
     private RelativeLayout relative2;
@@ -106,6 +115,16 @@ public class HomeActivity extends AppCompatActivity {
         tvTitlePage = findViewById(R.id.tvTitlePage);
         tvWelcome = findViewById(R.id.tvWelcome);
         tvUsername = findViewById(R.id.tvUsername);
+        tvDevOne = findViewById(R.id.tvDevOne);
+        tvDevTwo = findViewById(R.id.tvDevTwo);
+        tvDevThree = findViewById(R.id.tvDevThree);
+        tvDevFour = findViewById(R.id.tvDevFour);
+        tvDevFive = findViewById(R.id.tvDevFive);
+        imageIcon1 = findViewById(R.id.imageIcon1);
+        imageIcon2 = findViewById(R.id.imageIcon2);
+        imageIcon3 = findViewById(R.id.imageIcon3);
+        imageIcon4 = findViewById(R.id.imageIcon4);
+
         frameLayoutContent = findViewById(R.id.frameLayoutContent);
         relative1 = findViewById(R.id.relative1);
         relative2 = findViewById(R.id.relative2);
@@ -128,6 +147,11 @@ public class HomeActivity extends AppCompatActivity {
         tvTitlePage.setTypeface(fonts.stBold());
         tvWelcome.setTypeface(fonts.stRegular());
         tvUsername.setTypeface(fonts.stBold());
+        tvDevOne.setTypeface(fonts.stRegular());
+        tvDevTwo.setTypeface(fonts.stRegular());
+        tvDevThree.setTypeface(fonts.stRegular());
+        tvDevFour.setTypeface(fonts.stRegular());
+        tvDevFive.setTypeface(fonts.stRegular());
 
         tvName.setTypeface(fonts.stRegular());
         tvHome.setTypeface(fonts.stRegular());
@@ -222,6 +246,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void goToTeamOne() {
+        setUpButtonTeamOne();
         Bundle bundle = new Bundle();
         fragment = new TeamOneFragment();
         fragment.setArguments(bundle);
@@ -231,6 +256,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void goToTeamTwo() {
+        setUpButtonTeamTwo();
         Bundle bundle = new Bundle();
         fragment = new TeamTwoFragment();
         fragment.setArguments(bundle);
@@ -240,6 +266,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void goToTeamThree() {
+        setUpButtonTeamThree();
         Bundle bundle = new Bundle();
         fragment = new TeamThreeFragment();
         fragment.setArguments(bundle);
@@ -249,12 +276,61 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void goToTeamFour() {
+        setUpButtonTeamFour();
         Bundle bundle = new Bundle();
         fragment = new TeamFourFragment();
         fragment.setArguments(bundle);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frameLayoutContent, fragment, TAG_FRAGMENT_TEAM_FOUR)
                 .commit();
+    }
+
+    private void setUpButtonTeamOne() {
+        tvDevOne.setTextColor(getApplicationContext().getResources().getColor(R.color.bacode_spotify_button));
+        tvDevTwo.setTextColor(getApplicationContext().getResources().getColor(R.color.bacode_grey));
+        tvDevThree.setTextColor(getApplicationContext().getResources().getColor(R.color.bacode_grey));
+        tvDevFour.setTextColor(getApplicationContext().getResources().getColor(R.color.bacode_grey));
+        tvDevFive.setTextColor(getApplicationContext().getResources().getColor(R.color.bacode_blue_dark));
+        imageIcon1.setImageResource(R.drawable.ic_spotify);
+        imageIcon2.setImageResource(R.drawable.ic_twitter_off);
+        imageIcon3.setImageResource(R.drawable.ic_instagram_off);
+        imageIcon4.setImageResource(R.drawable.ic_facebook_off);
+    }
+
+    private void setUpButtonTeamTwo() {
+        tvDevOne.setTextColor(getApplicationContext().getResources().getColor(R.color.bacode_grey));
+        tvDevTwo.setTextColor(getApplicationContext().getResources().getColor(R.color.bacode_twitter_button));
+        tvDevThree.setTextColor(getApplicationContext().getResources().getColor(R.color.bacode_grey));
+        tvDevFour.setTextColor(getApplicationContext().getResources().getColor(R.color.bacode_grey));
+        tvDevFive.setTextColor(getApplicationContext().getResources().getColor(R.color.bacode_blue_dark));
+        imageIcon1.setImageResource(R.drawable.ic_spotify_off);
+        imageIcon2.setImageResource(R.drawable.ic_twitter);
+        imageIcon3.setImageResource(R.drawable.ic_instagram_off);
+        imageIcon4.setImageResource(R.drawable.ic_facebook_off);
+    }
+
+    private void setUpButtonTeamThree() {
+        tvDevOne.setTextColor(getApplicationContext().getResources().getColor(R.color.bacode_grey));
+        tvDevTwo.setTextColor(getApplicationContext().getResources().getColor(R.color.bacode_grey));
+        tvDevThree.setTextColor(getApplicationContext().getResources().getColor(R.color.bacode_instagram_button));
+        tvDevFour.setTextColor(getApplicationContext().getResources().getColor(R.color.bacode_grey));
+        tvDevFive.setTextColor(getApplicationContext().getResources().getColor(R.color.bacode_blue_dark));
+        imageIcon1.setImageResource(R.drawable.ic_spotify_off);
+        imageIcon2.setImageResource(R.drawable.ic_twitter_off);
+        imageIcon3.setImageResource(R.drawable.ic_instagram);
+        imageIcon4.setImageResource(R.drawable.ic_facebook_off);
+    }
+
+    private void setUpButtonTeamFour() {
+        tvDevOne.setTextColor(getApplicationContext().getResources().getColor(R.color.bacode_grey));
+        tvDevTwo.setTextColor(getApplicationContext().getResources().getColor(R.color.bacode_grey));
+        tvDevThree.setTextColor(getApplicationContext().getResources().getColor(R.color.bacode_grey));
+        tvDevFour.setTextColor(getApplicationContext().getResources().getColor(R.color.bacode_facebook_button));
+        tvDevFive.setTextColor(getApplicationContext().getResources().getColor(R.color.bacode_blue_dark));
+        imageIcon1.setImageResource(R.drawable.ic_spotify_off);
+        imageIcon2.setImageResource(R.drawable.ic_twitter_off);
+        imageIcon3.setImageResource(R.drawable.ic_instagram_off);
+        imageIcon4.setImageResource(R.drawable.ic_facebook);
     }
 
 }

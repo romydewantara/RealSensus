@@ -57,7 +57,11 @@ public class DevelopersAdapter extends BaseAdapter {
 
         tvName.setText(developers.getData().getDeveloperList().get(i).getName());
         tvName.setTypeface(fonts.stMedium());
-        tvBirth.setText(String.valueOf(developers.getData().getDeveloperList().get(i).getBirthDate().getMonth())); // crash
+
+        tvBirth.setText(getBirthDate(
+                developers.getData().getDeveloperList().get(i).getBirthDate().getDay(),
+                developers.getData().getDeveloperList().get(i).getBirthDate().getMonth(),
+                developers.getData().getDeveloperList().get(i).getBirthDate().getYear()));
         tvBirth.setTypeface(fonts.stMedium());
         tvRole.setText(developers.getData().getDeveloperList().get(i).getRole());
         tvRole.setTypeface(fonts.stThin());
@@ -74,5 +78,10 @@ public class DevelopersAdapter extends BaseAdapter {
         });
 
         return v;
+    }
+
+    private String getBirthDate(int day, int month, int year) {
+        String birthDate = day + "/" + month + "/" + year;
+        return birthDate;
     }
 }

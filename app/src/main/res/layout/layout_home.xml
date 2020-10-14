@@ -120,7 +120,7 @@
                 android:id="@+id/frameLayoutContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/bacode_grey"/>
+                android:background="@color/bacode_grey_home"/>
         </ScrollView>
 
         <LinearLayout
@@ -149,7 +149,7 @@
                     android:id="@+id/imageIcon1"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/market"
+                    android:src="@drawable/ic_spotify"
                     android:layout_centerHorizontal="true"/>
 
                 <TextView
@@ -178,7 +178,7 @@
                     android:id="@+id/imageIcon2"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/food"
+                    android:src="@drawable/ic_twitter"
                     android:layout_centerHorizontal="true"/>
 
                 <TextView
@@ -207,7 +207,7 @@
                     android:id="@+id/imageIcon3"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/bike"
+                    android:src="@drawable/ic_instagram"
                     android:layout_centerHorizontal="true"/>
 
                 <TextView
@@ -236,7 +236,7 @@
                     android:id="@+id/imageIcon4"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/delivery"
+                    android:src="@drawable/ic_facebook"
                     android:layout_centerHorizontal="true"/>
 
                 <TextView

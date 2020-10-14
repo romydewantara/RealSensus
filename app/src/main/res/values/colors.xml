@@ -10,5 +10,16 @@
     <color name="bacode_blue_light">#31A6CC</color>
     <color name="bacode_blue_light_5">#0D31A6CC</color>
     <color name="bacode_grey_light">#80E7F6F8</color>
+    <color name="bacode_grey_home">#4DE3E3E3</color>
     <color name="bacode_grey">#E3E3E3</color>
+
+    <color name="teammate_one">#E7FBEB</color>
+    <color name="teammate_two">#D2F1FF</color>
+    <color name="teammate_three">#FFFCFF</color>
+    <color name="teammate_four">#CFDCFF</color>
+
+    <color name="bacode_spotify_button">#00B233</color>
+    <color name="bacode_twitter_button">#009ACC</color>
+    <color name="bacode_instagram_button">#A300EA</color>
+    <color name="bacode_facebook_button">#073CDC</color>
 </resources>

@@ -18,15 +18,19 @@
             android:paddingLeft="10dp"
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
-            android:text="Feeds"/>
+            android:text="Project"
+            android:textColor="@color/bacode_blue_dark"/>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewFeed"
             android:layout_width="match_parent"
             android:layout_height="150dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
             android:clickable="true"
             android:focusable="true"
-            app:cardBackgroundColor="#E7FBEB"
+            app:cardBackgroundColor="#FFFFFF"
             app:cardCornerRadius="10dp"
             app:cardMaxElevation="10dp"
             app:cardPreventCornerOverlap="false"
@@ -38,7 +42,7 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/imageFeed"
+                    android:id="@+id/imageFeedProject"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:src="@drawable/ic_spotify"
@@ -48,7 +52,7 @@
                     app:layout_constraintLeft_toLeftOf="parent" />
 
                 <TextView
-                    android:id="@+id/tvFeedTitle"
+                    android:id="@+id/tvFeedProject"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintWidth_percent=".8"
@@ -57,11 +61,11 @@
                     android:text="Developers Team 1 - Spotify"
                     android:textSize="18dp"
                     android:textStyle="bold"
-                    app:layout_constraintLeft_toRightOf="@id/imageFeed"
+                    app:layout_constraintLeft_toRightOf="@id/imageFeedProject"
                     app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
-                    android:id="@+id/tvFeedDesc"
+                    android:id="@+id/tvFeedProjectDesc"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintWidth_percent=".8"
@@ -70,9 +74,21 @@
                     android:paddingRight="15dp"
                     android:text="Project Description:\nMake project similar with Spotify. Can play the sound of the song, and download the various songs you want."
                     android:textSize="16dp"
-                    app:layout_constraintLeft_toRightOf="@id/imageFeed"
-                    app:layout_constraintTop_toBottomOf="@id/tvFeedTitle"/>
+                    app:layout_constraintLeft_toRightOf="@id/imageFeedProject"
+                    app:layout_constraintTop_toBottomOf="@id/tvFeedProject"/>
 
+                <TextView
+                    android:id="@+id/btnOpenProject"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintRight_toRightOf="@id/constraintFeed"
+                    app:layout_constraintBottom_toBottomOf="@id/constraintFeed"
+                    app:layout_constraintTop_toBottomOf="@id/tvFeedProjectDesc"
+                    android:text="Open Project"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="5dp"
+                    android:layout_marginBottom="10dp"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
@@ -91,7 +107,8 @@
             android:paddingLeft="10dp"
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
-            android:text="Teammate"/>
+            android:text="Teammate"
+            android:textColor="@color/bacode_blue_dark"/>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvProfile1"
@@ -108,7 +125,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/circular_image"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_king" />
+                android:src="@drawable/ic_prince" />
 
         </androidx.cardview.widget.CardView>
 
@@ -128,7 +145,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/circular_image"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_king" />
+                android:src="@drawable/ic_king_two" />
 
         </androidx.cardview.widget.CardView>
 

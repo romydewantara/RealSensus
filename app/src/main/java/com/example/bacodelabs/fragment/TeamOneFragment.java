@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,11 +25,13 @@ public class TeamOneFragment extends Fragment {
     private Context context;
     private View rootView;
     private TextView tvFeeds;
-    private TextView tvFeedsTitle;
-    private TextView tvFeedsDesc;
+    private TextView tvFeedProject;
+    private TextView tvFeedProjectDesc;
     private TextView tvTeammate;
     private TextView tvTask;
     private TextView tvTaskMessage;
+    private TextView btnOpenProject;
+    private ImageView imageFeedProject;
     private CardView cardViewFeed;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -94,11 +97,13 @@ public class TeamOneFragment extends Fragment {
 
     private void init(View v) {
         tvFeeds = v.findViewById(R.id.tvFeed);
-        tvFeedsTitle = v.findViewById(R.id.tvFeedTitle);
-        tvFeedsDesc = v.findViewById(R.id.tvFeedDesc);
+        tvFeedProject = v.findViewById(R.id.tvFeedProject);
+        tvFeedProjectDesc = v.findViewById(R.id.tvFeedProjectDesc);
         tvTeammate = v.findViewById(R.id.tvTeammate);
         tvTask = v.findViewById(R.id.tvTask);
         tvTaskMessage = v.findViewById(R.id.tvTaskMessage);
+        btnOpenProject = v.findViewById(R.id.btnOpenProject);
+        imageFeedProject = v.findViewById(R.id.imageFeedProject);
         cardViewFeed = v.findViewById(R.id.cardViewFeed);
         setCosmetics();
     }
@@ -106,15 +111,29 @@ public class TeamOneFragment extends Fragment {
     private void setCosmetics() {
         // Set Fonts Style
         Fonts fonts = new Fonts(context);
-        tvFeeds.setTypeface(fonts.stRegular());
-        tvFeedsTitle.setTypeface(fonts.stRegular());
-        tvFeedsDesc.setTypeface(fonts.stRegular());
-        tvTeammate.setTypeface(fonts.stRegular());
-        tvTask.setTypeface(fonts.stRegular());
+        tvFeeds.setTypeface(fonts.stBold());
+        tvTeammate.setTypeface(fonts.stBold());
+        tvTask.setTypeface(fonts.stBold());
+
+        tvFeedProject.setTypeface(fonts.stRegular());
+        tvFeedProjectDesc.setTypeface(fonts.stRegular());
         tvTaskMessage.setTypeface(fonts.stRegular());
 
-        // Set Background Color
-        //cardViewFeed.setCardBackgroundColor(context.getResources().getColor(R.color.bacode_blue_light));
+        tvFeeds.setTextSize(18f);
+        tvTeammate.setTextSize(18f);
+        tvTask.setTextSize(18f);
 
+        btnOpenProject.setTypeface(fonts.stMedium());
+        btnOpenProject.setTextSize(16f);
+        btnOpenProject.setTextColor(context.getResources().getColor(R.color.bacode_blue_dark));
+
+        setUpProjectView();
+    }
+
+    private void setUpProjectView() {
+        cardViewFeed.setCardBackgroundColor(context.getResources().getColor(R.color.teammate_one));
+        imageFeedProject.setImageResource(R.drawable.ic_spotify);
+        tvFeedProject.setText("Team Developer 1: Spotify Project");
+        tvFeedProjectDesc.setText("Build application exactly with Spotify application, listen to music anytime, anywhere.");
     }
 }
