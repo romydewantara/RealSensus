@@ -1,7 +1,6 @@
 package com.example.bacodelabs.activity;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,28 +13,32 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.bacodelabs.R;
 import com.example.bacodelabs.fragment.TeamFourFragment;
 import com.example.bacodelabs.fragment.TeamOneFragment;
 import com.example.bacodelabs.fragment.TeamThreeFragment;
 import com.example.bacodelabs.fragment.TeamTwoFragment;
+import com.example.bacodelabs.libs.BCCustomDialog;
+import com.example.bacodelabs.listener.CustomDialogListener;
 import com.example.bacodelabs.model.Developer;
 import com.example.bacodelabs.support.DevelopersBottomSheet;
 import com.example.bacodelabs.util.BCPreference;
 import com.example.bacodelabs.util.Fonts;
 import com.example.bacodelabs.viewmodel.DataViewModel;
 
+import java.util.ArrayList;
+
 /**
  * Created by: kamikaze
  * on October, 12 2020
  * */
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements CustomDialogListener {
 
     public final static int FRAGMENT_GOTO_TEAM_ONE = 0;
     public final static int FRAGMENT_GOTO_TEAM_TWO = 1;
@@ -224,7 +227,11 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void logout() {
-        final AlertDialog.Builder dialog = new AlertDialog.Builder(HomeActivity.this, R.style.AlertDialogTheme);
+        ArrayList<String> buttons = new ArrayList<>();
+        buttons.add("Ok");
+        buttons.add("Cancel");
+        showCustomDialog("Sign Out", "Are you sure want to sign out?", buttons);
+        /*final AlertDialog.Builder dialog = new AlertDialog.Builder(HomeActivity.this, R.style.AlertDialogTheme);
         dialog.setCancelable(false);
         dialog.setMessage("Are you sure you want to sign out?");
         dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -242,7 +249,7 @@ public class HomeActivity extends AppCompatActivity {
                 dialogInterface.dismiss();
             }
         });
-        dialog.show();
+        dialog.show();*/
     }
 
     private void goToTeamOne() {
@@ -333,4 +340,19 @@ public class HomeActivity extends AppCompatActivity {
         imageIcon4.setImageResource(R.drawable.ic_facebook);
     }
 
+    private void showCustomDialog(String title, String message, ArrayList<String> action) {
+        FragmentManager fm = getSupportFragmentManager();
+        BCCustomDialog bcCustomDialog = BCCustomDialog.newInstance(HomeActivity.this, title, message, action);
+        bcCustomDialog.show(fm, "fragment_custom_dialog");
+    }
+
+    @Override
+    public void negativeButtonPressed() {}
+
+    @Override
+    public void positiveButtonPressed() {
+        BCPreference.logout(HomeActivity.this);
+        startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+        finish();
+    }
 }
