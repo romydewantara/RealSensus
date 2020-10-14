@@ -81,7 +81,6 @@ public class BCPreference {
     }
 
     public static void logout(Context context) {
-        setUsername(context, "");
         setKeyLoggedIn(false);
         SmallDB smallDB = new SmallDB(context);
         //Delete all sharedPref

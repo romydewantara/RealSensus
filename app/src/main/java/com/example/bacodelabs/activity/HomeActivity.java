@@ -26,6 +26,7 @@ import com.example.bacodelabs.fragment.TeamOneFragment;
 import com.example.bacodelabs.fragment.TeamThreeFragment;
 import com.example.bacodelabs.fragment.TeamTwoFragment;
 import com.example.bacodelabs.libs.BCCustomDialog;
+import com.example.bacodelabs.libs.BCLoadingDialog;
 import com.example.bacodelabs.listener.CustomDialogListener;
 import com.example.bacodelabs.model.Developer;
 import com.example.bacodelabs.support.DevelopersBottomSheet;
@@ -90,6 +91,7 @@ public class HomeActivity extends AppCompatActivity implements CustomDialogListe
 
     // Animation
     private Animation fadeInAnimation;
+    private BCLoadingDialog bcLoadingDialog;
 
     // Developer Object
     private Developer developer;
@@ -351,13 +353,25 @@ public class HomeActivity extends AppCompatActivity implements CustomDialogListe
         dialog.show();
     }
 
+    private void showProgressBar() {
+        bcLoadingDialog = new BCLoadingDialog(this);
+        bcLoadingDialog.show();
+    }
+
     @Override
     public void negativeButtonPressed() {}
 
     @Override
     public void positiveButtonPressed() {
-        BCPreference.logout(HomeActivity.this);
-        startActivity(new Intent(HomeActivity.this, LoginActivity.class));
-        finish();
+        showProgressBar();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                bcLoadingDialog.dismiss();
+                BCPreference.logout(HomeActivity.this);
+                startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+                finish();
+            }
+        }, 2000);
     }
 }

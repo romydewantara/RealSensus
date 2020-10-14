@@ -3,6 +3,7 @@ package com.example.bacodelabs.activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.method.PasswordTransformationMethod;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,6 +19,7 @@ import androidx.core.content.ContextCompat;
 import com.airbnb.lottie.LottieAnimationView;
 import com.airbnb.lottie.LottieDrawable;
 import com.example.bacodelabs.R;
+import com.example.bacodelabs.libs.BCLoadingDialog;
 import com.example.bacodelabs.util.BCPreference;
 import com.example.bacodelabs.util.Fonts;
 
@@ -38,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView tvBC;
     private TextView tvVersion;
     private LottieAnimationView lottieView;
+    private BCLoadingDialog bcLoadingDialog;
     private ArrayList<String> developers;
     private ArrayList<String> users;
     private String email = "";
@@ -99,6 +102,9 @@ public class LoginActivity extends AppCompatActivity {
         tvBC.setTypeface(fonts.stThin());
         tvVersion.setTypeface(fonts.stThin());
         btnLogin.setTypeface(fonts.stBold());
+        if (!BCPreference.getInstance(getApplicationContext()).getUsername(getApplicationContext()).equalsIgnoreCase("")) {
+            etEmail.setText(BCPreference.getInstance(getApplicationContext()).getUsername(getApplicationContext()));
+        }
     }
 
     private void initListener() {
@@ -152,14 +158,31 @@ public class LoginActivity extends AppCompatActivity {
         } else if (!etPassword.getText().toString().equalsIgnoreCase("password")) {
             etPassword.setError("Password doesn't match");
         } else {
-            goToHome();
+            showProgressBar();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    bcLoadingDialog.dismiss();
+                    goToHome();
+                }
+            }, 3000);
         }
+    }
+
+    private void showProgressBar() {
+        bcLoadingDialog = new BCLoadingDialog(this);
+        bcLoadingDialog.show();
+        btnLogin.setBackgroundColor(getResources().getColor(R.color.bacode_edit_text_disabled));
+        etEmail.setBackgroundColor(getResources().getColor(R.color.bacode_edit_text_disabled));
+        etPassword.setBackgroundColor(getResources().getColor(R.color.bacode_edit_text_disabled));
     }
 
     private void goToHome() {
         BCPreference.getInstance(getApplicationContext()).setDeveloperId(uniqueId);
         BCPreference.getInstance(getApplicationContext()).setDeveloperName(username);
+        BCPreference.getInstance(getApplicationContext()).setUsername(getApplicationContext(), "");
         BCPreference.getInstance(getApplicationContext()).setUsername(getApplicationContext(), email);
+        lottieView.cancelAnimation();
         Intent intentLogin = new Intent(LoginActivity.this, HomeActivity.class);
         startActivity(intentLogin);
         finish();

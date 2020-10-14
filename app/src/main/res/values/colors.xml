@@ -14,6 +14,10 @@
     <color name="bacode_grey_home">#4DE3E3E3</color>
     <color name="bacode_grey">#E3E3E3</color>
 
+    <color name="bacode_grey_disabled">#C0C0C0</color>
+    <color name="bacode_edit_text_disabled">#801E5F74</color>
+    <color name="bacode_btn_login_disabled">#8031A6CC</color>
+
     <color name="teammate_one">#E7FBEB</color>
     <color name="teammate_two">#D2F1FF</color>
     <color name="teammate_three">#FFFCFF</color>
