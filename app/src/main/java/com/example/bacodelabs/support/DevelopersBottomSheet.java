@@ -9,10 +9,17 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.bacodelabs.model.Developer;
+
+/**
+ * Created by: kamikaze
+ * on October, 12 2020
+ * */
+
 public class DevelopersBottomSheet extends RoundedBottomSheetDialog {
 
-    public DevelopersBottomSheet(Context context) {
-        super(context);
+    public DevelopersBottomSheet(Context context, Developer developer) {
+        super(context, developer);
     }
 
     @Nullable

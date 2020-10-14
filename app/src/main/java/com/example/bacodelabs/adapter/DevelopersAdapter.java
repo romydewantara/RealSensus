@@ -11,18 +11,21 @@ import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.bacodelabs.R;
-import com.example.bacodelabs.model.Developers;
+import com.example.bacodelabs.model.Developer;
 import com.example.bacodelabs.util.Fonts;
 
-import java.util.List;
+/**
+ * Created by: kamikaze
+ * on October, 12 2020
+ * */
 
 public class DevelopersAdapter extends BaseAdapter {
 
     private Context context;
-    private List<Developers> developers;
+    private Developer developers;
     private Fonts fonts;
 
-    public DevelopersAdapter(Context context, List<Developers> developers) {
+    public DevelopersAdapter(Context context, Developer developers) {
         this.context = context;
         this.developers = developers;
         fonts = new Fonts(context);
@@ -30,12 +33,12 @@ public class DevelopersAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return developers.size();
+        return developers.getData().getDeveloperList().size();
     }
 
     @Override
     public Object getItem(int i) {
-        return developers.get(i);
+        return developers.getData().getDeveloperList().get(i);
     }
 
     @Override
@@ -52,11 +55,11 @@ public class DevelopersAdapter extends BaseAdapter {
         TextView tvBirth = v.findViewById(R.id.tvBirth);
         TextView tvRole = v.findViewById(R.id.tvRole);
 
-        tvName.setText(developers.get(i).getName());
+        tvName.setText(developers.getData().getDeveloperList().get(i).getName());
         tvName.setTypeface(fonts.stMedium());
-        tvBirth.setText(developers.get(i).getBirth());
+        tvBirth.setText(String.valueOf(developers.getData().getDeveloperList().get(i).getBirthDate().getMonth())); // crash
         tvBirth.setTypeface(fonts.stMedium());
-        tvRole.setText(developers.get(i).getRole());
+        tvRole.setText(developers.getData().getDeveloperList().get(i).getRole());
         tvRole.setTypeface(fonts.stThin());
         icon.setImageResource(R.drawable.ic_king_two);
         if ((i % 2) == 0) {

@@ -15,21 +15,25 @@ import androidx.annotation.Nullable;
 
 import com.example.bacodelabs.R;
 import com.example.bacodelabs.adapter.DevelopersAdapter;
-import com.example.bacodelabs.model.Developers;
+import com.example.bacodelabs.model.Developer;
 import com.example.bacodelabs.util.Fonts;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-import java.util.ArrayList;
-import java.util.List;
+/**
+ * Created by: kamikaze
+ * on October, 12 2020
+ * */
 
 public class RoundedBottomSheetDialog extends BottomSheetDialogFragment {
 
     private Context context;
+    private Developer developer;
 
-    public RoundedBottomSheetDialog(Context context) {
+    public RoundedBottomSheetDialog(Context context, Developer developer) {
         this.context = context;
+        this.developer = developer;
     }
 
     @Nullable
@@ -38,21 +42,21 @@ public class RoundedBottomSheetDialog extends BottomSheetDialogFragment {
         View layout = inflater.inflate(R.layout.layout_bottom_sheet_dialog, container, false);
         Fonts fonts = new Fonts(context);
         TextView tvTitleBottomSheet = layout.findViewById(R.id.tvTitleBottomSheet);
-        tvTitleBottomSheet.setTypeface(fonts.stMedium());
+        tvTitleBottomSheet.setTypeface(fonts.stBold());
 
-        // Add Items
-        List<Developers> developersList = new ArrayList<>();
-        developersList.add(new Developers(0, this.getResources().getString(R.string.name_romy), "08 October 2020", "Impostor"));
-        developersList.add(new Developers(1, this.getResources().getString(R.string.name_adit), "09 November 2020", "Crewmate"));
-        developersList.add(new Developers(2, this.getResources().getString(R.string.name_adom), "10 October 2020", "Crewmate"));
-        developersList.add(new Developers(3, this.getResources().getString(R.string.name_avip), "17 November 2020", "Crewmate"));
-        developersList.add(new Developers(4, this.getResources().getString(R.string.name_bidol), "12 November 2020", "Crewmate"));
-        developersList.add(new Developers(5, this.getResources().getString(R.string.name_budi), "14 December 2020", "Crewmate"));
-        developersList.add(new Developers(6, this.getResources().getString(R.string.name_budi), "20 December 2020", "Crewmate"));
-        developersList.add(new Developers(7, this.getResources().getString(R.string.name_jams), "09 October 2020", "Crewmate"));
-        developersList.add(new Developers(8, this.getResources().getString(R.string.name_wawa), "02 December 2020", "Crewmate"));
+        // Add Items Manually
+        //List<DevelopersOld> developersList = new ArrayList<>();
+        //developersList.add(new DevelopersOld(0, this.getResources().getString(R.string.name_romy), "08 October 2020", "Impostor"));
+        //developersList.add(new DevelopersOld(1, this.getResources().getString(R.string.name_adit), "09 November 2020", "Crewmate"));
+        //developersList.add(new DevelopersOld(2, this.getResources().getString(R.string.name_adom), "10 October 2020", "Crewmate"));
+        //developersList.add(new DevelopersOld(3, this.getResources().getString(R.string.name_avip), "17 November 2020", "Crewmate"));
+        //developersList.add(new DevelopersOld(4, this.getResources().getString(R.string.name_bidol), "12 November 2020", "Crewmate"));
+        //developersList.add(new DevelopersOld(5, this.getResources().getString(R.string.name_budi), "14 December 2020", "Crewmate"));
+        //developersList.add(new DevelopersOld(6, this.getResources().getString(R.string.name_budi), "20 December 2020", "Crewmate"));
+        //developersList.add(new DevelopersOld(7, this.getResources().getString(R.string.name_jams), "09 October 2020", "Crewmate"));
+        //developersList.add(new DevelopersOld(8, this.getResources().getString(R.string.name_wawa), "02 December 2020", "Crewmate"));
 
-        DevelopersAdapter developersAdapter = new DevelopersAdapter(context, developersList);
+        DevelopersAdapter developersAdapter = new DevelopersAdapter(context, developer);
         ListView listDev = layout.findViewById(R.id.listDevelopers);
         listDev.setAdapter(developersAdapter);
 

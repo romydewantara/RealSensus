@@ -3,6 +3,11 @@ package com.example.bacodelabs.util;
 import android.content.Context;
 import android.graphics.Typeface;
 
+/**
+ * Created by: kamikaze
+ * on October, 12 2020
+ * */
+
 public class Fonts {
 
     private Context context;

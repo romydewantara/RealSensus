@@ -1,16 +1,20 @@
 package com.example.bacodelabs.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.bacodelabs.R;
 import com.example.bacodelabs.util.BCPreference;
 import com.example.bacodelabs.util.Fonts;
+
+/**
+ * Created by: kamikaze
+ * on October, 12 2020
+ * */
 
 public class SplashScreenActivity extends AppCompatActivity {
 

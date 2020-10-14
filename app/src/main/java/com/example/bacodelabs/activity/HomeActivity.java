@@ -9,44 +9,61 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 
 import com.example.bacodelabs.R;
+import com.example.bacodelabs.fragment.TeamFourFragment;
+import com.example.bacodelabs.fragment.TeamOneFragment;
+import com.example.bacodelabs.fragment.TeamThreeFragment;
+import com.example.bacodelabs.fragment.TeamTwoFragment;
+import com.example.bacodelabs.model.Developer;
 import com.example.bacodelabs.support.DevelopersBottomSheet;
 import com.example.bacodelabs.util.BCPreference;
 import com.example.bacodelabs.util.Fonts;
+import com.example.bacodelabs.viewmodel.DataViewModel;
 
+/**
+ * Created by: kamikaze
+ * on October, 12 2020
+ * */
 
 public class HomeActivity extends AppCompatActivity {
 
+    public final static int FRAGMENT_GOTO_TEAM_ONE = 0;
+    public final static int FRAGMENT_GOTO_TEAM_TWO = 1;
+    public final static int FRAGMENT_GOTO_TEAM_THREE = 2;
+    public final static int FRAGMENT_GOTO_TEAM_FOUR = 3;
+    public final static int FRAGMENT_GOTO_TEAM_ACCOUNT = 4;
+
+    public final static String TAG_FRAGMENT_TEAM_ONE = "team_one";
+    public final static String TAG_FRAGMENT_TEAM_TWO = "team_two";
+    public final static String TAG_FRAGMENT_TEAM_THREE = "team_three";
+    public final static String TAG_FRAGMENT_TEAM_FOUR = "team_four";
+    public final static String TAG_FRAGMENT_ACCOUNT = "account_fragment";
+
+    public static final String TAG_SAVED_FRAGMENT = "fragment";
+
     // Define or declare all Widgets
     private Fonts fonts;
-    private CardView devOne;
-    private CardView devTwo;
-    private CardView devThree;
-    private CardView devFour;
+    private ImageView btnLogout;
+    private ImageView btnMenu;
     private TextView tvTitlePage;
     private TextView tvWelcome;
     private TextView tvUsername;
-    private TextView tvTitleDevOne;
-    private TextView tvSubtitleDevOne;
-    private TextView tvTitleDevTwo;
-    private TextView tvSubtitleDevTwo;
-    private TextView tvTitleDevThree;
-    private TextView tvSubtitleDevThree;
-    private TextView tvTitleDevFour;
-    private TextView tvSubtitleDevFour;
-    private TextView tvBC;
-    private TextView tvVersion;
-    private ImageView btnLogout;
-    private ImageView btnMenu;
+    private FrameLayout frameLayoutContent;
+    private RelativeLayout relative1;
+    private RelativeLayout relative2;
+    private RelativeLayout relative3;
+    private RelativeLayout relative4;
+    private RelativeLayout relative5;
 
     // Drawer Components
     private DrawerLayout drawerLayout;
@@ -60,6 +77,12 @@ public class HomeActivity extends AppCompatActivity {
     // Animation
     private Animation fadeInAnimation;
 
+    // Developer Object
+    private Developer developer;
+    private DataViewModel dataViewModel;
+
+    private Fragment fragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,31 +91,27 @@ public class HomeActivity extends AppCompatActivity {
         init();
         setData();
         initListener();
+        goToTeamOne();
     }
 
     // initialize component
     private void init() {
         // Layout Home Components
+        dataViewModel = new DataViewModel(getApplicationContext());
+        developer = dataViewModel.getDeveloper();
+
         fonts = new Fonts(getApplicationContext());
+        btnLogout = findViewById(R.id.btnLogout);
+        btnMenu = findViewById(R.id.btnMenu);
         tvTitlePage = findViewById(R.id.tvTitlePage);
         tvWelcome = findViewById(R.id.tvWelcome);
         tvUsername = findViewById(R.id.tvUsername);
-        tvTitleDevOne = findViewById(R.id.tvTitleDevOne);
-        tvSubtitleDevOne = findViewById(R.id.tvSubtitleDevOne);
-        tvTitleDevTwo = findViewById(R.id.tvTitleDevTwo);
-        tvSubtitleDevTwo = findViewById(R.id.tvSubtitleDevTwo);
-        tvTitleDevThree = findViewById(R.id.tvTitleDevThree);
-        tvSubtitleDevThree = findViewById(R.id.tvSubtitleDevThree);
-        tvTitleDevFour = findViewById(R.id.tvTitleDevFour);
-        tvSubtitleDevFour = findViewById(R.id.tvSubtitleDevFour);
-        tvBC = findViewById(R.id.tvBC);
-        tvVersion = findViewById(R.id.tvVersion);
-        devOne = findViewById(R.id.devOne);
-        devTwo = findViewById(R.id.devTwo);
-        devThree = findViewById(R.id.devThree);
-        devFour = findViewById(R.id.devFour);
-        btnLogout = findViewById(R.id.btnLogout);
-        btnMenu = findViewById(R.id.btnMenu);
+        frameLayoutContent = findViewById(R.id.frameLayoutContent);
+        relative1 = findViewById(R.id.relative1);
+        relative2 = findViewById(R.id.relative2);
+        relative3 = findViewById(R.id.relative3);
+        relative4 = findViewById(R.id.relative4);
+        relative5 = findViewById(R.id.relative5);
 
         // Layout Drawer Components
         drawerLayout = findViewById(R.id.drawerLayout);
@@ -109,16 +128,6 @@ public class HomeActivity extends AppCompatActivity {
         tvTitlePage.setTypeface(fonts.stBold());
         tvWelcome.setTypeface(fonts.stRegular());
         tvUsername.setTypeface(fonts.stBold());
-        tvTitleDevOne.setTypeface(fonts.stBold());
-        tvSubtitleDevOne.setTypeface(fonts.stRegular());
-        tvTitleDevTwo.setTypeface(fonts.stBold());
-        tvSubtitleDevTwo.setTypeface(fonts.stRegular());
-        tvTitleDevThree.setTypeface(fonts.stBold());
-        tvSubtitleDevThree.setTypeface(fonts.stRegular());
-        tvTitleDevFour.setTypeface(fonts.stBold());
-        tvSubtitleDevFour.setTypeface(fonts.stRegular());
-        tvBC.setTypeface(fonts.stThin());
-        tvVersion.setTypeface(fonts.stThin());
 
         tvName.setTypeface(fonts.stRegular());
         tvHome.setTypeface(fonts.stRegular());
@@ -157,31 +166,35 @@ public class HomeActivity extends AppCompatActivity {
                 drawerLayout.openDrawer(Gravity.START);
             }
         });
-        devOne.setOnClickListener(new View.OnClickListener() {
+        relative1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                developersBottomSheet = new DevelopersBottomSheet(HomeActivity.this);
-                if (getSupportFragmentManager() != null) {
-                    developersBottomSheet.show(getSupportFragmentManager(), developersBottomSheet.getTag());
-                }
+                goToTeamOne();
             }
         });
-        devTwo.setOnClickListener(new View.OnClickListener() {
+        relative2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Hello Developers Team 2! \nComing soon.", Toast.LENGTH_SHORT).show();
+                goToTeamTwo();
             }
         });
-        devThree.setOnClickListener(new View.OnClickListener() {
+        relative3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Hello Developers Team 3! \nComing soon.", Toast.LENGTH_SHORT).show();
+                goToTeamThree();
             }
         });
-        devFour.setOnClickListener(new View.OnClickListener() {
+        relative4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Hello Developers Team 4! \nComing soon.", Toast.LENGTH_SHORT).show();
+                goToTeamFour();
+            }
+        });
+        relative5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                developersBottomSheet = new DevelopersBottomSheet(HomeActivity.this, developer);
+                developersBottomSheet.show(getSupportFragmentManager(), developersBottomSheet.getTag());
             }
         });
     }
@@ -207,4 +220,41 @@ public class HomeActivity extends AppCompatActivity {
         });
         dialog.show();
     }
+
+    private void goToTeamOne() {
+        Bundle bundle = new Bundle();
+        fragment = new TeamOneFragment();
+        fragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frameLayoutContent, fragment, TAG_FRAGMENT_TEAM_ONE)
+                .commit();
+    }
+
+    private void goToTeamTwo() {
+        Bundle bundle = new Bundle();
+        fragment = new TeamTwoFragment();
+        fragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frameLayoutContent, fragment, TAG_FRAGMENT_TEAM_TWO)
+                .commit();
+    }
+
+    private void goToTeamThree() {
+        Bundle bundle = new Bundle();
+        fragment = new TeamThreeFragment();
+        fragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frameLayoutContent, fragment, TAG_FRAGMENT_TEAM_THREE)
+                .commit();
+    }
+
+    private void goToTeamFour() {
+        Bundle bundle = new Bundle();
+        fragment = new TeamFourFragment();
+        fragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frameLayoutContent, fragment, TAG_FRAGMENT_TEAM_FOUR)
+                .commit();
+    }
+
 }

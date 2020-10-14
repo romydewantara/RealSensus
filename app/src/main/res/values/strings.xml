@@ -8,7 +8,7 @@
     <string name="mail_avip">pebriansavip@gmail.com</string>
     <string name="mail_budi">stwn.art20@gmail.com</string>
     <string name="mail_bidol">ari.japindo@gmail.com</string>
-    <string name="mail_fajar">Fajarkomar@gmail.com</string>
+    <string name="mail_fajar">fajarkomar@gmail.com</string>
     <string name="mail_jams">muhammadjamhari1@gmail.com</string>
     <string name="mail_romy">dewantararomy@gmail.com</string>
     <string name="mail_wawa">wibawabangkit31@gmail.com</string>
@@ -23,4 +23,7 @@
     <string name="name_jams">Muhammad Jamhari</string>
     <string name="name_romy">Romy Dewantara</string>
     <string name="name_wawa">Wibawa Bangkit</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

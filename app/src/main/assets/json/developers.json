@@ -1,0 +1,150 @@
+{
+  "data": {
+    "developer_list": [
+      {
+        "unique_id": 2008271,
+        "name": "Aditia Nugraha",
+        "first_name": "Aditia",
+        "last_name": "Nugraha",
+        "birth_date": {
+          "day": 1,
+          "month": 1,
+          "year": 1995
+        },
+        "gender":  "male",
+        "contact": "081123456789",
+        "email": "nugrahaaditia39@gmail.com",
+        "role": "Android Developer",
+        "profile": "adit.png"
+      },
+      {
+        "unique_id": 2008272,
+        "name": "Ari Domero",
+        "first_name": "Ari",
+        "last_name": "Domero",
+        "birth_date": {
+          "day": 1,
+          "month": 1,
+          "year": 1995
+        },
+        "gender":  "male",
+        "contact": "081123456789",
+        "email": "aridomero10@gmail.com",
+        "role": "Android Developer",
+        "profile": "adom.png"
+      },
+      {
+        "unique_id": 2008273,
+        "name": "Avip Pebrians",
+        "first_name": "Avip",
+        "last_name": "Pebrians",
+        "birth_date": {
+          "day": 1,
+          "month": 1,
+          "year": 1995
+        },
+        "gender":  "male",
+        "contact": "081123456789",
+        "email": "pebriansavip@gmail.com",
+        "role": "Android Developer",
+        "profile": "avip.png"
+      },
+      {
+        "unique_id": 2008274,
+        "name": "Budi Setiawan",
+        "first_name": "Budi",
+        "last_name": "Setiawan",
+        "birth_date": {
+          "day": 1,
+          "month": 1,
+          "year": 1995
+        },
+        "gender":  "male",
+        "contact": "081123456789",
+        "email": "stwn.art20@gmail.com",
+        "role": "Android Developer",
+        "profile": "budi.png"
+      },
+      {
+        "unique_id": 2008275,
+        "name": "Fajar Komarudin",
+        "first_name": "Fajar",
+        "last_name": "Komarudin",
+        "birth_date": {
+          "day": 1,
+          "month": 1,
+          "year": 1995
+        },
+        "gender":  "male",
+        "contact": "081123456789",
+        "email": "fajarkomar@gmail.com",
+        "role": "Android Developer",
+        "profile": "fajar.png"
+      },
+      {
+        "unique_id": 2008276,
+        "name": "Fakhri Pratama",
+        "first_name": "Fakhri",
+        "last_name": "Pratama",
+        "birth_date": {
+          "day": 1,
+          "month": 1,
+          "year": 1995
+        },
+        "gender":  "male",
+        "contact": "081123456789",
+        "email": "ari.japindo@gmail.com",
+        "role": "Android Developer",
+        "profile": "bidol.png"
+      },
+      {
+        "unique_id": 2008277,
+        "name": "Muhammad Jamhari",
+        "first_name": "Muhammad",
+        "last_name": "Jamhari",
+        "birth_date": {
+          "day": 1,
+          "month": 1,
+          "year": 1995
+        },
+        "gender":  "male",
+        "contact": "081123456789",
+        "email": "muhammadjamhari1@gmail.com",
+        "role": "Android Developer",
+        "profile": "jams.png"
+      },
+      {
+        "unique_id": 2008278,
+        "name": "Romy Dewantara",
+        "first_name": "Romy",
+        "last_name": "Dewantara",
+        "birth_date": {
+          "day": 1,
+          "month": 1,
+          "year": 1995
+        },
+        "gender":  "male",
+        "contact": "081123456789",
+        "email": "dewantararomy@gmail.com",
+        "role": "Android Developer",
+        "profile": "romy.png"
+      },
+      {
+        "unique_id": 2008279,
+        "name": "Wibawa Bangkit",
+        "first_name": "Wibawa",
+        "last_name": "Bangkit",
+        "birth_date": {
+          "day": 1,
+          "month": 1,
+          "year": 1995
+        },
+        "gender":  "male",
+        "contact": "081123456789",
+        "email": "wibawabangkit31@gmail.com",
+        "role": "Android Developer",
+        "profile": "wawa.png"
+      }
+    ]
+  }
+}

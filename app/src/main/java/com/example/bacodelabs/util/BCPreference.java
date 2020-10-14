@@ -5,6 +5,11 @@ import android.content.SharedPreferences;
 
 import java.util.Map;
 
+/**
+ * Created by: kamikaze
+ * on October, 12 2020
+ * */
+
 public class BCPreference {
 
     private static BCPreference instance = null;

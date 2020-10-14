@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/linearContents"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/relativeFeed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvFeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:text="Feeds"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewFeed"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="#E7FBEB"
+            app:cardCornerRadius="10dp"
+            app:cardMaxElevation="10dp"
+            app:cardPreventCornerOverlap="false"
+            android:layout_below="@id/tvFeed">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintFeed"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageFeed"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_spotify"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    app:layout_constraintWidth_percent=".2"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvFeedTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintWidth_percent=".8"
+                    android:layout_marginTop="20dp"
+                    android:textColor="#30688B"
+                    android:text="Developers Team 1 - Spotify"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toRightOf="@id/imageFeed"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/tvFeedDesc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintWidth_percent=".8"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#803A7BA5"
+                    android:paddingRight="15dp"
+                    android:text="Project Description:\nMake project similar with Spotify. Can play the sound of the song, and download the various songs you want."
+                    android:textSize="16dp"
+                    app:layout_constraintLeft_toRightOf="@id/imageFeed"
+                    app:layout_constraintTop_toBottomOf="@id/tvFeedTitle"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeTeammate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvTeammate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:text="Teammate"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvProfile1"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="37.5dp"
+            android:layout_below="@id/tvTeammate">
+
+            <ImageView
+                android:id="@+id/imageProfile1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@drawable/circular_image"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_king" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvProfile2"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="37.5dp"
+            android:layout_toRightOf="@id/cvProfile1"
+            android:layout_below="@id/tvTeammate">
+
+            <ImageView
+                android:id="@+id/imageProfile2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/circular_image"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_king" />
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeTask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/bacode_blue_dark">
+
+        <TextView
+            android:id="@+id/tvTask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="10dp"
+            android:text="Task"
+            android:textColor="@color/bacode_white"/>
+
+        <LinearLayout
+            android:id="@+id/linearInnerTask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_below="@id/tvTask">
+
+            <ImageView
+                android:id="@+id/imageTask"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_task"/>
+
+            <TextView
+                android:id="@+id/tvTaskMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="There is no task for this week"
+                android:textColor="@color/bacode_white"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

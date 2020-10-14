@@ -6,6 +6,11 @@ import android.preference.PreferenceManager;
 
 import java.util.Map;
 
+/**
+ * Created by: kamikaze
+ * on October, 12 2020
+ * */
+
 public class SmallDB {
 
     private SharedPreferences preferences;

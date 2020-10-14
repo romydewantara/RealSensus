@@ -1,13 +1,18 @@
 package com.example.bacodelabs.model;
 
-public class Developers {
+/**
+ * Created by: kamikaze
+ * on October, 12 2020
+ * */
+
+public class DevelopersOld {
 
     private int uniqueId;
     private String name;
     private String birth;
     private String role;
 
-    public Developers(int uniqueId, String name, String birth, String role) {
+    public DevelopersOld(int uniqueId, String name, String birth, String role) {
         this.uniqueId = uniqueId;
         this.name = name;
         this.birth = birth;
