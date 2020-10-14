@@ -1,6 +1,7 @@
 package com.example.bacodelabs.activity;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -231,25 +233,6 @@ public class HomeActivity extends AppCompatActivity implements CustomDialogListe
         buttons.add("Ok");
         buttons.add("Cancel");
         showCustomDialog("Sign Out", "Are you sure want to sign out?", buttons);
-        /*final AlertDialog.Builder dialog = new AlertDialog.Builder(HomeActivity.this, R.style.AlertDialogTheme);
-        dialog.setCancelable(false);
-        dialog.setMessage("Are you sure you want to sign out?");
-        dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                BCPreference.logout(HomeActivity.this);
-                dialogInterface.dismiss();
-                startActivity(new Intent(HomeActivity.this, LoginActivity.class));
-                finish();
-            }
-        });
-        dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
-            }
-        });
-        dialog.show();*/
     }
 
     private void goToTeamOne() {
@@ -344,6 +327,28 @@ public class HomeActivity extends AppCompatActivity implements CustomDialogListe
         FragmentManager fm = getSupportFragmentManager();
         BCCustomDialog bcCustomDialog = BCCustomDialog.newInstance(HomeActivity.this, title, message, action);
         bcCustomDialog.show(fm, "fragment_custom_dialog");
+    }
+
+    private void showNativeDialog() {
+        final AlertDialog.Builder dialog = new AlertDialog.Builder(HomeActivity.this, R.style.AlertDialogTheme);
+        dialog.setCancelable(false);
+        dialog.setMessage("Are you sure you want to sign out?");
+        dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                BCPreference.logout(HomeActivity.this);
+                dialogInterface.dismiss();
+                startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+                finish();
+            }
+        });
+        dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        dialog.show();
     }
 
     @Override
