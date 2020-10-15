@@ -119,15 +119,13 @@
             <FrameLayout
                 android:id="@+id/frameLayoutContent"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/bacode_grey_home"/>
+                android:layout_height="wrap_content"/>
         </ScrollView>
 
         <LinearLayout
             android:id="@+id/layoutBottomBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/bacode_white"
             android:orientation="horizontal"
             android:weightSum="100"
             app:layout_constraintBottom_toBottomOf="parent"

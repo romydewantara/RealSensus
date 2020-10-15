@@ -52,7 +52,7 @@
             android:layout_marginRight="5dp"
             android:layout_marginBottom="15dp"
             android:layout_marginTop="10dp"
-            android:text="Romy Dewantara"
+            android:text="Administrator"
             android:textColor="@color/bacode_white"/>
     </LinearLayout>
 

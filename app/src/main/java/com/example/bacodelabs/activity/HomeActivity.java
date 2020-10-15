@@ -11,6 +11,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -74,6 +75,7 @@ public class HomeActivity extends AppCompatActivity implements CustomDialogListe
     private ImageView imageIcon3;
     private ImageView imageIcon4;
     private FrameLayout frameLayoutContent;
+    private LinearLayout layoutBottomBar;
     private RelativeLayout relative1;
     private RelativeLayout relative2;
     private RelativeLayout relative3;
@@ -82,6 +84,7 @@ public class HomeActivity extends AppCompatActivity implements CustomDialogListe
 
     // Drawer Components
     private DrawerLayout drawerLayout;
+    private ImageView btnClose;
     private TextView tvName;
     private TextView tvHome;
     private TextView tvSetting;
@@ -133,6 +136,7 @@ public class HomeActivity extends AppCompatActivity implements CustomDialogListe
         imageIcon4 = findViewById(R.id.imageIcon4);
 
         frameLayoutContent = findViewById(R.id.frameLayoutContent);
+        layoutBottomBar = findViewById(R.id.layoutBottomBar);
         relative1 = findViewById(R.id.relative1);
         relative2 = findViewById(R.id.relative2);
         relative3 = findViewById(R.id.relative3);
@@ -141,6 +145,7 @@ public class HomeActivity extends AppCompatActivity implements CustomDialogListe
 
         // Layout Drawer Components
         drawerLayout = findViewById(R.id.drawerLayout);
+        btnClose = findViewById(R.id.btnClose);
         tvName = findViewById(R.id.tvName);
         tvHome = findViewById(R.id.tvHome);
         tvSetting = findViewById(R.id.tvSetting);
@@ -174,6 +179,7 @@ public class HomeActivity extends AppCompatActivity implements CustomDialogListe
         BCPreference.getInstance(getApplicationContext()).setKeyLoggedIn(true);
         tvUsername.setVisibility(View.INVISIBLE);
         tvUsername.setText(developerName);
+        tvName.setText(developerName);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -195,6 +201,12 @@ public class HomeActivity extends AppCompatActivity implements CustomDialogListe
             @Override
             public void onClick(View view) {
                 drawerLayout.openDrawer(Gravity.START);
+            }
+        });
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.closeDrawer(Gravity.LEFT);
             }
         });
         relative1.setOnClickListener(new View.OnClickListener() {

@@ -9,6 +9,7 @@
     <color name="bacode_white">#FFFFFF</color>
     <color name="bacode_blue_dark">#1e5f74</color>
     <color name="bacode_blue_light">#31A6CC</color>
+    <color name="bacode_blue_background">#3416C4FF</color>
     <color name="bacode_blue_light_5">#0D31A6CC</color>
     <color name="bacode_grey_light">#80E7F6F8</color>
     <color name="bacode_grey_home">#4DE3E3E3</color>
