@@ -60,6 +60,7 @@ public class HomeActivity extends AppCompatActivity implements CustomDialogListe
 
     // Sebat dengan botak
     // Magic chess bareng botak, uhh mantab
+    // Santia Mantan Terindah Budi
 
     // Define or declare all Widgets
     private Fonts fonts;
