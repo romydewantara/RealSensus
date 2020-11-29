@@ -59,9 +59,7 @@ public class HomeActivity extends AppCompatActivity implements CustomDialogListe
     public static final String TAG_SAVED_FRAGMENT = "fragment";
 
     // Sebat dengan botak
-    // Magic chess bareng botak, uhh mantab
-    // Santia Mantan Terindah Budi
-    // anjay
+    
 
     // Define or declare all Widgets
     private Fonts fonts;
