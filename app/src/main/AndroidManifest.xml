@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_logo_bacode"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".team_two.activity.LoginTwoActivity"></activity>
         <activity
             android:name=".activity.SplashScreenActivity"
             android:theme="@style/AppTheme">
@@ -20,10 +21,10 @@
         </activity>
         <activity
             android:name=".activity.LoginActivity"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activity.HomeActivity"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity android:name=".activity.MainActivity" />
     </application>
 
