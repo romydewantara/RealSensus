@@ -9,7 +9,8 @@
     <color name="white">#FFFFFFFF</color>
 
     <!-- Custom Color -->
-    <color name="blue">#046aad</color>
+    <color name="blue_dark">#046aad</color>
     <color name="blue_light">#4fb7fb</color>
+    <color name="blue">#2F99FB</color>
 
 </resources>

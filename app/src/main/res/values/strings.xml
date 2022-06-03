@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">RealSensus</string>
+    <string name="button_login">Login</string>
+    <string name="hint_username">USERNAME</string>
+    <string name="hint_password">PASSWORD</string>
+    <string name="created_by">Created by Muhammad Fakhri Pratama</string>
 </resources>
