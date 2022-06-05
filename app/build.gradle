@@ -3,16 +3,16 @@ plugins {
 }
 
 android {
-    compileSdk 32
-
+    compileSdkVersion 30
+    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.example.realsensus"
-        minSdk 21
-        targetSdk 32
+        minSdkVersion 17
+        targetSdkVersion 30
         versionCode 1
-        versionName "1.0"
-
+        versionName "1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
 
     buildTypes {
