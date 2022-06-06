@@ -1,7 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.CitizenDataFragment">
-</FrameLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewTitleCitizen"
+        style="@style/TextBoldWhite20"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/blue"
+        android:gravity="center"
+        android:text="@string/info_title_citizen"
+        app:layout_constraintHeight_percent=".075"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageBack"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:paddingLeft="8dp"
+        android:paddingTop="15dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="15dp"
+        android:src="@mipmap/ic_back_white"
+        app:layout_constraintBottom_toBottomOf="@id/textViewTitleCitizen"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@id/textViewTitleCitizen" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editTextSearch"
+        style="@style/TextRegularWhite16"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/background_edit_text_search"
+        android:drawableStart="@mipmap/ic_search_white"
+        android:gravity="center_vertical"
+        android:hint="@string/hint_search_id"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="5dp"
+        android:textColorHint="@color/white"
+        app:layout_constraintHeight_percent=".045"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitleCitizen" />
+
+    <ImageView
+        android:id="@+id/imageAdd"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:src="@mipmap/ic_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintWidth_percent=".2" />
+</androidx.constraintlayout.widget.ConstraintLayout>

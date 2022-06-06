@@ -4,8 +4,10 @@
     <string name="button_scan">SCAN</string>
     <string name="info_scan">Ketuk area teks yang ingin diambil sebagai hasil SCAN</string>
     <string name="info_result">Hasil OCR</string>
+    <string name="info_title_citizen">Data Warga</string>
     <string name="hint_username">Nama Pengguna</string>
     <string name="hint_password">Kata Sandi</string>
+    <string name="hint_search_id">Cari NIK</string>
     <string name="created_by">Created by Muhammad Fakhri Pratama</string>
 
     <!-- OCR SourceText -->

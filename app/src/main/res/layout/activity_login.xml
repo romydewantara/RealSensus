@@ -7,48 +7,18 @@
     android:fitsSystemWindows="true"
     tools:context=".LoginActivity">
 
-    <ImageView
+    <include
         android:id="@+id/background"
+        layout="@layout/layout_header_background"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="fitXY"
-        android:src="@drawable/background"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageTextLogo"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginRight="100dp"
-        android:src="@mipmap/image_logo"
-        app:layout_constraintBottom_toTopOf="@id/imageBrand"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/background" />
-
-    <ImageView
-        android:id="@+id/imageBrand"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginLeft="70dp"
-        android:layout_marginRight="70dp"
-        android:layout_marginBottom="20dp"
-        android:src="@mipmap/app_brand"
-        app:layout_constraintBottom_toBottomOf="@id/background"
-        app:layout_constraintLeft_toLeftOf="@id/background"
-        app:layout_constraintRight_toRightOf="@id/background"
-        app:layout_constraintTop_toBottomOf="@id/imageTextLogo" />
+        android:layout_height="wrap_content" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/editTextEmail"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="40dp"
-        android:background="@drawable/background_edit_text"
+        android:background="@drawable/background_edit_text_credentials"
         android:hint="@string/hint_username"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
@@ -62,7 +32,7 @@
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/background_edit_text"
+        android:background="@drawable/background_edit_text_credentials"
         android:hint="@string/hint_password"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
@@ -88,6 +58,7 @@
         style="@style/TextBoldBlack14"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="@string/created_by"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

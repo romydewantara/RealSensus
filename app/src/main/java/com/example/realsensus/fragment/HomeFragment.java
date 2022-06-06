@@ -54,7 +54,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
-        v.findViewById(R.id.buttonScan).setOnClickListener(new View.OnClickListener() {
+        v.findViewById(R.id.cardViewScan).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mListener.onFragmentFinish(HomeFragment.this, MainActivity.FRAGMENT_FINISH_GOTO_SCANNER, true);

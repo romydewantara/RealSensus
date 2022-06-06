@@ -12,6 +12,6 @@
     <color name="blue_dark">#046aad</color>
     <color name="blue_light">#4fb7fb</color>
     <color name="blue">#2F99FB</color> <!-- this is primary color of the project -->
-    <color name="white_50">#80FFFFFF</color>
+    <color name="pewter">#C7CED6</color>
 
 </resources>
