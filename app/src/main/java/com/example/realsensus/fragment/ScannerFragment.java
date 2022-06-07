@@ -28,6 +28,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -71,10 +72,14 @@ public class ScannerFragment extends Fragment {
     private CameraSourcePreview mPreview;
     private GraphicOverlay<OcrGraphic> mGraphicOverlay;
     private ConstraintLayout scannerLayout;
+    private ConstraintLayout buttonContainer;
     private AppCompatTextView textViewInfoScan;
     private AppCompatTextView textViewResult;
     private ImageView imageFlash;
     private ImageView imageStripe;
+    private Button buttonScan;
+    private Button buttonSend;
+    private Button buttonAddData;
 
     //flag
     private boolean isFlashOn = false;
@@ -114,10 +119,14 @@ public class ScannerFragment extends Fragment {
         mPreview = v.findViewById(R.id.preview);
         mGraphicOverlay = v.findViewById(R.id.graphicOverlay);
         scannerLayout = v.findViewById(R.id.scannerLayout);
+        buttonContainer = v.findViewById(R.id.buttonContainer);
         textViewInfoScan = v.findViewById(R.id.textViewInfoScan);
         textViewResult = v.findViewById(R.id.textViewResult);
         imageFlash = v.findViewById(R.id.imageFlash);
         imageStripe = v.findViewById(R.id.imageStripe);
+        buttonScan = v.findViewById(R.id.buttonScan);
+        buttonSend = v.findViewById(R.id.buttonSend);
+        buttonAddData = v.findViewById(R.id.buttonAddData);
         return v;
     }
 
@@ -154,6 +163,24 @@ public class ScannerFragment extends Fragment {
                     isFlashOn = true;
                     imageStripe.setVisibility(View.VISIBLE);
                 }
+            }
+        });
+        buttonScan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reScan();
+            }
+        });
+        buttonSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        buttonAddData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //goToCitizenData
             }
         });
     }
@@ -352,6 +379,13 @@ public class ScannerFragment extends Fragment {
 
     private void showResult(String textResult) {
         scannerLayout.setVisibility(View.GONE);
+        buttonContainer.setVisibility(View.VISIBLE);
         textViewResult.setText(textResult);
     }
+
+    private void reScan() {
+        scannerLayout.setVisibility(View.VISIBLE);
+        buttonContainer.setVisibility(View.GONE);
+    }
+
 }

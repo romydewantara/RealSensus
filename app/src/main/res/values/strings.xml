@@ -1,10 +1,14 @@
 <resources>
     <string name="app_name">RealSensus</string>
     <string name="button_login">Masuk</string>
-    <string name="button_scan">SCAN</string>
+    <string name="button_scan">Scan</string>
+    <string name="button_send">Kirim</string>
+    <string name="button_add_data">Tambah Data</string>
     <string name="info_scan">Ketuk area teks yang ingin diambil sebagai hasil SCAN</string>
-    <string name="info_result">Hasil OCR</string>
+    <string name="info_result">Scan Berhasil √</string>
     <string name="info_title_citizen">Data Warga</string>
+    <string name="info_title_result">OCR Scanner</string>
+    <string name="info_result_scan">Hasil OCR</string>
     <string name="hint_username">Nama Pengguna</string>
     <string name="hint_password">Kata Sandi</string>
     <string name="hint_search_id">Cari NIK</string>
