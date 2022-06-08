@@ -4,5 +4,5 @@ import androidx.fragment.app.Fragment;
 
 public interface FragmentListener {
     void onFragmentFinish(Fragment currentFragment, int destinationFragment, boolean isForward);
-
+    void onActivityFinish();
 }

@@ -1,6 +1,7 @@
 package com.example.realsensus.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,8 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.realsensus.LoginActivity;
 import com.example.realsensus.MainActivity;
 import com.example.realsensus.R;
+import com.example.realsensus.helper.RSPreference;
 import com.example.realsensus.listener.FragmentListener;
 
 /**
@@ -58,6 +61,20 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mListener.onFragmentFinish(HomeFragment.this, MainActivity.FRAGMENT_FINISH_GOTO_SCANNER, true);
+            }
+        });
+        v.findViewById(R.id.cardViewLogout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RSPreference.getInstance(context).logout();
+                startActivity(new Intent(context, LoginActivity.class));
+                mListener.onActivityFinish();
+            }
+        });
+        v.findViewById(R.id.cardViewCitizen).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListener.onFragmentFinish(HomeFragment.this, MainActivity.FRAGMENT_FINISH_GOTO_CITIZEN, true);
             }
         });
         return v;
