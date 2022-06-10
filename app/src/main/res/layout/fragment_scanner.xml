@@ -39,29 +39,28 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewInfoResult"
-            style="@style/TextBoldBlack14"
+            style="@style/TextRegularBlack14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:paddingTop="6dp"
-            android:paddingBottom="6dp"
+            android:gravity="center_vertical"
             android:text="@string/info_result"
-            app:layout_constraintBottom_toTopOf="@id/imageResultBehind"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewTitleCitizen" />
+            app:layout_constraintBottom_toBottomOf="@id/imageSuccess"
+            app:layout_constraintTop_toTopOf="@id/imageSuccess"/>
 
         <ImageView
+            android:id="@+id/imageSuccess"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@mipmap/ic_success"
             android:layout_marginLeft="5dp"
-            app:layout_constraintWidth_percent=".05"
+            android:layout_marginTop="16dp"
+            app:layout_constraintWidth_percent=".055"
             app:layout_constraintDimensionRatio="1"
             app:layout_constraintLeft_toRightOf="@id/textViewInfoResult"
-            app:layout_constraintBottom_toBottomOf="@id/textViewInfoResult"
-            app:layout_constraintTop_toTopOf="@id/textViewInfoResult"/>
+            app:layout_constraintTop_toBottomOf="@+id/textViewTitleCitizen"/>
+
         <ImageView
             android:id="@+id/imageResultBehind"
             android:layout_width="0dp"
@@ -86,7 +85,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewResult"
-            style="@style/TextBoldWhite16"
+            style="@style/TextRegularWhite16"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="10dp"
@@ -109,6 +108,7 @@
 
             <Button
                 android:id="@+id/buttonScan"
+                style="@style/TextBoldWhite14"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
@@ -120,6 +120,7 @@
 
             <Button
                 android:id="@+id/buttonSend"
+                style="@style/TextBoldWhite14"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/button_send"
@@ -130,6 +131,7 @@
 
             <Button
                 android:id="@+id/buttonAddData"
+                style="@style/TextBoldWhite14"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/button_add_data"

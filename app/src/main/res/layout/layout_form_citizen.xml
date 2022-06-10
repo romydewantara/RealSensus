@@ -26,6 +26,15 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewInfoFamilyCard"
+                style="@style/TextRegularRed12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/info_empty_family_card"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/editTextFamilyCardId" />
+
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/editTextNumberId"
                 style="@style/TextRegularBlack16"
@@ -38,7 +47,16 @@
                 android:padding="10dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editTextFamilyCardId" />
+                app:layout_constraintTop_toBottomOf="@id/textViewInfoFamilyCard" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewInfoNumberId"
+                style="@style/TextRegularRed12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/info_empty_number_id"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/editTextNumberId" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/editTextName"
@@ -51,7 +69,16 @@
                 android:padding="10dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editTextNumberId" />
+                app:layout_constraintTop_toBottomOf="@id/textViewInfoNumberId" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewInfoName"
+                style="@style/TextRegularRed12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/info_empty_name"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/editTextName" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/editTextPobDob"
@@ -64,7 +91,16 @@
                 android:padding="10dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editTextName" />
+                app:layout_constraintTop_toBottomOf="@id/textViewInfoName" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewInfoPobDob"
+                style="@style/TextRegularRed12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/info_empty_pob_dob"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/editTextPobDob" />
 
             <Button
                 android:id="@+id/buttonSave"
@@ -79,7 +115,7 @@
                 android:text="@string/button_save"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editTextPobDob" />
+                app:layout_constraintTop_toBottomOf="@id/textViewInfoPobDob" />
 
             <Button
                 android:id="@+id/buttonCancel"

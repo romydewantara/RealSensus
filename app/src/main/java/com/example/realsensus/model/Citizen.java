@@ -6,12 +6,22 @@ public class Citizen {
 
     @SerializedName("family_card_id")
     private String familyCardId = "";
+
     @SerializedName("number_id")
     private String numberId = "";
+
     @SerializedName("name")
     private String name = "";
+
     @SerializedName("pob_dob")
     private String pobDob = "";
+
+    public Citizen(String familyCardId, String numberId, String name, String pobDob) {
+        this.familyCardId = familyCardId;
+        this.numberId = numberId;
+        this.name = name;
+        this.pobDob = pobDob;
+    }
 
     public String getFamilyCardId() {
         return familyCardId;

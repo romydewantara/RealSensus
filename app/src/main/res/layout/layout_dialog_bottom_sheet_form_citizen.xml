@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/stripeSlider"
+            android:layout_width="0dp"
+            android:layout_height="7dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/background_stripe_slider"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent=".25" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewTitleBottomSheetCitizen"
+            style="@style/TextBoldBlue14"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/info_title_dialog_bottom_sheet_citizen_form"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/stripeSlider" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewClose"
+            style="@style/TextRegularBlue14"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="10dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="10dp"
+            android:text="@string/text_button_close"
+            app:layout_constraintBottom_toBottomOf="@id/textViewTitleBottomSheetCitizen"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/textViewTitleBottomSheetCitizen" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/constraintHeader">
+
+        <include
+            layout="@layout/layout_form_citizen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

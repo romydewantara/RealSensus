@@ -4,9 +4,11 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.example.realsensus.constant.Constant;
 import com.example.realsensus.model.Citizen;
+import com.example.realsensus.model.CitizenDataMaster;
 import com.example.realsensus.model.User;
 import com.google.gson.Gson;
 
@@ -45,12 +47,20 @@ public class RSPreference {
         return getObject(Constant.KEY_USER, User.class);
     }
 
-    public void setCitizen(Citizen citizen) {
+    public void addCitizen(Citizen citizen) {
         putObject(Constant.KEY_CITIZEN, citizen);
     }
 
     public Object getCitizen() {
         return getObject(Constant.KEY_CITIZEN, Citizen.class);
+    }
+
+    public void saveCitizensDataMaster(CitizenDataMaster citizenDataMaster) {
+        putObject(Constant.KEY_CITIZENS_DATA, citizenDataMaster);
+    }
+
+    public CitizenDataMaster loadCitizensDataMaster() {
+        return (CitizenDataMaster) getObject(Constant.KEY_CITIZENS_DATA, CitizenDataMaster.class);
     }
 
     public void logout() {

@@ -16,7 +16,6 @@
     <style name="RealSensus" parent="AppTheme">
         <item name="android:windowFullscreen">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="fontFamily">@font/poppins_regular</item>
     </style>
 
     <!--  W H I T E  -->
@@ -63,9 +62,53 @@
         <item name="android:layout_gravity">center</item>
     </style>
 
+    <style name="TextRegularBlack10">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="TextRegularBlack14">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
     <style name="TextRegularBlack16">
         <item name="android:fontFamily">@font/poppins_regular</item>
         <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <!--  R E D  -->
+    <style name="TextRegularRed12">
+        <item name="android:fontFamily">@font/poppins_regular_italic</item>
+        <item name="android:textColor">@color/hot_pink</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <!--  B L U E  -->
+    <style name="TextBoldBlue14">
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="TextRegularBlue14">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="TextRegularBlue16">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/blue</item>
         <item name="android:textSize">16sp</item>
         <item name="android:layout_gravity">center</item>
     </style>

@@ -35,25 +35,44 @@
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/editTextSearch"
-        style="@style/TextRegularWhite16"
+        style="@style/TextRegularBlack14"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/background_edit_text_search"
-        android:drawableStart="@mipmap/ic_search_white"
+        android:drawableStart="@mipmap/ic_search_black"
         android:gravity="center_vertical"
         android:hint="@string/hint_search_id"
         android:paddingLeft="10dp"
         android:paddingTop="5dp"
         android:paddingRight="10dp"
         android:paddingBottom="5dp"
-        android:textColorHint="@color/white"
+        android:textColorHint="@color/black"
         app:layout_constraintHeight_percent=".045"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewTitleCitizen" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextSearch">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewCitizensData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <!--<include
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/layout_citizens_data" />-->
+    </RelativeLayout>
 
     <ImageView
         android:id="@+id/imageAdd"
@@ -66,4 +85,5 @@
         app:layout_constraintDimensionRatio="1"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintWidth_percent=".2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
