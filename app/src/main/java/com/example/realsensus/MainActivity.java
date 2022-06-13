@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
     public static final String TAG_FRAGMENT_CITIZEN = "citizen";
 
     private Fragment fragment;
+    private Fragment previousFragment;
 
     private boolean isAutoFocus = true;
 
@@ -39,27 +40,57 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
     }
 
     @Override
+    public void onBackPressed() {
+        if (fragment instanceof ScannerFragment) {
+            onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME, false);
+        } else if (fragment instanceof CitizenDataFragment) {
+            if (previousFragment != null && previousFragment instanceof ScannerFragment) {
+                onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_SCANNER, false);
+            } else {
+                onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME, false);
+            }
+        } else {
+            finish();
+        }
+    }
+
+    @Override
     public void onFragmentFinish(Fragment currentFragment, int destinationFragment, boolean isForward) {
+
+        int enter = R.anim.enter_from_right;
+        int exit = R.anim.exit_to_left;
+        if (!isForward) {
+            enter = R.anim.enter_from_left;
+            exit = R.anim.exit_to_right;
+        }
+
         switch (destinationFragment) {
 
             case FRAGMENT_FINISH_GOTO_HOME:
                 fragment = new HomeFragment();
+                ((HomeFragment) fragment).addPrevFragmentTag(currentFragment.getTag());
                 getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(enter, exit)
                         .replace(R.id.main, fragment, TAG_FRAGMENT_HOME)
                         .commit();
                 break;
             case FRAGMENT_FINISH_GOTO_SCANNER:
                 fragment = new ScannerFragment();
+                ((ScannerFragment) fragment).addPrevFragmentTag(currentFragment.getTag());
                 Bundle bundle = new Bundle();
                 bundle.putBoolean(Constant.KEY_AUTO_FOCUS, isAutoFocus);
                 fragment.setArguments(bundle);
                 getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(enter, exit)
                         .replace(R.id.main, fragment, TAG_FRAGMENT_SCANNER)
                         .commit();
                 break;
             case FRAGMENT_FINISH_GOTO_CITIZEN:
                 fragment = new CitizenDataFragment();
+                previousFragment = currentFragment;
+                ((CitizenDataFragment) fragment).addPrevFragmentTag(currentFragment.getTag());
                 getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(enter, exit)
                         .replace(R.id.main, fragment, TAG_FRAGMENT_CITIZEN)
                         .commit();
                 break;
@@ -69,6 +100,11 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
     @Override
     public void onActivityFinish() {
         finish();
+    }
+
+    @Override
+    public void onActivityBackPressed() {
+        onBackPressed();
     }
 
     private void goToHome() {

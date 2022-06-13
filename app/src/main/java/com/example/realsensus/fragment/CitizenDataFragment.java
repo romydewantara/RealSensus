@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.realsensus.MainActivity;
 import com.example.realsensus.R;
 import com.example.realsensus.adapter.CitizensDataAdapter;
 import com.example.realsensus.helper.RSPreference;
@@ -22,6 +23,7 @@ import com.example.realsensus.library.CitizenFormBottomSheetDialog;
 import com.example.realsensus.library.CitizenFormDialog;
 import com.example.realsensus.listener.CitizenFormBottomSheetDialogListener;
 import com.example.realsensus.listener.CitizenFormDialogListener;
+import com.example.realsensus.listener.FragmentListener;
 import com.example.realsensus.model.Citizen;
 import com.example.realsensus.model.CitizenDataMaster;
 import com.example.realsensus.util.AppUtil;
@@ -36,6 +38,7 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
     private Context context;
     private AppUtil appUtil;
     private CitizenDataMaster citizenDataMaster;
+    private FragmentListener fragmentListener;
     //widget
     private RecyclerView recyclerViewCitizensData;
 
@@ -43,6 +46,11 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
     private static final String ARG_PARAM2 = "param2";
     private String mParam1;
     private String mParam2;
+    private String previousFragment = "";
+
+    public void addPrevFragmentTag(String previousFragment) {
+        this.previousFragment = previousFragment;
+    }
 
     public CitizenDataFragment() {
         // Required empty public constructor
@@ -64,6 +72,11 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        if (!previousFragment.equals("")){
+            getFragmentManager().beginTransaction().remove(getFragmentManager().findFragmentByTag(previousFragment)).commit();
+        }
+
         appUtil = new AppUtil(context);
     }
 
@@ -72,31 +85,16 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_citizen_data, container, false);
         recyclerViewCitizensData = v.findViewById(R.id.recyclerViewCitizensData);
-
-        //show citizen form dialog
+        v.findViewById(R.id.imageBack).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentListener.onActivityBackPressed();
+            }
+        });
         v.findViewById(R.id.imageAdd).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fm = getFragmentManager();
-                CitizenFormDialog citizenFormDialog = CitizenFormDialog.newInstance(context, "")
-                        .getCitizenFormDialogListener(new CitizenFormDialogListener() {
-                            @Override
-                            public void onButtonSaveClicked() {
-                                Citizen citizen = (Citizen) RSPreference.getInstance(context).getCitizen();
-                                appUtil.addCitizenDataMaster(citizen);
-                                Log.d("CitizenDataFragment", "onButtonSaveClicked - citizen: " + new Gson().toJson(citizen));
-
-                                //fetching…
-                                fetchCitizensData();
-                            }
-
-                            @Override
-                            public void onButtonCancelClicked() {
-                            }
-                        });
-                if (fm != null) {
-                    citizenFormDialog.show(fm, "citizen_form_dialog");
-                }
+                showCitizenFormDialog("");
             }
         });
         return v;
@@ -105,15 +103,21 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        //populate citizens data to recyclerViewCitizensData
         fetchCitizensData();
+        if (previousFragment != null && previousFragment.equalsIgnoreCase(MainActivity.TAG_FRAGMENT_SCANNER)) {
+            showCitizenFormDialog(RSPreference.getInstance(context).takeOCRTextResult());
+        }
     }
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
+        if (context instanceof FragmentListener) {
+            fragmentListener = (FragmentListener) context;
+        } else {
+            throw new RuntimeException(context + " must implement FragmentListener");
+        }
     }
 
     private void fetchCitizensData() {
@@ -123,6 +127,29 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         recyclerViewCitizensData.setLayoutManager(linearLayoutManager);
         recyclerViewCitizensData.setAdapter(citizensDataAdapter);
+    }
+
+    private void showCitizenFormDialog(String familyCardId) {
+        FragmentManager fm = getFragmentManager();
+        CitizenFormDialog citizenFormDialog = CitizenFormDialog.newInstance(context, familyCardId)
+                .getCitizenFormDialogListener(new CitizenFormDialogListener() {
+                    @Override
+                    public void onButtonSaveClicked() {
+                        Citizen citizen = (Citizen) RSPreference.getInstance(context).getCitizen();
+                        appUtil.addCitizenDataMaster(citizen);
+                        Log.d("CitizenDataFragment", "onButtonSaveClicked - citizen: " + new Gson().toJson(citizen));
+
+                        //fetching…
+                        fetchCitizensData();
+                    }
+
+                    @Override
+                    public void onButtonCancelClicked() {
+                    }
+                });
+        if (fm != null) {
+            citizenFormDialog.show(fm, "citizen_form_dialog");
+        }
     }
 
     @Override

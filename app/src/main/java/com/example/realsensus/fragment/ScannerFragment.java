@@ -32,10 +32,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.realsensus.MainActivity;
 import com.example.realsensus.R;
 import com.example.realsensus.camera.CameraSource;
 import com.example.realsensus.camera.CameraSourcePreview;
 import com.example.realsensus.camera.GraphicOverlay;
+import com.example.realsensus.helper.RSPreference;
 import com.example.realsensus.listener.FragmentListener;
 import com.example.realsensus.util.OcrDetector;
 import com.example.realsensus.util.OcrGraphic;
@@ -55,7 +57,7 @@ import java.io.IOException;
 public class ScannerFragment extends Fragment {
 
     private Context context;
-    private FragmentListener mListener;
+    private FragmentListener fragmentListener;
 
     private static final String TAG = "CaptureFragment";
     private static final int RC_HANDLE_GMS = 9001;
@@ -77,6 +79,7 @@ public class ScannerFragment extends Fragment {
     private AppCompatTextView textViewResult;
     private ImageView imageFlash;
     private ImageView imageStripe;
+    private ImageView imageBack;
     private Button buttonScan;
     private Button buttonSend;
     private Button buttonAddData;
@@ -88,6 +91,11 @@ public class ScannerFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private String mParam1;
     private String mParam2;
+    private String previousFragment = "";
+
+    public void addPrevFragmentTag(String previousFragment) {
+        this.previousFragment = previousFragment;
+    }
 
     public ScannerFragment() {
         // Required empty public constructor
@@ -109,6 +117,11 @@ public class ScannerFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        if (!previousFragment.equals("")){
+            getFragmentManager().beginTransaction().remove(getFragmentManager().findFragmentByTag(previousFragment)).commit();
+        }
+
         animBlink = AnimationUtils.loadAnimation(context, R.anim.blink);
     }
 
@@ -124,6 +137,7 @@ public class ScannerFragment extends Fragment {
         textViewResult = v.findViewById(R.id.textViewResult);
         imageFlash = v.findViewById(R.id.imageFlash);
         imageStripe = v.findViewById(R.id.imageStripe);
+        imageBack = v.findViewById(R.id.imageBack);
         buttonScan = v.findViewById(R.id.buttonScan);
         buttonSend = v.findViewById(R.id.buttonSend);
         buttonAddData = v.findViewById(R.id.buttonAddData);
@@ -180,7 +194,14 @@ public class ScannerFragment extends Fragment {
         buttonAddData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //goToCitizenData
+                RSPreference.getInstance(context).storeOCRTextResult(textViewResult.getText().toString());
+                fragmentListener.onFragmentFinish(ScannerFragment.this, MainActivity.FRAGMENT_FINISH_GOTO_CITIZEN, true);
+            }
+        });
+        imageBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentListener.onActivityBackPressed();
             }
         });
     }
@@ -190,7 +211,7 @@ public class ScannerFragment extends Fragment {
         super.onAttach(context);
         this.context = context;
         if (context instanceof FragmentListener) {
-            mListener = (FragmentListener) context;
+            fragmentListener = (FragmentListener) context;
         } else {
             throw new RuntimeException(context + " must implement FragmentListener");
         }
@@ -235,7 +256,7 @@ public class ScannerFragment extends Fragment {
         if (grantResults.length != 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             Log.d(TAG, "Camera permission granted - initialize the camera source");
 
-            boolean autoFocus = false;
+            boolean autoFocus = true;
             boolean useFlash = false;
             createCameraSource(autoFocus, useFlash);
             return;
@@ -381,11 +402,15 @@ public class ScannerFragment extends Fragment {
         scannerLayout.setVisibility(View.GONE);
         buttonContainer.setVisibility(View.VISIBLE);
         textViewResult.setText(textResult);
+        if (mPreview != null) {
+            mPreview.stop();
+        }
     }
 
     private void reScan() {
         scannerLayout.setVisibility(View.VISIBLE);
         buttonContainer.setVisibility(View.GONE);
+        startCameraSource();
     }
 
 }

@@ -30,6 +30,11 @@ public class HomeFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private String mParam1;
     private String mParam2;
+    private String previousFragment = "";
+
+    public void addPrevFragmentTag(String previousFragment) {
+        this.previousFragment = previousFragment;
+    }
 
     public HomeFragment() {
         // Required empty public constructor
@@ -51,6 +56,10 @@ public class HomeFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        if (!previousFragment.equals("")){
+            getFragmentManager().beginTransaction().remove(getFragmentManager().findFragmentByTag(previousFragment)).commit();
+        }
     }
 
     @Override
@@ -63,18 +72,18 @@ public class HomeFragment extends Fragment {
                 mListener.onFragmentFinish(HomeFragment.this, MainActivity.FRAGMENT_FINISH_GOTO_SCANNER, true);
             }
         });
+        v.findViewById(R.id.cardViewCitizen).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListener.onFragmentFinish(HomeFragment.this, MainActivity.FRAGMENT_FINISH_GOTO_CITIZEN, true);
+            }
+        });
         v.findViewById(R.id.cardViewLogout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 RSPreference.getInstance(context).logout();
                 startActivity(new Intent(context, LoginActivity.class));
                 mListener.onActivityFinish();
-            }
-        });
-        v.findViewById(R.id.cardViewCitizen).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mListener.onFragmentFinish(HomeFragment.this, MainActivity.FRAGMENT_FINISH_GOTO_CITIZEN, true);
             }
         });
         return v;

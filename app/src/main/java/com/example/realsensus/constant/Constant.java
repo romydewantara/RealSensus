@@ -6,6 +6,7 @@ public class Constant {
     public final static String KEY_USER = "user";
     public final static String KEY_CITIZEN = "citizen";
     public final static String KEY_CITIZENS_DATA = "citizens_data";
+    public final static String KEY_OCR_TEXT_RESULT = "ocr_text_result";
 
     //account
     public final static String USERNAME = "admin";

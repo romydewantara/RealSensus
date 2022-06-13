@@ -62,6 +62,14 @@ public class RSPreference {
         return (CitizenDataMaster) getObject(Constant.KEY_CITIZENS_DATA, CitizenDataMaster.class);
     }
 
+    public void storeOCRTextResult(String ocrTextResult) {
+        putString(Constant.KEY_OCR_TEXT_RESULT, ocrTextResult);
+    }
+
+    public String takeOCRTextResult() {
+        return getString(Constant.KEY_OCR_TEXT_RESULT);
+    }
+
     public void logout() {
         setUser(null);
         setSignIn(false);
