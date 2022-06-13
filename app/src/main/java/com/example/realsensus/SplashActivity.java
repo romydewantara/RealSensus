@@ -16,7 +16,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        if (RSPreference.getInstance(getApplicationContext()).loadCitizensDataMaster().getCitizensData().size() == 0) {
+        if (RSPreference.getInstance(getApplicationContext()).loadCitizensDataMaster() == null) {
             //add static citizens data from JSON (fetch)
             new AppUtil(getApplicationContext()).generateCitizensDataFromJson();
         }

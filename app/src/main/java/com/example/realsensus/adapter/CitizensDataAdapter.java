@@ -12,10 +12,13 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.realsensus.R;
+import com.example.realsensus.model.Citizen;
 import com.example.realsensus.model.CitizenDataMaster;
+import com.google.gson.Gson;
 
 public class CitizensDataAdapter extends RecyclerView.Adapter<CitizensDataAdapter.CitizensDataViewHolder> {
 
@@ -38,7 +41,13 @@ public class CitizensDataAdapter extends RecyclerView.Adapter<CitizensDataAdapte
     @Override
     public void onBindViewHolder(@NonNull CitizensDataViewHolder holder, int position) {
         holder.textViewFamilyCardId.setText(citizenDataMaster.getCitizensData().get(position).getFamilyCardId());
-        holder.textViewFamilyHeadName.setText(citizenDataMaster.getCitizensData().get(position).getName());
+        holder.textViewFamilyHeadName.setText(citizenDataMaster.getCitizensData().get(position).getFamilyHeadName());
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
+        Log.d("citizensData", "onBindViewHolder - family_data: " + new Gson().toJson(citizenDataMaster.getCitizensData()));
+        FamilyDataAdapter familyDataAdapter = new FamilyDataAdapter(context, citizenDataMaster.getCitizensData().get(position).getFamilyData());
+        holder.recyclerViewFamilyCardId.setLayoutManager(linearLayoutManager);
+        holder.recyclerViewFamilyCardId.setAdapter(familyDataAdapter);
     }
 
     @Override
@@ -54,6 +63,7 @@ public class CitizensDataAdapter extends RecyclerView.Adapter<CitizensDataAdapte
         AppCompatTextView textViewFamilyHeadTitle;
         AppCompatTextView textViewFamilyHeadName;
         AppCompatTextView textViewMembershipFamily;
+        RecyclerView recyclerViewFamilyCardId;
         LinearLayout linearLayoutButtons;
         ImageView imageBurgerMenu;
         Button buttonEdit;
@@ -68,6 +78,7 @@ public class CitizensDataAdapter extends RecyclerView.Adapter<CitizensDataAdapte
             textViewFamilyHeadTitle = view.findViewById(R.id.textViewFamilyHeadTitle);
             textViewFamilyHeadName = view.findViewById(R.id.textViewFamilyHeadName);
             textViewMembershipFamily = view.findViewById(R.id.textViewMembershipFamily);
+            recyclerViewFamilyCardId = view.findViewById(R.id.recyclerViewFamilyCardId);
             linearLayoutButtons = view.findViewById(R.id.linearLayoutButtons);
             imageBurgerMenu = view.findViewById(R.id.imageBurgerMenu);
             buttonEdit = view.findViewById(R.id.buttonEdit);
@@ -92,7 +103,7 @@ public class CitizensDataAdapter extends RecyclerView.Adapter<CitizensDataAdapte
                     }
                     break;
                 case R.id.buttonEdit:
-                    clickListener.onButtonEditClicked();
+                    clickListener.onButtonEditClicked(citizenDataMaster.getCitizensData().get(getAdapterPosition()));
                     break;
                 case R.id.buttonDelete:
                     clickListener.onButtonDeleteClicked();
@@ -106,7 +117,7 @@ public class CitizensDataAdapter extends RecyclerView.Adapter<CitizensDataAdapte
     }
 
     public interface ClickListener {
-        void onButtonEditClicked();
+        void onButtonEditClicked(Citizen citizen);
         void onButtonDeleteClicked();
     }
 

@@ -18,7 +18,9 @@ import android.view.ViewGroup;
 import com.example.realsensus.R;
 import com.example.realsensus.adapter.CitizensDataAdapter;
 import com.example.realsensus.helper.RSPreference;
+import com.example.realsensus.library.CitizenFormBottomSheetDialog;
 import com.example.realsensus.library.CitizenFormDialog;
+import com.example.realsensus.listener.CitizenFormBottomSheetDialogListener;
 import com.example.realsensus.listener.CitizenFormDialogListener;
 import com.example.realsensus.model.Citizen;
 import com.example.realsensus.model.CitizenDataMaster;
@@ -29,7 +31,7 @@ import com.google.gson.Gson;
  * Created by Muhammad Fakhri Pratama
  * github: ari.japindo@gmail.com | akufakhri61
  */
-public class CitizenDataFragment extends Fragment implements CitizensDataAdapter.ClickListener {
+public class CitizenDataFragment extends Fragment implements CitizensDataAdapter.ClickListener, CitizenFormBottomSheetDialogListener {
 
     private Context context;
     private AppUtil appUtil;
@@ -89,7 +91,8 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
                             }
 
                             @Override
-                            public void onButtonCancelClicked() {}
+                            public void onButtonCancelClicked() {
+                            }
                         });
                 if (fm != null) {
                     citizenFormDialog.show(fm, "citizen_form_dialog");
@@ -105,15 +108,6 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
 
         //populate citizens data to recyclerViewCitizensData
         fetchCitizensData();
-
-        /* to open bottomSheetDialog
-        compRunnerBottomSheetDialog = new CompRunnerBottomSheetDialog(context, lessonDataMaster.comprehensionList, EntryScreenFragment.this);
-                    if (getFragmentManager() != null) {
-                        compRunnerBottomSheetDialog.setCancelable(false);
-                        compRunnerBottomSheetDialog.show(getFragmentManager(), getTag());
-                    }
-
-        * */
     }
 
     @Override
@@ -132,7 +126,14 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
     }
 
     @Override
-    public void onButtonEditClicked() {
+    public void onButtonEditClicked(Citizen citizen) {
+        Log.d("CitizenDataFragment", "onButtonEditClicked - citizen: " + new Gson().toJson(citizen));
+        CitizenFormBottomSheetDialog citizenFormBottomSheetDialog = new CitizenFormBottomSheetDialog(context,
+                CitizenDataFragment.this, citizen);
+        if (getFragmentManager() != null) {
+            citizenFormBottomSheetDialog.setCancelable(false);
+            citizenFormBottomSheetDialog.show(getFragmentManager(), getTag());
+        }
 
     }
 
@@ -140,4 +141,12 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
     public void onButtonDeleteClicked() {
 
     }
+
+    @Override
+    public void onButtonSaveClicked() {
+        //save changes
+    }
+
+    @Override
+    public void onButtonCancelClicked() {}
 }

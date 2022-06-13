@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -137,7 +136,6 @@ public class CitizenFormDialog extends DialogFragment {
         @Override
         public void onClick(View v) {
             if (isFilled()) {
-                Log.d("CFD", "onClick - familyCardId: " + familyCardId);
                 Citizen citizen = new Citizen(familyCardId, numberId, name, pobDob);
                 RSPreference.getInstance(mContext).addCitizen(citizen);
                 citizenFormDialogListener.onButtonSaveClicked();
