@@ -25,6 +25,8 @@ import com.example.realsensus.helper.RSPreference;
 import com.example.realsensus.listener.CitizenFormDialogListener;
 import com.example.realsensus.model.Citizen;
 
+import java.util.ArrayList;
+
 public class CitizenFormDialog extends DialogFragment {
 
     private boolean shown = false;
@@ -136,7 +138,8 @@ public class CitizenFormDialog extends DialogFragment {
         @Override
         public void onClick(View v) {
             if (isFilled()) {
-                Citizen citizen = new Citizen(familyCardId, numberId, name, pobDob);
+                ArrayList<Citizen.FamilyData> familyData = new ArrayList<>();
+                Citizen citizen = new Citizen(familyCardId, numberId, name, pobDob, familyData);
                 RSPreference.getInstance(mContext).addCitizen(citizen);
                 citizenFormDialogListener.onButtonSaveClicked();
                 dismiss();

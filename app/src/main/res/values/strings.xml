@@ -14,7 +14,7 @@
     <string name="info_title_citizen">Data Warga</string>
     <string name="info_title_result">OCR Scanner</string>
     <string name="info_title_dialog_bottom_sheet_citizen_form">Ubah Data Warga</string>
-    <string name="info_result_scan">Hasil OCR</string>
+    <string name="info_result_scan">………</string>
     <string name="info_empty_family_card">*Nomor Kartu Keluarga harus diisi</string>
     <string name="info_empty_number_id">*Nomor NIK harus diisi</string>
     <string name="info_empty_name">*Nama harus diisi</string>

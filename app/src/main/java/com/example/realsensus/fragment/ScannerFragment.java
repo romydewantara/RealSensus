@@ -11,14 +11,7 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.Fragment;
-
+import android.os.Handler;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
@@ -32,6 +25,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+
+import com.airbnb.lottie.LottieAnimationView;
+import com.airbnb.lottie.LottieDrawable;
 import com.example.realsensus.MainActivity;
 import com.example.realsensus.R;
 import com.example.realsensus.camera.CameraSource;
@@ -68,11 +70,12 @@ public class ScannerFragment extends Fragment {
     private CameraSource mCameraSource;
     private ScaleGestureDetector scaleGestureDetector;
     private GestureDetector gestureDetector;
-    private Animation animBlink;
+    private Animation animBlinkInfinite, animScaleHide, animScaleShow, animFadeOut;
 
     //widget
     private CameraSourcePreview mPreview;
     private GraphicOverlay<OcrGraphic> mGraphicOverlay;
+    private LottieAnimationView loading;
     private ConstraintLayout scannerLayout;
     private ConstraintLayout buttonContainer;
     private AppCompatTextView textViewInfoScan;
@@ -122,7 +125,10 @@ public class ScannerFragment extends Fragment {
             getFragmentManager().beginTransaction().remove(getFragmentManager().findFragmentByTag(previousFragment)).commit();
         }
 
-        animBlink = AnimationUtils.loadAnimation(context, R.anim.blink);
+        animBlinkInfinite = AnimationUtils.loadAnimation(context, R.anim.blink_infinite);
+        animScaleHide = AnimationUtils.loadAnimation(context, R.anim.scale_hide);
+        animScaleShow = AnimationUtils.loadAnimation(context, R.anim.scale_show);
+        animFadeOut = AnimationUtils.loadAnimation(context, R.anim.fade_out);
     }
 
     @Override
@@ -131,6 +137,7 @@ public class ScannerFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_scanner, container, false);
         mPreview = v.findViewById(R.id.preview);
         mGraphicOverlay = v.findViewById(R.id.graphicOverlay);
+        loading = v.findViewById(R.id.loading);
         scannerLayout = v.findViewById(R.id.scannerLayout);
         buttonContainer = v.findViewById(R.id.buttonContainer);
         textViewInfoScan = v.findViewById(R.id.textViewInfoScan);
@@ -158,7 +165,7 @@ public class ScannerFragment extends Fragment {
         gestureDetector = new GestureDetector(context, new CaptureGestureListener());
         scaleGestureDetector = new ScaleGestureDetector(context, new ScaleListener());
         //Snackbar.make(mGraphicOverlay, "Tap to capture. Pinch/Stretch to zoom", Snackbar.LENGTH_INDEFINITE).show();
-        textViewInfoScan.startAnimation(animBlink);
+        textViewInfoScan.startAnimation(animBlinkInfinite);
         mGraphicOverlay.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent e) {
@@ -399,18 +406,35 @@ public class ScannerFragment extends Fragment {
     }
 
     private void showResult(String textResult) {
-        scannerLayout.setVisibility(View.GONE);
-        buttonContainer.setVisibility(View.VISIBLE);
-        textViewResult.setText(textResult);
         if (mPreview != null) {
             mPreview.stop();
         }
+        scannerLayout.setVisibility(View.GONE);
+        scannerLayout.startAnimation(animScaleHide);
+
+        loading.setRepeatCount(LottieDrawable.INFINITE);
+        loading.playAnimation();
+        loading.setVisibility(View.VISIBLE);
+
+        Handler handler = new Handler();
+        handler.postDelayed(() -> {
+            loading.pauseAnimation();
+            loading.setVisibility(View.GONE);
+            loading.startAnimation(animFadeOut);
+
+            buttonContainer.setVisibility(View.VISIBLE);
+            textViewResult.setText(textResult);
+        }, 1500);
     }
 
     private void reScan() {
         scannerLayout.setVisibility(View.VISIBLE);
+        scannerLayout.startAnimation(animScaleShow);
         buttonContainer.setVisibility(View.GONE);
-        startCameraSource();
+        Handler handler = new Handler();
+        handler.postDelayed(() -> {
+            startCameraSource();
+        }, 500);
     }
 
 }

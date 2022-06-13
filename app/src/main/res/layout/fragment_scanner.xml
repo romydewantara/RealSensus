@@ -44,22 +44,22 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:text="@string/info_result"
+            app:layout_constraintBottom_toBottomOf="@id/imageSuccess"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/imageSuccess"
-            app:layout_constraintTop_toTopOf="@id/imageSuccess"/>
+            app:layout_constraintTop_toTopOf="@id/imageSuccess" />
 
         <ImageView
             android:id="@+id/imageSuccess"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@mipmap/ic_success"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="16dp"
-            app:layout_constraintWidth_percent=".055"
+            android:src="@mipmap/ic_success"
             app:layout_constraintDimensionRatio="1"
             app:layout_constraintLeft_toRightOf="@id/textViewInfoResult"
-            app:layout_constraintTop_toBottomOf="@+id/textViewTitleCitizen"/>
+            app:layout_constraintTop_toBottomOf="@+id/textViewTitleCitizen"
+            app:layout_constraintWidth_percent=".055" />
 
         <ImageView
             android:id="@+id/imageResultBehind"
@@ -153,8 +153,7 @@
         <com.example.realsensus.camera.CameraSourcePreview
             android:id="@+id/preview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="10dp">
+            android:layout_height="match_parent">
 
             <com.example.realsensus.camera.GraphicOverlay
                 android:id="@+id/graphicOverlay"
@@ -203,5 +202,15 @@
             app:layout_constraintRight_toRightOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white_50"
+        android:padding="120dp"
+        android:visibility="gone"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="json/loading.json" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

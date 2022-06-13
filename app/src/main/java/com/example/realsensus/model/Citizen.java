@@ -21,11 +21,12 @@ public class Citizen {
     @SerializedName("family_data")
     private ArrayList<FamilyData> familyData = new ArrayList<>();
 
-    public Citizen(String familyCardId, String numberId, String familyHeadName, String pobDob) {
+    public Citizen(String familyCardId, String numberId, String familyHeadName, String pobDob, ArrayList<FamilyData> familyData) {
         this.familyCardId = familyCardId;
         this.numberId = numberId;
         this.familyHeadName = familyHeadName;
         this.pobDob = pobDob;
+        this.familyData = familyData;
     }
 
     public String getFamilyCardId() {

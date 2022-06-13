@@ -2,6 +2,13 @@ package com.example.realsensus.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -10,11 +17,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
+import com.airbnb.lottie.LottieAnimationView;
+import com.airbnb.lottie.LottieDrawable;
 import com.example.realsensus.MainActivity;
 import com.example.realsensus.R;
 import com.example.realsensus.adapter.CitizensDataAdapter;
@@ -41,6 +45,11 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
     private FragmentListener fragmentListener;
     //widget
     private RecyclerView recyclerViewCitizensData;
+    private LottieAnimationView loading;
+
+    private Animation animFadeIn, animFadeOut;
+
+    private final long DELAY_MILLIS = 1500L;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -78,6 +87,8 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
         }
 
         appUtil = new AppUtil(context);
+        animFadeIn = AnimationUtils.loadAnimation(context, R.anim.fade_in);
+        animFadeOut = AnimationUtils.loadAnimation(context, R.anim.fade_out);
     }
 
     @Override
@@ -85,6 +96,7 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_citizen_data, container, false);
         recyclerViewCitizensData = v.findViewById(R.id.recyclerViewCitizensData);
+        loading = v.findViewById(R.id.loading);
         v.findViewById(R.id.imageBack).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,10 +115,7 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        fetchCitizensData();
-        if (previousFragment != null && previousFragment.equalsIgnoreCase(MainActivity.TAG_FRAGMENT_SCANNER)) {
-            showCitizenFormDialog(RSPreference.getInstance(context).takeOCRTextResult());
-        }
+        showLoading();
     }
 
     @Override
@@ -152,6 +161,25 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
         }
     }
 
+    private void showLoading() {
+        loading.setRepeatCount(LottieDrawable.INFINITE);
+        loading.playAnimation();
+        loading.setVisibility(View.VISIBLE);
+        loading.startAnimation(animFadeIn);
+
+        Handler handler = new Handler();
+        handler.postDelayed(() -> {
+            loading.pauseAnimation();
+            loading.setVisibility(View.GONE);
+            loading.startAnimation(animFadeOut);
+
+            fetchCitizensData();
+            if (previousFragment != null && previousFragment.equalsIgnoreCase(MainActivity.TAG_FRAGMENT_SCANNER)) {
+                showCitizenFormDialog(RSPreference.getInstance(context).takeOCRTextResult());
+            }
+        }, DELAY_MILLIS);
+    }
+
     @Override
     public void onButtonEditClicked(Citizen citizen) {
         Log.d("CitizenDataFragment", "onButtonEditClicked - citizen: " + new Gson().toJson(citizen));
@@ -172,6 +200,7 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
     @Override
     public void onButtonSaveClicked() {
         //save changes
+        showLoading();
     }
 
     @Override
