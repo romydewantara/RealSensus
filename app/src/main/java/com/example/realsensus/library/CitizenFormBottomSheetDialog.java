@@ -14,7 +14,6 @@ import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.example.realsensus.R;
-import com.example.realsensus.helper.RSPreference;
 import com.example.realsensus.listener.CitizenFormBottomSheetDialogListener;
 import com.example.realsensus.model.Citizen;
 import com.example.realsensus.util.AppUtil;

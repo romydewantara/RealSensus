@@ -32,7 +32,7 @@
     <!-- OCR SourceText -->
     <string name="ok">OK</string>
     <string name="permission_camera_rationale">Diperlukan akses kamera untuk dapat melakukan deteksi</string>
-    <string name="no_camera_permission">Aplikasi ini tidak dapat berjalan karena tidak memiliki izin kamera. Aplikasi sekarang akan otomatis keluar.</string>
+    <string name="no_camera_permission">Fitur OCR pada aplikasi ini tidak dapat berjalan karena tidak memiliki izin penggunaan kamera.</string>
     <string name="low_storage_error">Ocr dependencies tidak dapat diunduh karena penyimpanan perangkat saat ini rendah</string>
 
 </resources>

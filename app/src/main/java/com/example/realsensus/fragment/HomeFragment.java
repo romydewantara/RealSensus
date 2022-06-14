@@ -1,21 +1,26 @@
 package com.example.realsensus.fragment;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.realsensus.LoginActivity;
 import com.example.realsensus.MainActivity;
 import com.example.realsensus.R;
+import com.example.realsensus.helper.FragmentPermissionHelper;
 import com.example.realsensus.helper.RSPreference;
 import com.example.realsensus.listener.FragmentListener;
+import com.example.realsensus.listener.FragmentPermissionListener;
 
 /**
  * Created by Muhammad Fakhri Pratama
@@ -25,6 +30,7 @@ public class HomeFragment extends Fragment {
 
     private Context context;
     private FragmentListener mListener;
+    private ActivityResultLauncher<String> requestPermissionLauncher;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -69,7 +75,7 @@ public class HomeFragment extends Fragment {
         v.findViewById(R.id.cardViewScan).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.onFragmentFinish(HomeFragment.this, MainActivity.FRAGMENT_FINISH_GOTO_SCANNER, true);
+                requestPermissions();
             }
         });
         v.findViewById(R.id.cardViewCitizen).setOnClickListener(new View.OnClickListener() {
@@ -98,10 +104,21 @@ public class HomeFragment extends Fragment {
         } else {
             throw new RuntimeException(context + " must implement FragmentListener");
         }
+        requestPermissionLauncher = new FragmentPermissionHelper().startPermissionHelper(this, isGranted -> {
+            if (isGranted) {
+                mListener.onFragmentFinish(HomeFragment.this, MainActivity.FRAGMENT_FINISH_GOTO_SCANNER, true);
+            } else {
+                Toast.makeText(context, context.getResources().getString(R.string.no_camera_permission), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
+    }
+
+    private void requestPermissions() {
+        requestPermissionLauncher.launch(Manifest.permission.CAMERA);
     }
 }
