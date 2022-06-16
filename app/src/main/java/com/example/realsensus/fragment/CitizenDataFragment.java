@@ -40,7 +40,6 @@ import com.google.gson.Gson;
 public class CitizenDataFragment extends Fragment implements CitizensDataAdapter.ClickListener, CitizenFormBottomSheetDialogListener {
 
     private Context context;
-    private AppUtil appUtil;
     private CitizenDataMaster citizenDataMaster;
     private FragmentListener fragmentListener;
     //widget
@@ -86,7 +85,6 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
             getFragmentManager().beginTransaction().remove(getFragmentManager().findFragmentByTag(previousFragment)).commit();
         }
 
-        appUtil = new AppUtil(context);
         animFadeIn = AnimationUtils.loadAnimation(context, R.anim.fade_in);
         animFadeOut = AnimationUtils.loadAnimation(context, R.anim.fade_out);
     }
@@ -145,7 +143,7 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
                     @Override
                     public void onButtonSaveClicked() {
                         Citizen citizen = (Citizen) RSPreference.getInstance(context).getCitizen();
-                        appUtil.addCitizenDataMaster(citizen);
+                        new AppUtil(context).addCitizenDataMaster(citizen);
                         fetchCitizensData();
                     }
 
