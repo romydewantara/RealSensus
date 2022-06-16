@@ -62,6 +62,13 @@
         <item name="android:layout_gravity">center</item>
     </style>
 
+    <style name="TextRegularBlack8">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">8sp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
     <style name="TextRegularBlack10">
         <item name="android:fontFamily">@font/poppins_regular</item>
         <item name="android:textColor">@color/black</item>

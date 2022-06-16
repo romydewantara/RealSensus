@@ -3,6 +3,7 @@ package com.example.realsensus.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.widget.TextViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,6 +21,8 @@ import com.example.realsensus.R;
 import com.example.realsensus.model.Citizen;
 import com.example.realsensus.model.CitizenDataMaster;
 import com.google.gson.Gson;
+
+import java.util.Collections;
 
 public class CitizensDataAdapter extends RecyclerView.Adapter<CitizensDataAdapter.CitizensDataViewHolder> {
 
@@ -29,6 +33,7 @@ public class CitizensDataAdapter extends RecyclerView.Adapter<CitizensDataAdapte
     public CitizensDataAdapter(Context context, CitizenDataMaster citizenDataMaster) {
         this.context = context;
         this.citizenDataMaster = citizenDataMaster;
+        Collections.reverse(citizenDataMaster.getCitizensData());
     }
 
     @NonNull
@@ -40,7 +45,7 @@ public class CitizensDataAdapter extends RecyclerView.Adapter<CitizensDataAdapte
 
     @Override
     public void onBindViewHolder(@NonNull CitizensDataViewHolder holder, int position) {
-        holder.textViewFamilyCardId.setText(citizenDataMaster.getCitizensData().get(position).getFamilyCardId());
+        holder.textViewFamilyCardId.setText(familyCardIdWithSpace(position));
         holder.textViewFamilyHeadName.setText(citizenDataMaster.getCitizensData().get(position).getFamilyHeadName());
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
@@ -53,6 +58,15 @@ public class CitizensDataAdapter extends RecyclerView.Adapter<CitizensDataAdapte
     @Override
     public int getItemCount() {
         return citizenDataMaster.getCitizensData().size();
+    }
+
+    private String familyCardIdWithSpace(int position) {
+        StringBuilder familyCardId = new StringBuilder();
+        for (int i = 0; i < citizenDataMaster.getCitizensData().get(position).getFamilyCardId().length(); i++) {
+            familyCardId.append(citizenDataMaster.getCitizensData().get(position).getFamilyCardId().charAt(i));
+            if (i < (citizenDataMaster.getCitizensData().get(position).getFamilyCardId().length() - 1)) familyCardId.append(" ");
+        }
+        return familyCardId.toString();
     }
 
     class CitizensDataViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -84,6 +98,10 @@ public class CitizensDataAdapter extends RecyclerView.Adapter<CitizensDataAdapte
             buttonEdit = view.findViewById(R.id.buttonEdit);
             buttonDelete = view.findViewById(R.id.buttonDelete);
 
+            TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(
+                    textViewCountryName, 1, 10, 1, TypedValue.COMPLEX_UNIT_SP);
+            TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(
+                    textViewFamilyCardId, 1, 16, 1, TypedValue.COMPLEX_UNIT_SP);
             imageBurgerMenu.setOnClickListener(this);
             buttonEdit.setOnClickListener(this);
             buttonDelete.setOnClickListener(this);

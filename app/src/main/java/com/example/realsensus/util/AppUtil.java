@@ -12,12 +12,13 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
+import java.util.Collections;
 
 public class AppUtil {
 
     private final String TAG = "AppUtil";
     private final Context context;
-    private CitizenDataMaster citizenDataMaster;
+    private final CitizenDataMaster citizenDataMaster;
 
     public AppUtil(Context context) {
         this.context = context;
@@ -28,9 +29,9 @@ public class AppUtil {
         String jsonFile = readTextFileFromAssets(context, "json/citizen_data.json");
         Type citizensData = new TypeToken<CitizenDataMaster>() {}.getType();
         CitizenDataMaster citizenDataMaster = new Gson().fromJson(jsonFile, citizensData);
+        Collections.reverse(citizenDataMaster.getCitizensData());
         RSPreference.getInstance(context).saveCitizensDataMaster(citizenDataMaster);
-        CitizenDataMaster citizenDataMaster1 = RSPreference.getInstance(context).loadCitizensDataMaster();
-        Log.d(TAG, "generateCitizensDataFromJson - gson: " + new Gson().toJson(citizenDataMaster1));
+        Log.d(TAG, "gson: " + new Gson().toJson(RSPreference.getInstance(context).loadCitizensDataMaster()));
     }
 
     public void addCitizenDataMaster(Citizen citizen) {
@@ -39,11 +40,11 @@ public class AppUtil {
         Log.d(TAG, "addCitizenDataMaster - citizens data: " + new Gson().toJson(RSPreference.getInstance(context).loadCitizensDataMaster()));
     }
 
-    public void updateCitizensDataMaster(Citizen citizen) {
+    public void updateCitizensDataMaster(String oldFamilyCardId, Citizen citizen) {
         if (citizenDataMaster != null && citizenDataMaster.getCitizensData().size() > 0) {
             for (int i = 0; i < citizenDataMaster.getCitizensData().size(); i++) {
                 Citizen tempCitizen = citizenDataMaster.getCitizensData().get(i);
-                if (tempCitizen.getFamilyCardId().equalsIgnoreCase(citizen.getFamilyCardId())) {
+                if (tempCitizen.getFamilyCardId().equalsIgnoreCase(oldFamilyCardId)) {
                     citizenDataMaster.getCitizensData().set(i, citizen);
                     break;
                 }

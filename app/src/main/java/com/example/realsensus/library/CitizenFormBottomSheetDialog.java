@@ -35,12 +35,13 @@ public class CitizenFormBottomSheetDialog extends BottomSheetDialogFragment {
     private AppCompatTextView textViewNumberId;
     private AppCompatTextView textViewName;
     private AppCompatTextView textViewPobDob;
-    private String familyCardId = "", numberId = "", name = "", pobDob = "";
+    private String oldFamilyCardId = "", familyCardId = "", numberId = "", name = "", pobDob = "";
 
     public CitizenFormBottomSheetDialog(Context context, CitizenFormBottomSheetDialogListener citizenFormBottomSheetDialogListener, Citizen citizen) {
         this.context = context;
         this.citizenFormBottomSheetDialogListener = citizenFormBottomSheetDialogListener;
         this.citizen = citizen;
+        this.oldFamilyCardId = citizen.getFamilyCardId();
     }
 
     @Nullable
@@ -60,17 +61,21 @@ public class CitizenFormBottomSheetDialog extends BottomSheetDialogFragment {
         for (int i = 0; i < citizen.getFamilyData().size(); i++) {
             if (citizen.getFamilyData().get(i).getName().equalsIgnoreCase(citizen.getFamilyHeadName())) {
                 Citizen.FamilyData familyData = citizen.getFamilyData().get(i);
-                editTextFamilyCardId.setText(citizen.getFamilyCardId());
-                editTextNumberId.setText(familyData.getNumberId());
-                editTextName.setText(citizen.getFamilyHeadName());
-                editTextPobDob.setText(familyData.getPob());
+                if (!familyData.getNumberId().equalsIgnoreCase("")) citizen.setNumberId(familyData.getNumberId());
+                if (!familyData.getPob().equalsIgnoreCase("")) citizen.setPobDob(familyData.getPob());
+                //set family data here…
             }
         }
+
+        editTextFamilyCardId.setText(citizen.getFamilyCardId());
+        editTextNumberId.setText(citizen.getNumberId());
+        editTextName.setText(citizen.getFamilyHeadName());
+        editTextPobDob.setText(citizen.getPobDob());
 
         view.findViewById(R.id.buttonSave).setOnClickListener(v -> {
             if (isFilled()) {
                 citizen = new Citizen(familyCardId, numberId, name, pobDob, citizen.getFamilyData());
-                new AppUtil(context).updateCitizensDataMaster(citizen);
+                new AppUtil(context).updateCitizensDataMaster(oldFamilyCardId, citizen);
                 dismiss();
                 citizenFormBottomSheetDialogListener.onButtonSaveClicked();
             }

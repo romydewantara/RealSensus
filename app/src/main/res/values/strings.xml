@@ -9,6 +9,7 @@
     <string name="button_delete">Hapus</string>
     <string name="button_edit">Ubah</string>
     <string name="text_button_close">Tutup</string>
+    <string name="info_republik">REPUBLIK\nINDONESIA</string>
     <string name="info_scan">Ketuk area teks yang ingin diambil sebagai hasil SCAN</string>
     <string name="info_result">Scan Berhasil</string>
     <string name="info_title_citizen">Data Warga</string>

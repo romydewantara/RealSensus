@@ -19,7 +19,7 @@ public class Citizen {
     private String pobDob;
 
     @SerializedName("family_data")
-    private ArrayList<FamilyData> familyData = new ArrayList<>();
+    private ArrayList<FamilyData> familyData;
 
     public Citizen(String familyCardId, String numberId, String familyHeadName, String pobDob, ArrayList<FamilyData> familyData) {
         this.familyCardId = familyCardId;

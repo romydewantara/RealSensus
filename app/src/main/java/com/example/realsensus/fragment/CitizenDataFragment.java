@@ -146,9 +146,6 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
                     public void onButtonSaveClicked() {
                         Citizen citizen = (Citizen) RSPreference.getInstance(context).getCitizen();
                         appUtil.addCitizenDataMaster(citizen);
-                        Log.d("CitizenDataFragment", "onButtonSaveClicked - citizen: " + new Gson().toJson(citizen));
-
-                        //fetching…
                         fetchCitizensData();
                     }
 
@@ -199,7 +196,6 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
 
     @Override
     public void onButtonSaveClicked() {
-        //save changes
         showLoading();
     }
 

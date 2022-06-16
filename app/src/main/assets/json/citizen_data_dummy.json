@@ -1,0 +1,263 @@
+{
+  "citizens_data": [
+    {
+      "family_card_id": "3175061601097908",
+      "family_head_name": "P.SIMBOLON",
+      "alamat_lengkap": "Jl. Kampung Jembatan RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl. Kampung Jembatan",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "family_data": [
+        {
+          "number_id": "3175060410710007",
+          "family_card_id": "3175061601097908",
+          "name": "P.SIMBOLON",
+          "jenis_kelamin": "Laki-laki",
+          "pob": "DELI SERDANG",
+          "tanggal_lahir": {
+            "tanggal": "04",
+            "bulan": "Oktober",
+            "tahun": "1971"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "",
+            "bulan": "",
+            "tahun": ""
+          },
+          "agama": "Katolik",
+          "pendidikan": "",
+          "jenis_pekerjaan": "TNI",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        },
+        {
+          "number_id": "3175064304780000",
+          "family_card_id": "3175061601097908",
+          "name": "Heppy sinaga",
+          "jenis_kelamin": "Perempuan",
+          "pob": "Medan",
+          "tanggal_lahir": {
+            "tanggal": "03",
+            "bulan": "April",
+            "tahun": "1978"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "",
+            "bulan": "",
+            "tahun": ""
+          },
+          "agama": "Katolik",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Ibu Rumah Tangga",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        },
+        {
+          "number_id": "3175060410990002",
+          "family_card_id": "3175061601097908",
+          "name": "Yansen",
+          "jenis_kelamin": "Laki-laki",
+          "pob": "Jakarta",
+          "tanggal_lahir": {
+            "tanggal": "04",
+            "bulan": "Oktober",
+            "tahun": "1999"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "",
+            "bulan": "",
+            "tahun": ""
+          },
+          "agama": "Katolik",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Pelajar",
+          "status_pernikahan": "Belum Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        },
+        {
+          "number_id": "3175060305051001",
+          "family_card_id": "3175061601097908",
+          "name": "Ign Akberto",
+          "jenis_kelamin": "Laki-laki",
+          "pob": "Jakarta",
+          "tanggal_lahir": {
+            "tanggal": "03",
+            "bulan": "Mei",
+            "tahun": "2005"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "",
+            "bulan": "",
+            "tahun": ""
+          },
+          "agama": "Katolik",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Pelajar",
+          "status_pernikahan": "Belum Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        },
+        {
+          "number_id": "3175064406071004",
+          "family_card_id": "3175061601097908",
+          "name": "Theresia Santi",
+          "jenis_kelamin": "Perempuan",
+          "pob": "Jakarta",
+          "tanggal_lahir": {
+            "tanggal": "04",
+            "bulan": "Juni",
+            "tahun": "2007"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "",
+            "bulan": "",
+            "tahun": ""
+          },
+          "agama": "Katolik",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Pelajar",
+          "status_pernikahan": "Belum Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "family_card_id": "3175061809170030",
+      "family_head_name": "SUDAMAN",
+      "alamat_lengkap": "Jl. Kampung Jembatan RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl. Kampung Jembatan",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "family_data": [
+        {
+          "number_id": "3175060410710007",
+          "family_card_id": "3175061809170030",
+          "name": "SUDAMAN",
+          "jenis_kelamin": "Laki-laki",
+          "pob": "Jepara",
+          "tanggal_lahir": {
+            "tanggal": "01",
+            "bulan": "Januari",
+            "tahun": "1973"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "",
+            "bulan": "",
+            "tahun": ""
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Wiraswasta",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        },
+        {
+          "number_id": "1802137112740003",
+          "family_card_id": "3175061809170030",
+          "name": "Shofiati",
+          "jenis_kelamin": "Perempuan",
+          "pob": "Magelang",
+          "tanggal_lahir": {
+            "tanggal": "31",
+            "bulan": "Desember",
+            "tahun": "1974"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "",
+            "bulan": "",
+            "tahun": ""
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Ibu Rumah Tangga",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        },
+        {
+          "number_id": "1802134712050002",
+          "family_card_id": "3175061809170030",
+          "name": "Maya Tri Hapsari",
+          "jenis_kelamin": "Perempuan",
+          "pob": "Jakarta",
+          "tanggal_lahir": {
+            "tanggal": "07",
+            "bulan": "Desember",
+            "tahun": "2005"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "",
+            "bulan": "",
+            "tahun": ""
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Pelajar",
+          "status_pernikahan": "Belum Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        },
+        {
+          "number_id": "1802137107100003",
+          "family_card_id": "3175061809170030",
+          "name": "Ayu Andayani",
+          "jenis_kelamin": "Perempuan",
+          "pob": "Gunung Agung",
+          "tanggal_lahir": {
+            "tanggal": "31",
+            "bulan": "Oktober",
+            "tahun": "2010"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "",
+            "bulan": "",
+            "tahun": ""
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Pelajar",
+          "status_pernikahan": "Belum Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    }
+  ]
+}
