@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,9 +26,11 @@ import com.example.realsensus.adapter.CitizensDataAdapter;
 import com.example.realsensus.helper.RSPreference;
 import com.example.realsensus.library.CitizenFormBottomSheetDialog;
 import com.example.realsensus.library.CitizenFormDialog;
+import com.example.realsensus.library.PopUpDialog;
 import com.example.realsensus.listener.CitizenFormBottomSheetDialogListener;
 import com.example.realsensus.listener.CitizenFormDialogListener;
 import com.example.realsensus.listener.FragmentListener;
+import com.example.realsensus.listener.PopUpDialogListener;
 import com.example.realsensus.model.Citizen;
 import com.example.realsensus.model.CitizenDataMaster;
 import com.example.realsensus.util.AppUtil;
@@ -81,7 +84,7 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        if (!previousFragment.equals("")){
+        if (!previousFragment.equals("")) {
             getFragmentManager().beginTransaction().remove(getFragmentManager().findFragmentByTag(previousFragment)).commit();
         }
 
@@ -188,8 +191,23 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
     }
 
     @Override
-    public void onButtonDeleteClicked() {
-
+    public void onButtonDeleteClicked(Citizen citizen) {
+        String message = "Data yang dihapus tidak bisa dimuat ulang, apakah Anda yakin ingin menghapus data keluarga "
+                + citizen.getFamilyHeadName() + "?";
+        FragmentManager fm = getFragmentManager();
+        PopUpDialog citizenFormDialog = PopUpDialog.newInstance(context, "Peringatan", message)
+                .setButton("", "", new PopUpDialogListener() {
+                    @Override
+                    public void onPositiveButtonClicked() {
+                        new AppUtil(context).deleteCitizen(citizen);
+                        fetchCitizensData();
+                    }
+                    @Override
+                    public void onNegativeButtonClicked() {}
+                });
+        if (fm != null) {
+            citizenFormDialog.show(fm, "citizen_form_dialog");
+        }
     }
 
     @Override
@@ -198,5 +216,7 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
     }
 
     @Override
-    public void onButtonCancelClicked() {}
+    public void onButtonCancelClicked() {
+        Toast.makeText(context, R.string.info_data_canceled, Toast.LENGTH_SHORT).show();
+    }
 }

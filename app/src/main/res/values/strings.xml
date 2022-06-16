@@ -5,7 +5,7 @@
     <string name="button_send">Kirim</string>
     <string name="button_add_data">Tambah Data</string>
     <string name="button_save">Simpan</string>
-    <string name="button_cancel">Batalkan</string>
+    <string name="button_cancel">Batal</string>
     <string name="button_delete">Hapus</string>
     <string name="button_edit">Ubah</string>
     <string name="text_button_close">Tutup</string>
@@ -20,6 +20,7 @@
     <string name="info_empty_number_id">*Nomor NIK harus diisi</string>
     <string name="info_empty_name">*Nama harus diisi</string>
     <string name="info_empty_pob_dob">*Tempat tanggal lahir harus diisi</string>
+    <string name="info_data_canceled">Perubahan data dibatalkan</string>
     <string name="hint_username">Nama Pengguna</string>
     <string name="hint_password">Kata Sandi</string>
     <string name="hint_search_id">Cari NIK</string>
@@ -27,6 +28,8 @@
     <string name="hint_citizen_number_id">No. NIK</string>
     <string name="hint_citizen_name">Nama</string>
     <string name="hint_citizen_pobDop">Tempat Tanggal Lahir</string>
+    <string name="dialog_title">Judul</string>
+    <string name="dialog_message">Pesan</string>
     <string name="created_by">Created by Muhammad Fakhri Pratama</string>
     <string name="creator">Muhammad Fakhri Pratama</string>
 

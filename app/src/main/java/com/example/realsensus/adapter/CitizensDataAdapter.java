@@ -124,7 +124,7 @@ public class CitizensDataAdapter extends RecyclerView.Adapter<CitizensDataAdapte
                     clickListener.onButtonEditClicked(citizenDataMaster.getCitizensData().get(getAdapterPosition()));
                     break;
                 case R.id.buttonDelete:
-                    clickListener.onButtonDeleteClicked();
+                    clickListener.onButtonDeleteClicked(citizenDataMaster.getCitizensData().get(getAdapterPosition()));
                     break;
             }
         }
@@ -136,7 +136,7 @@ public class CitizensDataAdapter extends RecyclerView.Adapter<CitizensDataAdapte
 
     public interface ClickListener {
         void onButtonEditClicked(Citizen citizen);
-        void onButtonDeleteClicked();
+        void onButtonDeleteClicked(Citizen citizen);
     }
 
 }

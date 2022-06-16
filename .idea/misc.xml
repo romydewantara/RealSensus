@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/drawable/background_button_flash.xml" value="0.16" />
         <entry key="app/src/main/res/drawable/background_button_red.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/background_card_view_menu.xml" value="0.1455" />
+        <entry key="app/src/main/res/drawable/background_dialog_positive_button.xml" value="0.176" />
         <entry key="app/src/main/res/drawable/background_edit_text.xml" value="0.1455" />
         <entry key="app/src/main/res/drawable/background_edit_text_credentials.xml" value="0.172" />
         <entry key="app/src/main/res/drawable/background_edit_text_form_citizen.xml" value="0.1615" />
@@ -25,6 +26,7 @@
         <entry key="app/src/main/res/layout/fragment_scanner.xml" value="0.25" />
         <entry key="app/src/main/res/layout/layout_citizens_data.xml" value="0.25625" />
         <entry key="app/src/main/res/layout/layout_dialog_bottom_sheet_form_citizen.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/layout_dialog_pop_up.xml" value="0.25625" />
         <entry key="app/src/main/res/layout/layout_family_card_id.xml" value="0.271348375853828" />
         <entry key="app/src/main/res/layout/layout_form_citizen.xml" value="0.25625" />
         <entry key="app/src/main/res/layout/layout_header_background.xml" value="0.25625" />
