@@ -1,14 +1,10 @@
 package com.example.realsensus.fragment;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,7 +25,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -48,7 +43,6 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
 
@@ -78,12 +72,13 @@ public class ScannerFragment extends Fragment {
     private LottieAnimationView loading;
     private ConstraintLayout scannerLayout;
     private ConstraintLayout buttonContainer;
+    private ConstraintLayout constraintInfoResult;
     private AppCompatTextView textViewInfoScan;
     private AppCompatTextView textViewResult;
     private ImageView imageFlash;
     private ImageView imageStripe;
     private ImageView imageBack;
-    private Button buttonScan;
+    private Button buttonRescan;
     private Button buttonSend;
     private Button buttonAddData;
 
@@ -140,12 +135,13 @@ public class ScannerFragment extends Fragment {
         loading = v.findViewById(R.id.loading);
         scannerLayout = v.findViewById(R.id.scannerLayout);
         buttonContainer = v.findViewById(R.id.buttonContainer);
+        constraintInfoResult = v.findViewById(R.id.constraintInfoResult);
         textViewInfoScan = v.findViewById(R.id.textViewInfoScan);
         textViewResult = v.findViewById(R.id.textViewResult);
         imageFlash = v.findViewById(R.id.imageFlash);
         imageStripe = v.findViewById(R.id.imageStripe);
         imageBack = v.findViewById(R.id.imageBack);
-        buttonScan = v.findViewById(R.id.buttonScan);
+        buttonRescan = v.findViewById(R.id.buttonRescan);
         buttonSend = v.findViewById(R.id.buttonSend);
         buttonAddData = v.findViewById(R.id.buttonAddData);
         return v;
@@ -181,7 +177,7 @@ public class ScannerFragment extends Fragment {
                 }
             }
         });
-        buttonScan.setOnClickListener(new View.OnClickListener() {
+        buttonRescan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 reScan();
@@ -359,6 +355,7 @@ public class ScannerFragment extends Fragment {
             loading.startAnimation(animFadeOut);
 
             buttonContainer.setVisibility(View.VISIBLE);
+            constraintInfoResult.setVisibility(View.VISIBLE);
             textViewResult.setText(textResult);
         }, 1500);
     }
@@ -367,6 +364,8 @@ public class ScannerFragment extends Fragment {
         scannerLayout.setVisibility(View.VISIBLE);
         scannerLayout.startAnimation(animScaleShow);
         buttonContainer.setVisibility(View.GONE);
+        constraintInfoResult.setVisibility(View.INVISIBLE);
+        textViewResult.setText("");
         Handler handler = new Handler();
         handler.postDelayed(() -> {
             startCameraSource();

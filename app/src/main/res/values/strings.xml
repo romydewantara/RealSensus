@@ -2,6 +2,7 @@
     <string name="app_name">RealSensus</string>
     <string name="button_login">Masuk</string>
     <string name="button_scan">Scan</string>
+    <string name="button_rescan">Scan Ulang</string>
     <string name="button_send">Kirim</string>
     <string name="button_add_data">Tambah Data</string>
     <string name="button_save">Simpan</string>

@@ -25,9 +25,9 @@
             android:id="@+id/imageBack"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
+            android:background="?android:selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:foreground="?selectableItemBackground"
             android:paddingLeft="8dp"
             android:paddingTop="18dp"
             android:paddingRight="8dp"
@@ -37,29 +37,39 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="@id/textViewTitleCitizen" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textViewInfoResult"
-            style="@style/TextRegularBlack14"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintInfoResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:text="@string/info_result"
-            app:layout_constraintBottom_toBottomOf="@id/imageSuccess"
+            android:layout_marginTop="16dp"
+            android:visibility="invisible"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/imageSuccess" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewTitleCitizen">
 
-        <ImageView
-            android:id="@+id/imageSuccess"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="16dp"
-            android:src="@mipmap/ic_success"
-            app:layout_constraintDimensionRatio="1"
-            app:layout_constraintLeft_toRightOf="@id/textViewInfoResult"
-            app:layout_constraintTop_toBottomOf="@+id/textViewTitleCitizen"
-            app:layout_constraintWidth_percent=".055" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewInfoResult"
+                style="@style/TextRegularBlack14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="@string/info_result"
+                app:layout_constraintBottom_toBottomOf="@id/imageSuccess"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/imageSuccess" />
+
+            <ImageView
+                android:id="@+id/imageSuccess"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginLeft="5dp"
+                android:src="@mipmap/ic_success"
+                app:layout_constraintDimensionRatio="1"
+                app:layout_constraintLeft_toRightOf="@id/textViewInfoResult"
+                app:layout_constraintWidth_percent=".055" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
             android:id="@+id/imageResultBehind"
@@ -70,7 +80,7 @@
             app:layout_constraintHeight_percent=".4"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewInfoResult" />
+            app:layout_constraintTop_toBottomOf="@id/constraintInfoResult" />
 
         <ImageView
             android:id="@+id/imageResultFront"
@@ -107,12 +117,12 @@
             app:layout_constraintTop_toBottomOf="@id/imageResultBehind">
 
             <Button
-                android:id="@+id/buttonScan"
+                android:id="@+id/buttonRescan"
                 style="@style/TextBoldWhite14"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
-                android:text="@string/button_scan"
+                android:text="@string/button_rescan"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imageResultBehind"
@@ -126,7 +136,7 @@
                 android:text="@string/button_send"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/buttonScan"
+                app:layout_constraintTop_toBottomOf="@id/buttonRescan"
                 app:layout_constraintWidth_percent=".6" />
 
             <Button
