@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -47,6 +48,7 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
     private FragmentListener fragmentListener;
     //widget
     private RecyclerView recyclerViewCitizensData;
+    private CardView cardViewAdd;
     private LottieAnimationView loading;
 
     private Animation animFadeIn, animFadeOut;
@@ -97,6 +99,7 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_citizen_data, container, false);
         recyclerViewCitizensData = v.findViewById(R.id.recyclerViewCitizensData);
+        cardViewAdd = v.findViewById(R.id.cardViewAdd);
         loading = v.findViewById(R.id.loading);
         v.findViewById(R.id.imageBack).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,6 +163,7 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
     }
 
     private void showLoading() {
+        cardViewAdd.setVisibility(View.GONE);
         loading.setRepeatCount(LottieDrawable.INFINITE);
         loading.playAnimation();
         loading.setVisibility(View.VISIBLE);
@@ -170,6 +174,7 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
             loading.pauseAnimation();
             loading.setVisibility(View.GONE);
             loading.startAnimation(animFadeOut);
+            cardViewAdd.setVisibility(View.VISIBLE);
 
             fetchCitizensData();
             if (previousFragment != null && previousFragment.equalsIgnoreCase(MainActivity.TAG_FRAGMENT_SCANNER)) {
