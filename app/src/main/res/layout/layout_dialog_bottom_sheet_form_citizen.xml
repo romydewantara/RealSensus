@@ -35,6 +35,17 @@
             app:layout_constraintTop_toBottomOf="@id/stripeSlider" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/buttonClose"
+            style="@style/TextRegularBlue14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="Close"
+            app:layout_constraintBottom_toBottomOf="@id/textViewTitleBottomSheetCitizen"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/textViewTitleBottomSheetCitizen" />
+
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewClose"
             style="@style/TextRegularBlue14"
             android:layout_width="wrap_content"
@@ -57,7 +68,7 @@
         android:layout_below="@+id/constraintHeader">
 
         <include
-            layout="@layout/layout_form_citizen"
+            layout="@layout/layout_citizen_details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

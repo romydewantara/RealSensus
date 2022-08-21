@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
@@ -34,8 +35,10 @@ import com.example.realsensus.R;
 import com.example.realsensus.camera.CameraSource;
 import com.example.realsensus.camera.CameraSourcePreview;
 import com.example.realsensus.camera.GraphicOverlay;
+import com.example.realsensus.constant.Constant;
 import com.example.realsensus.helper.RSPreference;
 import com.example.realsensus.listener.FragmentListener;
+import com.example.realsensus.model.Citizen;
 import com.example.realsensus.util.OcrDetector;
 import com.example.realsensus.util.OcrGraphic;
 import com.google.android.gms.common.ConnectionResult;
@@ -74,7 +77,7 @@ public class ScannerFragment extends Fragment {
     private ConstraintLayout buttonContainer;
     private ConstraintLayout constraintInfoResult;
     private AppCompatTextView textViewInfoScan;
-    private AppCompatTextView textViewResult;
+    private AppCompatEditText editTextResult;
     private ImageView imageFlash;
     private ImageView imageStripe;
     private ImageView imageBack;
@@ -137,7 +140,7 @@ public class ScannerFragment extends Fragment {
         buttonContainer = v.findViewById(R.id.buttonContainer);
         constraintInfoResult = v.findViewById(R.id.constraintInfoResult);
         textViewInfoScan = v.findViewById(R.id.textViewInfoScan);
-        textViewResult = v.findViewById(R.id.textViewResult);
+        editTextResult = v.findViewById(R.id.editTextResult);
         imageFlash = v.findViewById(R.id.imageFlash);
         imageStripe = v.findViewById(R.id.imageStripe);
         imageBack = v.findViewById(R.id.imageBack);
@@ -189,10 +192,20 @@ public class ScannerFragment extends Fragment {
 
             }
         });
-        buttonAddData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                RSPreference.getInstance(context).storeOCRTextResult(textViewResult.getText().toString());
+        buttonAddData.setOnClickListener(v -> {
+            if (editTextResult.getText() != null && !editTextResult.getText().toString().equalsIgnoreCase("")) {
+                Citizen citizen = RSPreference.getInstance(context).loadTempCitizensScanResult();
+                if (citizen == null) citizen = new Citizen();
+                switch (Constant.scanType) {
+                    case Constant.scanNumber:
+                        citizen.setNumberId(editTextResult.getText().toString());
+                        break;
+                    case Constant.scanName:
+                        citizen.setName(editTextResult.getText().toString());
+                        break;
+                }
+                RSPreference.getInstance(context).storeOCRTextResult(editTextResult.getText().toString());
+                RSPreference.getInstance(context).saveTempCitizenScanResult(citizen);
                 fragmentListener.onFragmentFinish(ScannerFragment.this, MainActivity.FRAGMENT_FINISH_GOTO_CITIZEN, true);
             }
         });
@@ -356,7 +369,7 @@ public class ScannerFragment extends Fragment {
 
             buttonContainer.setVisibility(View.VISIBLE);
             constraintInfoResult.setVisibility(View.VISIBLE);
-            textViewResult.setText(textResult);
+            editTextResult.setText(textResult);
         }, 1500);
     }
 
@@ -365,7 +378,7 @@ public class ScannerFragment extends Fragment {
         scannerLayout.startAnimation(animScaleShow);
         buttonContainer.setVisibility(View.GONE);
         constraintInfoResult.setVisibility(View.INVISIBLE);
-        textViewResult.setText("");
+        editTextResult.setText("");
         Handler handler = new Handler();
         handler.postDelayed(() -> {
             startCameraSource();

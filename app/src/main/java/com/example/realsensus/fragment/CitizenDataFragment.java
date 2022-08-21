@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,6 +23,7 @@ import com.airbnb.lottie.LottieDrawable;
 import com.example.realsensus.MainActivity;
 import com.example.realsensus.R;
 import com.example.realsensus.adapter.CitizensDataAdapter;
+import com.example.realsensus.constant.Constant;
 import com.example.realsensus.helper.RSPreference;
 import com.example.realsensus.library.CitizenFormBottomSheetDialog;
 import com.example.realsensus.library.CitizenFormDialog;
@@ -133,28 +133,41 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
         }
     }
 
-    private void fetchCitizensData() {
+    private void fetchCitizensData() { //memuat data warga
         citizenDataMaster = RSPreference.getInstance(context).loadCitizensDataMaster();
-        CitizensDataAdapter citizensDataAdapter = new CitizensDataAdapter(context, citizenDataMaster);
-        citizensDataAdapter.setClickListener(CitizenDataFragment.this);
+        CitizensDataAdapter citizensDataAdapter = new CitizensDataAdapter(context, citizenDataMaster, this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         recyclerViewCitizensData.setLayoutManager(linearLayoutManager);
         recyclerViewCitizensData.setAdapter(citizensDataAdapter);
     }
 
-    private void showCitizenFormDialog(String familyCardId) {
+    private void showCitizenFormDialog(String params) {
         FragmentManager fm = getFragmentManager();
-        CitizenFormDialog citizenFormDialog = CitizenFormDialog.newInstance(context, familyCardId)
+        CitizenFormDialog citizenFormDialog = CitizenFormDialog.newInstance(context, params)
                 .getCitizenFormDialogListener(new CitizenFormDialogListener() {
                     @Override
                     public void onButtonSaveClicked() {
                         Citizen citizen = (Citizen) RSPreference.getInstance(context).getCitizen();
                         new AppUtil(context).addCitizenDataMaster(citizen);
                         fetchCitizensData();
+                        RSPreference.getInstance(context).saveTempCitizenScanResult(null); //reset temp citizen result
                     }
 
                     @Override
                     public void onButtonCancelClicked() {
+                        RSPreference.getInstance(context).saveTempCitizenScanResult(null); //reset temp citizen result
+                    }
+
+                    @Override
+                    public void onScanNikClicked() {
+                        Constant.scanType = Constant.scanNumber;
+                        fragmentListener.onFragmentFinish(CitizenDataFragment.this, MainActivity.FRAGMENT_FINISH_GOTO_SCANNER, true);
+                    }
+
+                    @Override
+                    public void onScanNameClicked() {
+                        Constant.scanType = Constant.scanName;
+                        fragmentListener.onFragmentFinish(CitizenDataFragment.this, MainActivity.FRAGMENT_FINISH_GOTO_SCANNER, true);
                     }
                 });
         if (fm != null) {
@@ -184,15 +197,19 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
     }
 
     @Override
-    public void onButtonEditClicked(Citizen citizen) {
+    public void onCitizenDetails(Citizen citizen) {
         Log.d("CitizenDataFragment", "onButtonEditClicked - citizen: " + new Gson().toJson(citizen));
         CitizenFormBottomSheetDialog citizenFormBottomSheetDialog = new CitizenFormBottomSheetDialog(context,
                 CitizenDataFragment.this, citizen);
-        if (getFragmentManager() != null) {
-            citizenFormBottomSheetDialog.setCancelable(false);
-            citizenFormBottomSheetDialog.show(getFragmentManager(), getTag());
-        }
+        citizenFormBottomSheetDialog.setCancelable(false);
+        citizenFormBottomSheetDialog.show(getChildFragmentManager(), getTag());
+    }
 
+    @Override
+    public void onButtonEditClicked(Citizen citizen) {
+        //goToCitizenFormFragment
+        fragmentListener.onFragmentPassingCitizen(citizen);
+        fragmentListener.onFragmentFinish(CitizenDataFragment.this, MainActivity.FRAGMENT_FINISH_GOTO_CITIZEN_FORM, true);
     }
 
     @Override
@@ -222,6 +239,6 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
 
     @Override
     public void onButtonCancelClicked() {
-        Toast.makeText(context, R.string.info_data_canceled, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, R.string.info_data_canceled, Toast.LENGTH_SHORT).show();
     }
 }

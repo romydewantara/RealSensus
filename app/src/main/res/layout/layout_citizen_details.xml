@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textNumberIdTitle"
+        style="@style/TextMediumBlack16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NIK"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textNumberId"
+        style="@style/TextRegularBlack14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NIK"
+        app:layout_constraintTop_toBottomOf="@id/textNumberIdTitle"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textNameTitle"
+        style="@style/TextMediumBlack16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Nama"
+        app:layout_constraintTop_toBottomOf="@id/textNumberId"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textName"
+        style="@style/TextRegularBlack14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        app:layout_constraintTop_toBottomOf="@id/textNameTitle"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textPobTitle"
+        style="@style/TextMediumBlack16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Tempat Lahir"
+        app:layout_constraintTop_toBottomOf="@id/textName"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textPob"
+        style="@style/TextRegularBlack14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="POB"
+        app:layout_constraintTop_toBottomOf="@id/textPobTitle"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textDobTitle"
+        style="@style/TextMediumBlack16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Tanggal Lahir"
+        app:layout_constraintTop_toBottomOf="@id/textPob"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textDob"
+        style="@style/TextRegularBlack14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DOB"
+        app:layout_constraintTop_toBottomOf="@id/textDobTitle"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textReligionTitle"
+        style="@style/TextMediumBlack16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Agama"
+        app:layout_constraintTop_toBottomOf="@id/textDob"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textReligion"
+        style="@style/TextRegularBlack14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Religion"
+        app:layout_constraintTop_toBottomOf="@id/textReligionTitle"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textMarriageStateTitle"
+        style="@style/TextMediumBlack16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Satus Perkawinan"
+        app:layout_constraintTop_toBottomOf="@id/textReligion"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textMarriageState"
+        style="@style/TextRegularBlack14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Belum Kawin"
+        app:layout_constraintTop_toBottomOf="@id/textMarriageStateTitle"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textTypeOfWorkTitle"
+        style="@style/TextMediumBlack16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Jenis Pekerjaan"
+        app:layout_constraintTop_toBottomOf="@id/textMarriageState"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textTypeOfWork"
+        style="@style/TextRegularBlack14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Karyawan Swasta"
+        app:layout_constraintTop_toBottomOf="@id/textTypeOfWorkTitle"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textCitizensTitle"
+        style="@style/TextMediumBlack16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Kewarganegaraan"
+        app:layout_constraintTop_toBottomOf="@id/textTypeOfWork"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textCitizens"
+        style="@style/TextRegularBlack14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="WNI"
+        app:layout_constraintTop_toBottomOf="@id/textCitizensTitle"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textValidUntilTitle"
+        style="@style/TextMediumBlack16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Berlaku Hingga"
+        app:layout_constraintTop_toBottomOf="@id/textCitizens"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textValidUntil"
+        style="@style/TextRegularBlack14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seumur Hidup"
+        app:layout_constraintTop_toBottomOf="@id/textValidUntilTitle"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

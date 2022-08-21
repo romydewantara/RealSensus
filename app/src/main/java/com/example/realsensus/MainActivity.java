@@ -7,9 +7,11 @@ import android.os.Bundle;
 
 import com.example.realsensus.constant.Constant;
 import com.example.realsensus.fragment.CitizenDataFragment;
+import com.example.realsensus.fragment.CitizenFormFragment;
 import com.example.realsensus.fragment.HomeFragment;
 import com.example.realsensus.fragment.ScannerFragment;
 import com.example.realsensus.listener.FragmentListener;
+import com.example.realsensus.model.Citizen;
 
 /**
  * Created by Muhammad Fakhri Pratama
@@ -20,13 +22,16 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
     public static final int FRAGMENT_FINISH_GOTO_HOME = 0;
     public static final int FRAGMENT_FINISH_GOTO_SCANNER = 1;
     public static final int FRAGMENT_FINISH_GOTO_CITIZEN = 2;
+    public static final int FRAGMENT_FINISH_GOTO_CITIZEN_FORM = 3;
 
     public static final String TAG_FRAGMENT_HOME = "home";
     public static final String TAG_FRAGMENT_SCANNER = "scanner";
     public static final String TAG_FRAGMENT_CITIZEN = "citizen";
+    public static final String TAG_FRAGMENT_CITIZEN_FORM = "citizen_form";
 
     private Fragment fragment;
     private Fragment previousFragment;
+    private Citizen citizen;
 
     private boolean isAutoFocus = true;
 
@@ -49,6 +54,8 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
             } else {
                 onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME, false);
             }
+        } else if (fragment instanceof CitizenFormFragment) {
+            onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_CITIZEN, false);
         } else {
             finish();
         }
@@ -94,6 +101,15 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
                         .replace(R.id.main, fragment, TAG_FRAGMENT_CITIZEN)
                         .commit();
                 break;
+            case FRAGMENT_FINISH_GOTO_CITIZEN_FORM:
+                fragment = new CitizenFormFragment(getApplicationContext(), citizen);
+                previousFragment = currentFragment;
+                ((CitizenFormFragment) fragment).addPrevFragmentTag(currentFragment.getTag());
+                getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(enter, exit)
+                        .replace(R.id.main, fragment, TAG_FRAGMENT_CITIZEN_FORM)
+                        .commit();
+                break;
         }
     }
 
@@ -105,6 +121,11 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
     @Override
     public void onActivityBackPressed() {
         onBackPressed();
+    }
+
+    @Override
+    public void onFragmentPassingCitizen(Citizen citizen) {
+        this.citizen = citizen;
     }
 
     private void goToHome() {

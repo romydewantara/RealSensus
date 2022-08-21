@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,31 +22,28 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.realsensus.R;
+import com.example.realsensus.constant.Constant;
 import com.example.realsensus.helper.RSPreference;
 import com.example.realsensus.listener.CitizenFormDialogListener;
 import com.example.realsensus.model.Citizen;
-
-import java.util.ArrayList;
 
 public class CitizenFormDialog extends DialogFragment {
 
     private boolean shown = false;
 
     //widget
-    private AppCompatEditText editTextFamilyCardId;
     private AppCompatEditText editTextNumberId;
     private AppCompatEditText editTextName;
-    private AppCompatEditText editTextPobDob;
-    private AppCompatTextView textViewFamilyCard;
     private AppCompatTextView textViewNumberId;
     private AppCompatTextView textViewName;
-    private AppCompatTextView textViewPobDob;
+    private ImageView imageScanNik;
+    private ImageView imageScanName;
 
-    String familyCardId = "", numberId = "", name = "", pobDob = "";
+    String numberId = "", name = "";
 
     @SuppressLint("StaticFieldLeak")
     private static Context mContext;
-    private static String mFamilyCardId;
+    private static String mParams;
 
     CitizenFormDialogListener citizenFormDialogListener;
 
@@ -53,13 +51,13 @@ public class CitizenFormDialog extends DialogFragment {
         // Required empty public constructor
     }
 
-    public static CitizenFormDialog newInstance(Context context, String famylyCardId) {
+    public static CitizenFormDialog newInstance(Context context, String params) {
         CitizenFormDialog fragment = new CitizenFormDialog();
         Bundle arguments = new Bundle();
         mContext = context;
-        mFamilyCardId = famylyCardId;
+        mParams = params;
 
-        arguments.putString("family_card_id", famylyCardId);
+        arguments.putString("params", mParams);
         fragment.setArguments(arguments);
         return fragment;
     }
@@ -79,14 +77,12 @@ public class CitizenFormDialog extends DialogFragment {
             getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
         View view = inflater.inflate(R.layout.layout_form_citizen, container, false);
-        editTextFamilyCardId = view.findViewById(R.id.editTextFamilyCardId);
+        imageScanNik = view.findViewById(R.id.imageScanNik);
+        imageScanName = view.findViewById(R.id.imageScanName);
         editTextNumberId = view.findViewById(R.id.editTextNumberId);
         editTextName = view.findViewById(R.id.editTextName);
-        editTextPobDob = view.findViewById(R.id.editTextPobDob);
-        textViewFamilyCard = view.findViewById(R.id.textViewInfoFamilyCard);
         textViewNumberId = view.findViewById(R.id.textViewInfoNumberId);
         textViewName = view.findViewById(R.id.textViewInfoName);
-        textViewPobDob = view.findViewById(R.id.textViewInfoPobDob);
 
         return view;
     }
@@ -102,8 +98,22 @@ public class CitizenFormDialog extends DialogFragment {
         }
         view.findViewById(R.id.buttonSave).setOnClickListener(onSaveButtonClicked);
         view.findViewById(R.id.buttonCancel).setOnClickListener(onCancelButtonClicked);
-        if (mFamilyCardId != null && !mFamilyCardId.equalsIgnoreCase("")) {
-            editTextFamilyCardId.setText(mFamilyCardId);
+        view.findViewById(R.id.imageScanNik).setOnClickListener(onScanNikClicked);
+        view.findViewById(R.id.imageScanName).setOnClickListener(onScanNameClicked);
+
+        Citizen citizen = RSPreference.getInstance(mContext).loadTempCitizensScanResult();
+        if (citizen != null) {
+            editTextNumberId.setText(citizen.getNumberId());
+            editTextName.setText(citizen.getName());
+        }
+
+        switch (Constant.scanType) {
+            case Constant.scanNumber:
+                editTextNumberId.setText(mParams);
+                break;
+            case Constant.scanName:
+                editTextName.setText(mParams);
+                break;
         }
     }
 
@@ -138,8 +148,7 @@ public class CitizenFormDialog extends DialogFragment {
         @Override
         public void onClick(View v) {
             if (isFilled()) {
-                ArrayList<Citizen.FamilyData> familyData = new ArrayList<>();
-                Citizen citizen = new Citizen(familyCardId, numberId, name, pobDob, familyData);
+                Citizen citizen = new Citizen(numberId, name);
                 RSPreference.getInstance(mContext).addCitizen(citizen);
                 citizenFormDialogListener.onButtonSaveClicked();
                 dismiss();
@@ -155,12 +164,38 @@ public class CitizenFormDialog extends DialogFragment {
         }
     };
 
+    private final View.OnClickListener onScanNikClicked = v -> {
+        dismiss();
+        citizenFormDialogListener.onScanNikClicked();
+    };
+
+    private final View.OnClickListener onScanNameClicked = v -> {
+        dismiss();
+        citizenFormDialogListener.onScanNameClicked();
+    };
+
     public CitizenFormDialog getCitizenFormDialogListener(CitizenFormDialogListener citizenFormDialogListener) {
         this.citizenFormDialogListener = citizenFormDialogListener;
         return this;
     }
 
     private boolean isFilled() {
+        if (editTextNumberId.getText() != null && editTextNumberId.getText().toString().equalsIgnoreCase("")) {
+            textViewNumberId.setVisibility(View.VISIBLE);
+        } else {
+            textViewNumberId.setVisibility(View.GONE);
+            numberId = editTextNumberId.getText().toString();
+        }
+        if (editTextName.getText() != null && editTextName.getText().toString().equalsIgnoreCase("")) {
+            textViewName.setVisibility(View.VISIBLE);
+        } else {
+            textViewName.setVisibility(View.GONE);
+            name = editTextName.getText().toString();
+        }
+        return !numberId.equalsIgnoreCase("") && !name.equalsIgnoreCase("");
+    }
+
+    /*private boolean isFilled() {
         if (editTextFamilyCardId.getText() != null && editTextFamilyCardId.getText().toString().equalsIgnoreCase("")) {
             textViewFamilyCard.setVisibility(View.VISIBLE);
         } else {
@@ -187,6 +222,6 @@ public class CitizenFormDialog extends DialogFragment {
         }
         return !familyCardId.equalsIgnoreCase("") && !numberId.equalsIgnoreCase("")
                 && !name.equalsIgnoreCase("") && !pobDob.equalsIgnoreCase("");
-    }
+    }*/
 
 }

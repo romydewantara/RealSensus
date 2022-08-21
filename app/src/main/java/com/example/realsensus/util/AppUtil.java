@@ -1,7 +1,10 @@
 package com.example.realsensus.util;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import com.example.realsensus.helper.RSPreference;
 import com.example.realsensus.model.Citizen;
@@ -26,7 +29,7 @@ public class AppUtil {
     }
 
     public void generateCitizensDataFromJson() {
-        String jsonFile = readTextFileFromAssets(context, "json/citizen_data.json");
+        String jsonFile = readTextFileFromAssets(context, "json/citizens.json");
         Type citizensData = new TypeToken<CitizenDataMaster>() {}.getType();
         CitizenDataMaster citizenDataMaster = new Gson().fromJson(jsonFile, citizensData);
         Collections.reverse(citizenDataMaster.getCitizensData());
@@ -40,11 +43,25 @@ public class AppUtil {
         Log.d(TAG, "addCitizenDataMaster - citizens data: " + new Gson().toJson(RSPreference.getInstance(context).loadCitizensDataMaster()));
     }
 
-    public void updateCitizensDataMaster(String oldFamilyCardId, Citizen citizen) {
+    public void updateCitizensDataMasterAsFamily(String oldFamilyCardId, Citizen citizen) {
         if (citizenDataMaster != null && citizenDataMaster.getCitizensData().size() > 0) {
             for (int i = 0; i < citizenDataMaster.getCitizensData().size(); i++) {
                 Citizen tempCitizen = citizenDataMaster.getCitizensData().get(i);
                 if (tempCitizen.getFamilyCardId().equalsIgnoreCase(oldFamilyCardId)) {
+                    citizenDataMaster.getCitizensData().set(i, citizen);
+                    break;
+                }
+            }
+        }
+        RSPreference.getInstance(context).saveCitizensDataMaster(citizenDataMaster);
+        Log.d(TAG, "addCitizenDataMaster - citizens data: " + new Gson().toJson(RSPreference.getInstance(context).loadCitizensDataMaster()));
+    }
+
+    public void updateCitizensDataMaster(String oldNik, Citizen citizen) {
+        if (citizenDataMaster != null && citizenDataMaster.getCitizensData().size() > 0) {
+            for (int i = 0; i < citizenDataMaster.getCitizensData().size(); i++) {
+                Citizen tempCitizen = citizenDataMaster.getCitizensData().get(i);
+                if (tempCitizen.getNumberId().equalsIgnoreCase(oldNik)) {
                     citizenDataMaster.getCitizensData().set(i, citizen);
                     break;
                 }
@@ -82,5 +99,10 @@ public class AppUtil {
         } catch (IOException e) {
             return null;
         }
+    }
+
+    public static void hideKeyboardFrom(Context context, View view) {
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

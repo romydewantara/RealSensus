@@ -1,8 +1,6 @@
 package com.example.realsensus.adapter;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,14 +11,13 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.cardview.widget.CardView;
 import androidx.core.widget.TextViewCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.realsensus.R;
 import com.example.realsensus.model.Citizen;
 import com.example.realsensus.model.CitizenDataMaster;
-import com.google.gson.Gson;
 
 import java.util.Collections;
 
@@ -28,31 +25,38 @@ public class CitizensDataAdapter extends RecyclerView.Adapter<CitizensDataAdapte
 
     private final Context context;
     private final CitizenDataMaster citizenDataMaster;
-    private ClickListener clickListener;
+    private final ClickListener clickListener;
 
-    public CitizensDataAdapter(Context context, CitizenDataMaster citizenDataMaster) {
+    public CitizensDataAdapter(Context context, CitizenDataMaster citizenDataMaster, ClickListener clickListener) {
         this.context = context;
         this.citizenDataMaster = citizenDataMaster;
+        this.clickListener = clickListener;
         Collections.reverse(citizenDataMaster.getCitizensData());
     }
 
     @NonNull
     @Override
     public CitizensDataViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.layout_family_card_id, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.layout_citizen_id, parent, false);
         return new CitizensDataViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CitizensDataViewHolder holder, int position) {
-        holder.textViewFamilyCardId.setText(familyCardIdWithSpace(position));
-        holder.textViewFamilyHeadName.setText(citizenDataMaster.getCitizensData().get(position).getFamilyHeadName());
+        holder.textViewCitizenId.setText(citizenDataMaster.getCitizensData().get(position).getNumberId());
+        holder.textViewCitizenName.setText(citizenDataMaster.getCitizensData().get(position).getName());
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(holder.textViewCountryName, 1, 10, 1, TypedValue.COMPLEX_UNIT_SP);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(holder.textViewCitizenId, 1, 14, 1, TypedValue.COMPLEX_UNIT_SP);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
-        Log.d("citizensData", "onBindViewHolder - family_data: " + new Gson().toJson(citizenDataMaster.getCitizensData()));
-        FamilyDataAdapter familyDataAdapter = new FamilyDataAdapter(context, citizenDataMaster.getCitizensData().get(position).getFamilyData());
-        holder.recyclerViewFamilyCardId.setLayoutManager(linearLayoutManager);
-        holder.recyclerViewFamilyCardId.setAdapter(familyDataAdapter);
+        holder.cardViewCitizensDataItem.setOnClickListener(v -> {
+            clickListener.onCitizenDetails(citizenDataMaster.getCitizensData().get(position));
+        });
+        holder.imageBurgerMenu.setOnClickListener(v -> {
+            if (holder.linearLayoutButtons.getVisibility() == View.INVISIBLE || holder.linearLayoutButtons.getVisibility() == View.GONE)
+                holder.linearLayoutButtons.setVisibility(View.VISIBLE); else holder.linearLayoutButtons.setVisibility(View.GONE);
+        });
+        holder.buttonEdit.setOnClickListener(v -> clickListener.onButtonEditClicked(citizenDataMaster.getCitizensData().get(position)));
+        holder.buttonDelete.setOnClickListener(v -> clickListener.onButtonDeleteClicked(citizenDataMaster.getCitizensData().get(position)));
     }
 
     @Override
@@ -69,72 +73,33 @@ public class CitizensDataAdapter extends RecyclerView.Adapter<CitizensDataAdapte
         return familyCardId.toString();
     }
 
-    class CitizensDataViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    static class CitizensDataViewHolder extends RecyclerView.ViewHolder {
 
-        AppCompatTextView textViewCountryName;
-        AppCompatTextView textViewFamilyCardIdTitle;
-        AppCompatTextView textViewFamilyCardId;
-        AppCompatTextView textViewFamilyHeadTitle;
-        AppCompatTextView textViewFamilyHeadName;
-        AppCompatTextView textViewMembershipFamily;
-        RecyclerView recyclerViewFamilyCardId;
-        LinearLayout linearLayoutButtons;
-        ImageView imageBurgerMenu;
-        Button buttonEdit;
-        Button buttonDelete;
-        boolean isShowButton = false;
+        private final CardView cardViewCitizensDataItem;
+        private final AppCompatTextView textViewCountryName;
+        private final AppCompatTextView textViewCitizenId;
+        private final AppCompatTextView textViewCitizenName;
+        private final LinearLayout linearLayoutButtons;
+        private final ImageView imageBurgerMenu;
+        private final Button buttonEdit;
+        private final Button buttonDelete;
 
         public CitizensDataViewHolder(View view) {
             super(view);
+            cardViewCitizensDataItem = view.findViewById(R.id.cardViewCitizensDataItem);
             textViewCountryName = view.findViewById(R.id.textViewCountryName);
-            textViewFamilyCardIdTitle = view.findViewById(R.id.textViewFamilyCardIdTitle);
-            textViewFamilyCardId = view.findViewById(R.id.textViewFamilyCardId);
-            textViewFamilyHeadTitle = view.findViewById(R.id.textViewFamilyHeadTitle);
-            textViewFamilyHeadName = view.findViewById(R.id.textViewFamilyHeadName);
-            textViewMembershipFamily = view.findViewById(R.id.textViewMembershipFamily);
-            recyclerViewFamilyCardId = view.findViewById(R.id.recyclerViewFamilyCardId);
+            textViewCitizenId = view.findViewById(R.id.textViewCitizenId);
+            textViewCitizenName = view.findViewById(R.id.textViewCitizenName);
             linearLayoutButtons = view.findViewById(R.id.linearLayoutButtons);
             imageBurgerMenu = view.findViewById(R.id.imageBurgerMenu);
             buttonEdit = view.findViewById(R.id.buttonEdit);
             buttonDelete = view.findViewById(R.id.buttonDelete);
-
-            TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(
-                    textViewCountryName, 1, 10, 1, TypedValue.COMPLEX_UNIT_SP);
-            TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(
-                    textViewFamilyCardId, 1, 16, 1, TypedValue.COMPLEX_UNIT_SP);
-            imageBurgerMenu.setOnClickListener(this);
-            buttonEdit.setOnClickListener(this);
-            buttonDelete.setOnClickListener(this);
         }
 
-        @SuppressLint("NonConstantResourceId")
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.imageBurgerMenu:
-                    if (!isShowButton) {
-                        isShowButton = true;
-                        linearLayoutButtons.setVisibility(View.VISIBLE);
-                    } else {
-                        isShowButton = false;
-                        linearLayoutButtons.setVisibility(View.GONE);
-                    }
-                    break;
-                case R.id.buttonEdit:
-                    clickListener.onButtonEditClicked(citizenDataMaster.getCitizensData().get(getAdapterPosition()));
-                    break;
-                case R.id.buttonDelete:
-                    clickListener.onButtonDeleteClicked(citizenDataMaster.getCitizensData().get(getAdapterPosition()));
-                    break;
-            }
-        }
-    }
-
-    public void setClickListener(ClickListener clickListener) {
-        this.clickListener = clickListener;
     }
 
     public interface ClickListener {
+        void onCitizenDetails(Citizen citizen);
         void onButtonEditClicked(Citizen citizen);
         void onButtonDeleteClicked(Citizen citizen);
     }

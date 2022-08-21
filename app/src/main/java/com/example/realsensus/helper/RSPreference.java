@@ -70,6 +70,14 @@ public class RSPreference {
         return getString(Constant.KEY_OCR_TEXT_RESULT);
     }
 
+    public void saveTempCitizenScanResult(Citizen citizen) {
+        putObject(Constant.KEY_CITIZENS_FORM_DATA, citizen);
+    }
+
+    public Citizen loadTempCitizensScanResult() {
+        return (Citizen) getObject(Constant.KEY_CITIZENS_FORM_DATA, Citizen.class);
+    }
+
     public void logout() {
         setUser(null);
         setSignIn(false);

@@ -14,40 +14,28 @@
             android:layout_margin="18dp">
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/editTextFamilyCardId"
-                style="@style/TextRegularBlack16"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/background_edit_text_form_citizen"
-                android:hint="@string/hint_citizen_family_card_id"
-                android:inputType="number"
-                android:padding="10dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textViewInfoFamilyCard"
-                style="@style/TextRegularRed12"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/info_empty_family_card"
-                android:visibility="gone"
-                app:layout_constraintTop_toBottomOf="@id/editTextFamilyCardId" />
-
-            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/editTextNumberId"
                 style="@style/TextRegularBlack16"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:background="@drawable/background_edit_text_form_citizen"
                 android:hint="@string/hint_citizen_number_id"
                 android:inputType="number"
                 android:padding="10dp"
+                app:layout_constraintWidth_percent=".85"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textViewInfoFamilyCard" />
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageScanNik"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@mipmap/ic_camera"
+                app:layout_constraintWidth_percent=".12"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintTop_toTopOf="@id/editTextNumberId"
+                app:layout_constraintBottom_toBottomOf="@id/editTextNumberId"
+                app:layout_constraintRight_toRightOf="parent"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textViewInfoNumberId"
@@ -67,9 +55,20 @@
                 android:background="@drawable/background_edit_text_form_citizen"
                 android:hint="@string/hint_citizen_name"
                 android:padding="10dp"
+                app:layout_constraintWidth_percent=".85"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textViewInfoNumberId" />
+
+            <ImageView
+                android:id="@+id/imageScanName"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@mipmap/ic_camera"
+                app:layout_constraintWidth_percent=".12"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintTop_toTopOf="@id/editTextName"
+                app:layout_constraintBottom_toBottomOf="@id/editTextName"
+                app:layout_constraintRight_toRightOf="parent"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textViewInfoName"
@@ -79,28 +78,6 @@
                 android:text="@string/info_empty_name"
                 android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@id/editTextName" />
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/editTextPobDob"
-                style="@style/TextRegularBlack16"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/background_edit_text_form_citizen"
-                android:hint="@string/hint_citizen_pobDop"
-                android:padding="10dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textViewInfoName" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textViewInfoPobDob"
-                style="@style/TextRegularRed12"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/info_empty_pob_dob"
-                android:visibility="gone"
-                app:layout_constraintTop_toBottomOf="@id/editTextPobDob" />
 
             <Button
                 android:id="@+id/buttonSave"
@@ -115,7 +92,7 @@
                 android:text="@string/button_save"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textViewInfoPobDob" />
+                app:layout_constraintTop_toBottomOf="@id/textViewInfoName" />
 
             <Button
                 android:id="@+id/buttonCancel"
