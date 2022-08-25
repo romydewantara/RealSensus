@@ -1,5 +1,6 @@
 package com.example.realsensus.fragment;
 
+import android.Manifest;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,7 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
@@ -24,6 +27,7 @@ import com.example.realsensus.MainActivity;
 import com.example.realsensus.R;
 import com.example.realsensus.adapter.CitizensDataAdapter;
 import com.example.realsensus.constant.Constant;
+import com.example.realsensus.helper.FragmentPermissionHelper;
 import com.example.realsensus.helper.RSPreference;
 import com.example.realsensus.library.CitizenFormBottomSheetDialog;
 import com.example.realsensus.library.CitizenFormDialog;
@@ -46,6 +50,8 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
     private Context context;
     private CitizenDataMaster citizenDataMaster;
     private FragmentListener fragmentListener;
+    private ActivityResultLauncher<String> requestPermissionLauncher;
+
     //widget
     private RecyclerView recyclerViewCitizensData;
     private CardView cardViewAdd;
@@ -110,7 +116,7 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
         v.findViewById(R.id.imageAdd).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showCitizenFormDialog("");
+                requestPermissions();
             }
         });
         return v;
@@ -131,6 +137,18 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
         } else {
             throw new RuntimeException(context + " must implement FragmentListener");
         }
+        requestPermissionLauncher = new FragmentPermissionHelper().startPermissionHelper(this, isGranted -> {
+            if (isGranted) {
+                //fragmentListener.onFragmentFinish(CitizenDataFragment.this, MainActivity.FRAGMENT_FINISH_GOTO_SCANNER, true);
+                showCitizenFormDialog("");
+            } else {
+                Toast.makeText(context, context.getResources().getString(R.string.no_camera_permission), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void requestPermissions() {
+        requestPermissionLauncher.launch(Manifest.permission.CAMERA);
     }
 
     private void fetchCitizensData() { //memuat data warga
@@ -214,8 +232,8 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
 
     @Override
     public void onButtonDeleteClicked(Citizen citizen) {
-        String message = "Data yang dihapus tidak bisa dimuat ulang, apakah Anda yakin ingin menghapus data keluarga "
-                + citizen.getFamilyHeadName() + "?";
+        String message = "Data KTP yang dihapus tidak bisa dimuat ulang, apakah Anda yakin ingin menghapus data "
+                + citizen.getName() + "?";
         FragmentManager fm = getFragmentManager();
         PopUpDialog citizenFormDialog = PopUpDialog.newInstance(context, "Peringatan", message)
                 .setButton("", "", new PopUpDialogListener() {

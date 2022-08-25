@@ -63,26 +63,26 @@ public class AppUtil {
                 Citizen tempCitizen = citizenDataMaster.getCitizensData().get(i);
                 if (tempCitizen.getNumberId().equalsIgnoreCase(oldNik)) {
                     citizenDataMaster.getCitizensData().set(i, citizen);
+                    Log.d(TAG, "updateCitizensDataMaster - citizens to be update: " + new Gson().toJson(citizenDataMaster.getCitizensData().get(i)));
                     break;
                 }
             }
         }
         RSPreference.getInstance(context).saveCitizensDataMaster(citizenDataMaster);
-        Log.d(TAG, "addCitizenDataMaster - citizens data: " + new Gson().toJson(RSPreference.getInstance(context).loadCitizensDataMaster()));
     }
 
     public void deleteCitizen(Citizen citizen) {
         if (citizenDataMaster != null && citizenDataMaster.getCitizensData().size() > 0) {
             for (int i = 0; i < citizenDataMaster.getCitizensData().size(); i++) {
                 Citizen tempCitizen = citizenDataMaster.getCitizensData().get(i);
-                if (tempCitizen.getFamilyCardId().equalsIgnoreCase(citizen.getFamilyCardId())) {
+                if (tempCitizen.getNumberId().equalsIgnoreCase(citizen.getNumberId())) {
+                    Log.d(TAG, "addCitizenDataMaster - citizens to be deleted: " + new Gson().toJson(tempCitizen));
                     citizenDataMaster.getCitizensData().remove(i);
                     break;
                 }
             }
         }
         RSPreference.getInstance(context).saveCitizensDataMaster(citizenDataMaster);
-        Log.d(TAG, "addCitizenDataMaster - citizens data: " + new Gson().toJson(RSPreference.getInstance(context).loadCitizensDataMaster()));
     }
 
     public String readTextFileFromAssets(Context context, String fileName) {

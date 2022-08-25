@@ -14,8 +14,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/buttonSave">
 
-        <include
-            layout="@layout/layout_citizen_form" />
+        <include layout="@layout/layout_citizen_form" />
 
     </RelativeLayout>
 

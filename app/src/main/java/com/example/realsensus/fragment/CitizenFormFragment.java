@@ -2,12 +2,6 @@ package com.example.realsensus.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatEditText;
-import androidx.fragment.app.Fragment;
-
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,11 +11,15 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.fragment.app.Fragment;
+
 import com.airbnb.lottie.LottieAnimationView;
 import com.airbnb.lottie.LottieDrawable;
 import com.example.realsensus.MainActivity;
 import com.example.realsensus.R;
-import com.example.realsensus.helper.RSPreference;
 import com.example.realsensus.listener.FragmentListener;
 import com.example.realsensus.model.Citizen;
 import com.example.realsensus.util.AppUtil;
@@ -180,6 +178,8 @@ public class CitizenFormFragment extends Fragment {
         loading.playAnimation();
         loading.setVisibility(View.VISIBLE);
         loading.startAnimation(animFadeIn);
+        buttonSave.setEnabled(false);
+        buttonCancel.setEnabled(false);
 
         Handler handler = new Handler();
         handler.postDelayed(() -> {
