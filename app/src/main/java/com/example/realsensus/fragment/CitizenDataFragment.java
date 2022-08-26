@@ -187,6 +187,54 @@ public class CitizenDataFragment extends Fragment implements CitizensDataAdapter
                         Constant.scanType = Constant.scanName;
                         fragmentListener.onFragmentFinish(CitizenDataFragment.this, MainActivity.FRAGMENT_FINISH_GOTO_SCANNER, true);
                     }
+
+                    @Override
+                    public void onScanPobClicked() {
+                        Constant.scanType = Constant.scanPob;
+                        fragmentListener.onFragmentFinish(CitizenDataFragment.this, MainActivity.FRAGMENT_FINISH_GOTO_SCANNER, true);
+                    }
+
+                    @Override
+                    public void onScanDobClicked() {
+                        Constant.scanType = Constant.scanDob;
+                        fragmentListener.onFragmentFinish(CitizenDataFragment.this, MainActivity.FRAGMENT_FINISH_GOTO_SCANNER, true);
+                    }
+
+                    @Override
+                    public void onScanAddressClicked() {
+                        Constant.scanType = Constant.scanAddress;
+                        fragmentListener.onFragmentFinish(CitizenDataFragment.this, MainActivity.FRAGMENT_FINISH_GOTO_SCANNER, true);
+                    }
+
+                    @Override
+                    public void onScanReligionClicked() {
+                        Constant.scanType = Constant.scanReligion;
+                        fragmentListener.onFragmentFinish(CitizenDataFragment.this, MainActivity.FRAGMENT_FINISH_GOTO_SCANNER, true);
+                    }
+
+                    @Override
+                    public void onScanMarriageStateClicked() {
+                        Constant.scanType = Constant.scanMarriageState;
+                        fragmentListener.onFragmentFinish(CitizenDataFragment.this, MainActivity.FRAGMENT_FINISH_GOTO_SCANNER, true);
+                    }
+
+                    @Override
+                    public void onScanTypeOfWorkClicked() {
+                        Constant.scanType = Constant.scanTypeOfWork;
+                        fragmentListener.onFragmentFinish(CitizenDataFragment.this, MainActivity.FRAGMENT_FINISH_GOTO_SCANNER, true);
+                    }
+
+                    @Override
+                    public void onScanCitizenshipClicked() {
+                        Constant.scanType = Constant.scanCitizenship;
+                        fragmentListener.onFragmentFinish(CitizenDataFragment.this, MainActivity.FRAGMENT_FINISH_GOTO_SCANNER, true);
+                    }
+
+                    @Override
+                    public void onScanValidUntilClicked() {
+                        Constant.scanType = Constant.scanValidUntil;
+                        fragmentListener.onFragmentFinish(CitizenDataFragment.this, MainActivity.FRAGMENT_FINISH_GOTO_SCANNER, true);
+                    }
                 });
         if (fm != null) {
             citizenFormDialog.show(fm, "citizen_form_dialog");

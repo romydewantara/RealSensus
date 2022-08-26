@@ -16,5 +16,13 @@ public class Constant {
     //scanner flag
     public final static String scanNumber = "ID_NUMBER";
     public final static String scanName = "NAME";
+    public final static String scanPob = "POB";
+    public final static String scanDob = "DOB";
+    public final static String scanAddress = "ADDRESS";
+    public final static String scanReligion = "RELIGION";
+    public final static String scanMarriageState = "MARRIAGE_STATE";
+    public final static String scanTypeOfWork = "TYPE_OF_WORK";
+    public final static String scanCitizenship = "CITIZENSHIP";
+    public final static String scanValidUntil = "VALID_UNTIL";
     public static String scanType = scanNumber;
 }

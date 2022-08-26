@@ -73,13 +73,30 @@
         app:layout_constraintTop_toBottomOf="@id/textDobTitle"/>
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textAddressTitle"
+        style="@style/TextMediumBlack16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Alamat"
+        app:layout_constraintTop_toBottomOf="@id/textDob"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textAddress"
+        style="@style/TextRegularBlack14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Address"
+        app:layout_constraintTop_toBottomOf="@id/textAddressTitle"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textReligionTitle"
         style="@style/TextMediumBlack16"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Agama"
-        app:layout_constraintTop_toBottomOf="@id/textDob"/>
+        app:layout_constraintTop_toBottomOf="@id/textAddress"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textReligion"

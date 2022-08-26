@@ -154,6 +154,7 @@ public class CitizenFormFragment extends Fragment {
         editTextName.setText(name);
         editTextPob.setText(pob);
         editTextDob.setText(dob);
+        editTextAddress.setText(address);
         editTextReligion.setText(religion);
         editTextMarriageState.setText(marriageState);
         editTextTypeOfWork.setText(typeOfWork);

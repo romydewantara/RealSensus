@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Name"
+            android:text="Nama"
             app:layout_constraintTop_toBottomOf="@id/editTextNumberId" />
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -62,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="POB"
+            android:text="Tempat Lahir"
             app:layout_constraintTop_toBottomOf="@id/editTextName" />
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -86,7 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="DOB"
+            android:text="Tanggal Lahir"
             app:layout_constraintTop_toBottomOf="@id/editTextPob" />
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -158,7 +158,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Marriage Status"
+            android:text="Status Perkawinan"
             app:layout_constraintTop_toBottomOf="@id/editTextReligion" />
 
         <androidx.appcompat.widget.AppCompatEditText

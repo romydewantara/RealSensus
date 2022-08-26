@@ -32,14 +32,31 @@ public class CitizenFormDialog extends DialogFragment {
     private boolean shown = false;
 
     //widget
-    private AppCompatEditText editTextNumberId;
-    private AppCompatEditText editTextName;
     private AppCompatTextView textViewNumberId;
     private AppCompatTextView textViewName;
+    private AppCompatTextView textViewPob;
+    private AppCompatEditText editTextNumberId;
+    private AppCompatEditText editTextName;
+    private AppCompatEditText editTextPob;
+    private AppCompatEditText editTextDob;
+    private AppCompatEditText editTextAddress;
+    private AppCompatEditText editTextReligion;
+    private AppCompatEditText editTextMarriageState;
+    private AppCompatEditText editTextTypeOfWork;
+    private AppCompatEditText editTextCitizens;
+    private AppCompatEditText editTextValidUntil;
     private ImageView imageScanNik;
     private ImageView imageScanName;
+    private ImageView imageScanPob;
+    private ImageView imageScanDob;
+    private ImageView imageScanAddress;
+    private ImageView imageScanReligion;
+    private ImageView imageScanMarriageState;
+    private ImageView imageScanTypeOfWork;
+    private ImageView imageScanCitizens;
+    private ImageView imageScanValidUntil;
 
-    String numberId = "", name = "";
+    String numberId, name, pob, dob, address, religion, marriageState, typeOfWork, citizenship, validUntil;
 
     @SuppressLint("StaticFieldLeak")
     private static Context mContext;
@@ -77,13 +94,31 @@ public class CitizenFormDialog extends DialogFragment {
             getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
         View view = inflater.inflate(R.layout.layout_form_citizen, container, false);
-        imageScanNik = view.findViewById(R.id.imageScanNik);
-        imageScanName = view.findViewById(R.id.imageScanName);
-        editTextNumberId = view.findViewById(R.id.editTextNumberId);
-        editTextName = view.findViewById(R.id.editTextName);
         textViewNumberId = view.findViewById(R.id.textViewInfoNumberId);
         textViewName = view.findViewById(R.id.textViewInfoName);
+        textViewPob = view.findViewById(R.id.textViewInfoPob);
 
+        imageScanNik = view.findViewById(R.id.imageScanNik);
+        imageScanName = view.findViewById(R.id.imageScanName);
+        imageScanPob = view.findViewById(R.id.imageScanPob);
+        imageScanDob = view.findViewById(R.id.imageScanDob);
+        imageScanAddress = view.findViewById(R.id.imageScanAddress);
+        imageScanReligion = view.findViewById(R.id.imageScanReligion);
+        imageScanMarriageState = view.findViewById(R.id.imageScanMarriageState);
+        imageScanTypeOfWork = view.findViewById(R.id.imageScanTypeOfWork);
+        imageScanCitizens = view.findViewById(R.id.imageScanCitizens);
+        imageScanValidUntil = view.findViewById(R.id.imageScanValidUntil);
+
+        editTextNumberId = view.findViewById(R.id.editTextNumberId);
+        editTextName = view.findViewById(R.id.editTextName);
+        editTextPob = view.findViewById(R.id.editTextPob);
+        editTextDob = view.findViewById(R.id.editTextDob);
+        editTextAddress = view.findViewById(R.id.editTextAddress);
+        editTextReligion = view.findViewById(R.id.editTextReligion);
+        editTextMarriageState = view.findViewById(R.id.editTextMarriageState);
+        editTextTypeOfWork = view.findViewById(R.id.editTextTypeOfWork);
+        editTextCitizens = view.findViewById(R.id.editTextCitizens);
+        editTextValidUntil = view.findViewById(R.id.editTextValidUntil);
         return view;
     }
 
@@ -100,11 +135,27 @@ public class CitizenFormDialog extends DialogFragment {
         view.findViewById(R.id.buttonCancel).setOnClickListener(onCancelButtonClicked);
         view.findViewById(R.id.imageScanNik).setOnClickListener(onScanNikClicked);
         view.findViewById(R.id.imageScanName).setOnClickListener(onScanNameClicked);
+        view.findViewById(R.id.imageScanPob).setOnClickListener(onScanPobClicked);
+        view.findViewById(R.id.imageScanDob).setOnClickListener(onScanDobClicked);
+        view.findViewById(R.id.imageScanAddress).setOnClickListener(onScanAddressClicked);
+        view.findViewById(R.id.imageScanReligion).setOnClickListener(onScanReligionClicked);
+        view.findViewById(R.id.imageScanMarriageState).setOnClickListener(onScanMarriageStateClicked);
+        view.findViewById(R.id.imageScanTypeOfWork).setOnClickListener(onScanTypeOfWorkClicked);
+        view.findViewById(R.id.imageScanCitizens).setOnClickListener(onScanCitizenshipClicked);
+        view.findViewById(R.id.imageScanValidUntil).setOnClickListener(onScanValidUntilClicked);
 
         Citizen citizen = RSPreference.getInstance(mContext).loadTempCitizensScanResult();
         if (citizen != null) {
             editTextNumberId.setText(citizen.getNumberId());
             editTextName.setText(citizen.getName());
+            editTextPob.setText(citizen.getPob());
+            editTextDob.setText("");
+            editTextAddress.setText(citizen.getAddress());
+            editTextReligion.setText(citizen.getReligion());
+            editTextMarriageState.setText(citizen.getMarriageState());
+            editTextTypeOfWork.setText(citizen.getTypeOfWork());
+            editTextCitizens.setText(citizen.getCitizenship());
+            editTextValidUntil.setText("");
         }
 
         switch (Constant.scanType) {
@@ -113,6 +164,30 @@ public class CitizenFormDialog extends DialogFragment {
                 break;
             case Constant.scanName:
                 editTextName.setText(mParams);
+                break;
+            case Constant.scanPob:
+                editTextPob.setText(mParams);
+                break;
+            case Constant.scanDob:
+                editTextDob.setText(mParams);
+                break;
+            case Constant.scanAddress:
+                editTextAddress.setText(mParams);
+                break;
+            case Constant.scanReligion:
+                editTextReligion.setText(mParams);
+                break;
+            case Constant.scanMarriageState:
+                editTextMarriageState.setText(mParams);
+                break;
+            case Constant.scanTypeOfWork:
+                editTextTypeOfWork.setText(mParams);
+                break;
+            case Constant.scanCitizenship:
+                editTextCitizens.setText(mParams);
+                break;
+            case Constant.scanValidUntil:
+                editTextValidUntil.setText(mParams);
                 break;
         }
     }
@@ -148,7 +223,25 @@ public class CitizenFormDialog extends DialogFragment {
         @Override
         public void onClick(View v) {
             if (isFilled()) {
-                Citizen citizen = new Citizen(numberId, name);
+                Citizen.Date dobObject = new Citizen.Date();
+                if (!dob.equalsIgnoreCase("")) {
+                    //String dateOfBirth = editTextDob.getText().toString();
+                    //Log.d("dateOfBirth", "showLoading - dob: " + dateOfBirth);
+                    dobObject = new Citizen.Date(
+                            dob.split("-")[0],
+                            dob.split("-")[1],
+                            dob.split("-")[2]);
+                }
+                Citizen.Date validUntilObject = new Citizen.Date();
+                if (!validUntil.equalsIgnoreCase("")) {
+                    //String validUntil = editTextValidUntil.getText().toString();
+                    validUntilObject = new Citizen.Date(
+                            validUntil.split("-")[0],
+                            validUntil.split("-")[1],
+                            validUntil.split("-")[2]);
+                }
+
+                Citizen citizen = new Citizen(numberId, name, pob, dobObject, address, religion,  marriageState, typeOfWork, citizenship, validUntilObject);
                 RSPreference.getInstance(mContext).addCitizen(citizen);
                 citizenFormDialogListener.onButtonSaveClicked();
                 dismiss();
@@ -174,6 +267,46 @@ public class CitizenFormDialog extends DialogFragment {
         citizenFormDialogListener.onScanNameClicked();
     };
 
+    private final View.OnClickListener onScanPobClicked = v -> {
+        dismiss();
+        citizenFormDialogListener.onScanPobClicked();
+    };
+
+    private final View.OnClickListener onScanDobClicked = v -> {
+        dismiss();
+        citizenFormDialogListener.onScanDobClicked();
+    };
+
+    private final View.OnClickListener onScanAddressClicked = v -> {
+        dismiss();
+        citizenFormDialogListener.onScanAddressClicked();
+    };
+
+    private final View.OnClickListener onScanReligionClicked = v -> {
+        dismiss();
+        citizenFormDialogListener.onScanReligionClicked();
+    };
+
+    private final View.OnClickListener onScanMarriageStateClicked = v -> {
+        dismiss();
+        citizenFormDialogListener.onScanMarriageStateClicked();
+    };
+
+    private final View.OnClickListener onScanTypeOfWorkClicked = v -> {
+        dismiss();
+        citizenFormDialogListener.onScanTypeOfWorkClicked();
+    };
+
+    private final View.OnClickListener onScanCitizenshipClicked = v -> {
+        dismiss();
+        citizenFormDialogListener.onScanCitizenshipClicked();
+    };
+
+    private final View.OnClickListener onScanValidUntilClicked = v -> {
+        dismiss();
+        citizenFormDialogListener.onScanValidUntilClicked();
+    };
+
     public CitizenFormDialog getCitizenFormDialogListener(CitizenFormDialogListener citizenFormDialogListener) {
         this.citizenFormDialogListener = citizenFormDialogListener;
         return this;
@@ -182,46 +315,33 @@ public class CitizenFormDialog extends DialogFragment {
     private boolean isFilled() {
         if (editTextNumberId.getText() != null && editTextNumberId.getText().toString().equalsIgnoreCase("")) {
             textViewNumberId.setVisibility(View.VISIBLE);
+            numberId = "";
         } else {
             textViewNumberId.setVisibility(View.GONE);
             numberId = editTextNumberId.getText().toString();
         }
         if (editTextName.getText() != null && editTextName.getText().toString().equalsIgnoreCase("")) {
             textViewName.setVisibility(View.VISIBLE);
+            name = "";
         } else {
             textViewName.setVisibility(View.GONE);
             name = editTextName.getText().toString();
         }
-        return !numberId.equalsIgnoreCase("") && !name.equalsIgnoreCase("");
+        if (editTextPob.getText() != null && editTextPob.getText().toString().equalsIgnoreCase("")) {
+            textViewPob.setVisibility(View.VISIBLE);
+            pob = "";
+        } else {
+            textViewPob.setVisibility(View.GONE);
+            pob = editTextPob.getText().toString();
+        }
+        dob = editTextDob.getText() != null && !editTextDob.getText().toString().equalsIgnoreCase("") ? editTextDob.getText().toString() : "";
+        address = editTextAddress.getText() != null && !editTextAddress.getText().toString().equalsIgnoreCase("") ? editTextAddress.getText().toString() : "";
+        religion = editTextReligion.getText() != null && !editTextReligion.getText().toString().equalsIgnoreCase("") ? editTextReligion.getText().toString() : "";
+        marriageState = editTextMarriageState.getText() != null && !editTextMarriageState.getText().toString().equalsIgnoreCase("") ? editTextMarriageState.getText().toString() : "";
+        typeOfWork = editTextTypeOfWork.getText() != null && !editTextTypeOfWork.getText().toString().equalsIgnoreCase("") ? editTextTypeOfWork.getText().toString() : "";
+        citizenship = editTextCitizens.getText() != null && !editTextCitizens.getText().toString().equalsIgnoreCase("") ? editTextCitizens.getText().toString() : "";
+        validUntil = editTextValidUntil.getText() != null && !editTextValidUntil.getText().toString().equalsIgnoreCase("") ? editTextValidUntil.getText().toString() : "";
+        return !numberId.equalsIgnoreCase("") && !name.equalsIgnoreCase("") && !pob.equalsIgnoreCase("");
     }
-
-    /*private boolean isFilled() {
-        if (editTextFamilyCardId.getText() != null && editTextFamilyCardId.getText().toString().equalsIgnoreCase("")) {
-            textViewFamilyCard.setVisibility(View.VISIBLE);
-        } else {
-            textViewFamilyCard.setVisibility(View.GONE);
-            familyCardId = editTextFamilyCardId.getText().toString();
-        }
-        if (editTextNumberId.getText() != null && editTextNumberId.getText().toString().equalsIgnoreCase("")) {
-            textViewNumberId.setVisibility(View.VISIBLE);
-        } else {
-            textViewNumberId.setVisibility(View.GONE);
-            numberId = editTextNumberId.getText().toString();
-        }
-        if (editTextName.getText() != null && editTextName.getText().toString().equalsIgnoreCase("")) {
-            textViewName.setVisibility(View.VISIBLE);
-        } else {
-            textViewName.setVisibility(View.GONE);
-            name = editTextName.getText().toString();
-        }
-        if (editTextPobDob.getText() != null && editTextPobDob.getText().toString().equalsIgnoreCase("")) {
-            textViewPobDob.setVisibility(View.VISIBLE);
-        } else {
-            textViewPobDob.setVisibility(View.GONE);
-            pobDob = editTextPobDob.getText().toString();
-        }
-        return !familyCardId.equalsIgnoreCase("") && !numberId.equalsIgnoreCase("")
-                && !name.equalsIgnoreCase("") && !pobDob.equalsIgnoreCase("");
-    }*/
 
 }

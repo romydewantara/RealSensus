@@ -20,6 +20,7 @@
     <string name="info_empty_family_card">*Nomor Kartu Keluarga harus diisi</string>
     <string name="info_empty_number_id">*Nomor NIK harus diisi</string>
     <string name="info_empty_name">*Nama harus diisi</string>
+    <string name="info_empty_pob">*Tempat lahir harus diisi</string>
     <string name="info_empty_pob_dob">*Tempat tanggal lahir harus diisi</string>
     <string name="info_data_canceled">Perubahan data dibatalkan</string>
     <string name="hint_username">Nama Pengguna</string>

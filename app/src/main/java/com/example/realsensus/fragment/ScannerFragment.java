@@ -203,6 +203,30 @@ public class ScannerFragment extends Fragment {
                     case Constant.scanName:
                         citizen.setName(editTextResult.getText().toString());
                         break;
+                    case Constant.scanPob:
+                        citizen.setPob(editTextResult.getText().toString());
+                        break;
+                    case Constant.scanDob:
+                        citizen.setDob(new Citizen.Date());
+                        break;
+                    case Constant.scanAddress:
+                        citizen.setAddress(editTextResult.getText().toString());
+                        break;
+                    case Constant.scanReligion:
+                        citizen.setReligion(editTextResult.getText().toString());
+                        break;
+                    case Constant.scanMarriageState:
+                        citizen.setMarriageState(editTextResult.getText().toString());
+                        break;
+                    case Constant.scanTypeOfWork:
+                        citizen.setTypeOfWork(editTextResult.getText().toString());
+                        break;
+                    case Constant.scanCitizenship:
+                        citizen.setCitizenship(editTextResult.getText().toString());
+                        break;
+                    case Constant.scanValidUntil:
+                        citizen.setValidUntil(new Citizen.Date());
+                        break;
                 }
                 RSPreference.getInstance(context).storeOCRTextResult(editTextResult.getText().toString());
                 RSPreference.getInstance(context).saveTempCitizenScanResult(citizen);

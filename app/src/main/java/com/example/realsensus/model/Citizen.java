@@ -53,19 +53,6 @@ public class Citizen {
         //required empty constructor
     }
 
-    public Citizen(String numberId, String name) {
-        this.numberId = numberId;
-        this.name = name;
-    }
-
-    public Citizen(String familyCardId, String numberId, String familyHeadName, String pobDob, ArrayList<FamilyData> familyData) {
-        this.familyCardId = familyCardId;
-        this.numberId = numberId;
-        this.familyHeadName = familyHeadName;
-        this.pobDob = pobDob;
-        this.familyData = familyData;
-    }
-
     public Citizen(String numberId, String name, String pob, Date dob, String address, String religion,
                    String marriageState, String typeOfWork, String citizenship, Date validUntil) {
         this.numberId = numberId;

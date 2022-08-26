@@ -1,446 +1,110 @@
 {
   "citizens_data": [
     {
-      "number_id": "3175060410710007",
-      "family_card_id": "3175061601097908",
-      "name": "P.SIMBOLON",
-      "gender": "Laki-laki",
-      "pob": "DELI SERDANG",
-      "dob": {
-        "date": "04",
-        "month": "Oktober",
-        "year": "1971"
-      },
-      "valid_until": {
-        "date": "",
-        "month": "",
-        "year": ""
-      },
-      "religion": "Katolik",
-      "pendidikan": "",
-      "type_of_work": "TNI",
-      "marriage_state": "Kawin",
-      "status_hubungan_dalam_keluarga": "",
-      "citizenship": "WNI",
-      "address": "DKI Jakarta"
-    },
-    {
-      "number_id": "3175064304780000",
-      "family_card_id": "3175061601097908",
-      "name": "Heppy sinaga",
-      "gender": "Perempuan",
-      "pob": "Medan",
-      "dob": {
-        "date": "03",
-        "month": "April",
-        "year": "1978"
-      },
-      "valid_until": {
-        "date": "",
-        "month": "",
-        "year": ""
-      },
-      "religion": "Katolik",
-      "pendidikan": "",
-      "type_of_work": "Ibu Rumah Tangga",
-      "marriage_state": "Kawin",
-      "status_hubungan_dalam_keluarga": "",
-      "citizenship": "WNI",
-      "address": "DKI Jakarta"
-    },
-    {
-      "number_id": "3175060410990002",
-      "family_card_id": "3175061601097908",
-      "name": "Yansen",
-      "gender": "Laki-laki",
-      "pob": "Jakarta",
-      "dob": {
-        "date": "04",
-        "month": "Oktober",
-        "year": "1999"
-      },
-      "valid_until": {
-        "date": "",
-        "month": "",
-        "year": ""
-      },
-      "religion": "Katolik",
-      "pendidikan": "",
-      "type_of_work": "Pelajar",
-      "marriage_state": "Belum Kawin",
-      "status_hubungan_dalam_keluarga": "",
-      "citizenship": "WNI",
-      "address": "DKI Jakarta"
-    },
-    {
-      "number_id": "3175060305051001",
-      "family_card_id": "3175061601097908",
-      "name": "Ign Akberto",
-      "gender": "Laki-laki",
-      "pob": "Jakarta",
-      "dob": {
-        "date": "03",
-        "month": "Mei",
-        "year": "2005"
-      },
-      "valid_until": {
-        "date": "",
-        "month": "",
-        "year": ""
-      },
-      "religion": "Katolik",
-      "pendidikan": "",
-      "type_of_work": "Pelajar",
-      "marriage_state": "Belum Kawin",
-      "status_hubungan_dalam_keluarga": "",
-      "citizenship": "WNI",
-      "address": "DKI Jakarta"
-    },
-    {
-      "number_id": "3175064406071004",
-      "family_card_id": "3175061601097908",
-      "name": "Theresia Santi",
-      "gender": "Perempuan",
-      "pob": "Jakarta",
-      "dob": {
-        "date": "04",
-        "month": "Juni",
-        "year": "2007"
-      },
-      "valid_until": {
-        "date": "",
-        "month": "",
-        "year": ""
-      },
-      "religion": "Katolik",
-      "pendidikan": "",
-      "type_of_work": "Pelajar",
-      "marriage_state": "Belum Kawin",
-      "status_hubungan_dalam_keluarga": "",
-      "citizenship": "WNI",
-      "address": "DKI Jakarta"
-    },
-    {
-      "number_id": "31750604107100071",
-      "family_card_id": "3175061809170030",
-      "name": "SUDAMAN",
-      "gender": "Laki-laki",
-      "pob": "Jepara",
+      "number_id": "3172020105940002",
+      "family_card_id": "0",
+      "name": "ALBIHARUL YAUMUL",
+      "gender": "LAKI-LAKI",
+      "pob": "JAKARTA",
       "dob": {
         "date": "01",
-        "month": "Januari",
-        "year": "1973"
+        "month": "05",
+        "year": "1994"
       },
       "valid_until": {
-        "date": "",
-        "month": "",
-        "year": ""
-      },
-      "religion": "Islam",
-      "pendidikan": "",
-      "type_of_work": "Wiraswasta",
-      "marriage_state": "Kawin",
-      "status_hubungan_dalam_keluarga": "",
-      "citizenship": "WNI",
-      "address": "DKI Jakarta"
-    },
-    {
-      "number_id": "1802137112740003",
-      "family_card_id": "3175061809170030",
-      "name": "Shofiati",
-      "gender": "Perempuan",
-      "pob": "Magelang",
-      "dob": {
-        "date": "31",
-        "month": "Desember",
-        "year": "1974"
-      },
-      "valid_until": {
-        "date": "",
-        "month": "",
-        "year": ""
-      },
-      "religion": "Islam",
-      "pendidikan": "",
-      "type_of_work": "Ibu Rumah Tangga",
-      "marriage_state": "Kawin",
-      "status_hubungan_dalam_keluarga": "",
-      "citizenship": "WNI",
-      "address": "DKI Jakarta"
-    },
-    {
-      "number_id": "1802134712050002",
-      "family_card_id": "3175061809170030",
-      "name": "Maya Tri Hapsari",
-      "gender": "Perempuan",
-      "pob": "Jakarta",
-      "dob": {
-        "date": "07",
-        "month": "Desember",
-        "year": "2005"
-      },
-      "valid_until": {
-        "date": "",
-        "month": "",
-        "year": ""
-      },
-      "religion": "Islam",
-      "pendidikan": "",
-      "type_of_work": "Pelajar",
-      "marriage_state": "Belum Kawin",
-      "status_hubungan_dalam_keluarga": "",
-      "citizenship": "WNI",
-      "address": "DKI Jakarta"
-    },
-    {
-      "number_id": "1802137107100003",
-      "family_card_id": "3175061809170030",
-      "name": "Ayu Andayani",
-      "gender": "Perempuan",
-      "pob": "Gunung Agung",
-      "dob": {
-        "date": "31",
-        "month": "Oktober",
-        "year": "2010"
-      },
-      "valid_until": {
-        "date": "",
-        "month": "",
-        "year": ""
-      },
-      "religion": "Islam",
-      "pendidikan": "",
-      "type_of_work": "Pelajar",
-      "marriage_state": "Belum Kawin",
-      "status_hubungan_dalam_keluarga": "",
-      "citizenship": "WNI",
-      "address": "DKI Jakarta"
-    },
-    {
-      "number_id": "3176061809820014",
-      "family_card_id": "3175062001099260",
-      "name": "ABDUL ARIS",
-      "gender": "Laki-laki",
-      "pob": "Jepara",
-      "dob": {
         "date": "01",
-        "month": "September",
-        "year": "1982"
+        "month": "05",
+        "year": "2016"
+      },
+      "religion": "ISLAM",
+      "pendidikan": "",
+      "type_of_work": "PELAJAR/MAHASISWA",
+      "marriage_state": "BELUM KAWIN",
+      "status_hubungan_dalam_keluarga": "",
+      "citizenship": "WNI",
+      "address": "JL. SUNGAI BAMBU, KELURAHAN SUNGAI BAMBU, KECAMATAN TANJUNG PRIOK RT. 004, RW. 008"
+    },
+    {
+      "number_id": "3172022004440002",
+      "family_card_id": "0",
+      "name": "KAMSARI BIN RASMA",
+      "gender": "LAKI-LAKI",
+      "pob": "JAKARTA",
+      "dob": {
+        "date": "20",
+        "month": "04",
+        "year": "1944"
       },
       "valid_until": {
         "date": "00",
         "month": "00",
         "year": "0000"
       },
-      "religion": "Islam",
+      "religion": "ISLAM",
       "pendidikan": "",
-      "type_of_work": "BHL",
-      "marriage_state": "Kawin",
+      "type_of_work": "PENSIUNAN",
+      "marriage_state": "KAWIN",
       "status_hubungan_dalam_keluarga": "",
       "citizenship": "WNI",
-      "address": "DKI Jakarta"
+      "address": "JL. SUNGAI BAMBU V NOMOR 18, KELURAHAN SUNGAI BAMBU, KECAMATAN TANJUNG PRIOK RT. 005, RW. 008"
     },
     {
-      "number_id": "3175066103910014",
-      "family_card_id": "3175062001099260",
-      "name": "Ine Mutia Sumayah",
-      "gender": "Perempuan",
-      "pob": "Jakarta",
+      "number_id": "3172040310920004",
+      "family_card_id": "0",
+      "name": "RESTU PRASETYO",
+      "gender": "LAKI-LAKI",
+      "pob": "JAKARTA",
       "dob": {
-        "date": "21",
-        "month": "Maret",
-        "year": "1991"
+        "date": "03",
+        "month": "10",
+        "year": "1992"
       },
       "valid_until": {
-        "date": "00",
-        "month": "00",
-        "year": "0000"
+        "date": "03",
+        "month": "10",
+        "year": "2017"
       },
-      "religion": "Islam",
+      "religion": "ISLAM",
       "pendidikan": "",
-      "type_of_work": "Ibu Rumah Tangga",
-      "marriage_state": "Kawin",
+      "type_of_work": "PELAJAR/MAHASISWA",
+      "marriage_state": "BELUM KAWIN",
       "status_hubungan_dalam_keluarga": "",
       "citizenship": "WNI",
-      "address": "DKI Jakarta"
+      "address": "JL. SERAYU RAYA BLOK L 365, RT. 006/RW. 001, KELURAHAN SEMPER BARAT, KECAMATAN CILINCING"
     },
     {
-      "number_id": "3175065611020012",
-      "family_card_id": "3175062001099260",
-      "name": "Indah Mutia R.",
-      "gender": "Perempuan",
-      "pob": "Jakarta",
+      "number_id": "3172021609020003",
+      "family_card_id": "0",
+      "name": "MUHAMMAD FAHREZA DWITAMA",
+      "gender": "LAKI-LAKI",
+      "pob": "JAKARTA",
       "dob": {
         "date": "16",
-        "month": "November",
+        "month": "09",
         "year": "2002"
       },
       "valid_until": {
-        "date": "00",
-        "month": "00",
-        "year": "0000"
-      },
-      "religion": "Islam",
-      "pendidikan": "",
-      "type_of_work": "Pelajar",
-      "marriage_state": "Belum Kawin",
-      "status_hubungan_dalam_keluarga": "",
-      "citizenship": "WNI",
-      "address": "DKI Jakarta"
-    },
-    {
-      "number_id": "3175064109111006",
-      "family_card_id": "3175062001099260",
-      "name": "Risma Fitriana",
-      "gender": "Perempuan",
-      "pob": "Jakarta",
-      "dob": {
-        "date": "01",
-        "month": "September",
-        "year": "2011"
-      },
-      "valid_until": {
-        "date": "00",
-        "month": "00",
-        "year": "0000"
-      },
-      "religion": "Islam",
-      "pendidikan": "",
-      "type_of_work": "Pelajar",
-      "marriage_state": "Belum Kawin",
-      "status_hubungan_dalam_keluarga": "",
-      "citizenship": "WNI",
-      "address": "DKI Jakarta"
-    },
-    {
-      "number_id": "3329061203870000",
-      "family_card_id": "3175061007190062",
-      "name": "SUWANDI",
-      "gender": "Laki-laki",
-      "pob": "Brebes",
-      "dob": {
-        "date": "12",
-        "month": "Maret",
-        "year": "1987"
-      },
-      "valid_until": {
-        "date": "00",
-        "month": "00",
-        "year": "0000"
-      },
-      "religion": "Islam",
-      "pendidikan": "",
-      "type_of_work": "Wiraswasta",
-      "marriage_state": "Kawin",
-      "status_hubungan_dalam_keluarga": "",
-      "citizenship": "WNI",
-      "address": "DKI Jakarta"
-    },
-    {
-      "number_id": "3329066908890000",
-      "family_card_id": "3175061007190062",
-      "name": "Mujiyanah",
-      "gender": "Perempuan",
-      "pob": "Brebes",
-      "dob": {
-        "date": "29",
-        "month": "Agustus",
-        "year": "1989"
-      },
-      "valid_until": {
-        "date": "00",
-        "month": "00",
-        "year": "0000"
-      },
-      "religion": "Islam",
-      "pendidikan": "",
-      "type_of_work": "Wiraswasta",
-      "marriage_state": "Kawin",
-      "status_hubungan_dalam_keluarga": "",
-      "citizenship": "WNI",
-      "address": "DKI Jakarta"
-    },
-    {
-      "number_id": "3329064105120001",
-      "family_card_id": "3175061007190062",
-      "name": "Vivian Andiyna Meylani",
-      "gender": "Perempuan",
-      "pob": "Brebes",
-      "dob": {
-        "date": "01",
-        "month": "Mei",
-        "year": "2012"
-      },
-      "valid_until": {
-        "date": "00",
-        "month": "00",
-        "year": "0000"
-      },
-      "religion": "Islam",
-      "pendidikan": "",
-      "type_of_work": "Pelajar",
-      "marriage_state": "Belum Kawin",
-      "status_hubungan_dalam_keluarga": "",
-      "citizenship": "WNI",
-      "address": "DKI Jakarta"
-    },
-    {
-      "number_id": "3175061007690012",
-      "family_card_id": "3175061701090530",
-      "name": "NUGROHO",
-      "gender": "Laki-laki",
-      "pob": "K.Progo",
-      "dob": {
-        "date": "10",
-        "month": "Juli",
-        "year": "1969"
-      },
-      "valid_until": {
-        "date": "00",
-        "month": "00",
-        "year": "0000"
-      },
-      "religion": "Islam",
-      "pendidikan": "",
-      "type_of_work": "Karyawan Swasta",
-      "marriage_state": "Kawin",
-      "status_hubungan_dalam_keluarga": "",
-      "citizenship": "WNI",
-      "address": "DKI Jakarta"
-    },
-    {
-      "number_id": "3175061007690012",
-      "family_card_id": "3175061701090530",
-      "name": "Miharsih",
-      "gender": "Perempuan",
-      "pob": "Jakarta",
-      "dob": {
-        "date": "24",
-        "month": "November",
-        "year": "1971"
-      },
-      "valid_until": {
-        "date": "00",
-        "month": "00",
-        "year": "0000"
-      },
-      "religion": "Islam",
-      "pendidikan": "",
-      "type_of_work": "Ibu Rumah Tangga",
-      "marriage_state": "Kawin",
-      "status_hubungan_dalam_keluarga": "",
-      "citizenship": "WNI",
-      "address": "DKI Jakarta"
-    },
-    {
-      "number_id": "3175060310960007",
-      "family_card_id": "3175061701090530",
-      "name": "Dimas Dinowibowo",
-      "gender": "Laki-laki",
-      "pob": "Jakarta",
-      "dob": {
         "date": "03",
-        "month": "Oktober",
+        "month": "10",
+        "year": "2017"
+      },
+      "religion": "ISLAM",
+      "pendidikan": "",
+      "type_of_work": "PELAJAR/MAHASISWA",
+      "marriage_state": "BELUM KAWIN",
+      "status_hubungan_dalam_keluarga": "",
+      "citizenship": "WNI",
+      "address": "JL. SERAYU RAYA BLOK L 365, RT. 006/RW. 001, KELURAHAN SEMPER BARAT, KECAMATAN CILINCING"
+    },
+    {
+      "number_id": "3182041402980005",
+      "family_card_id": "0",
+      "name": "DENIS FEBRYAN",
+      "gender": "LAKI-LAKI",
+      "pob": "JAKARTA",
+      "dob": {
+        "date": "14",
+        "month": "02",
         "year": "1996"
       },
       "valid_until": {
@@ -448,71 +112,23 @@
         "month": "00",
         "year": "0000"
       },
-      "religion": "Islam",
+      "religion": "ISLAM",
       "pendidikan": "",
-      "type_of_work": "Pelajar",
-      "marriage_state": "Belum Kawin",
+      "type_of_work": "PELAJAR/MAHASISWA",
+      "marriage_state": "BELUM KAWIN",
       "status_hubungan_dalam_keluarga": "",
       "citizenship": "WNI",
-      "address": "DKI Jakarta"
+      "address": "JL. KALIBARU TIMUR NOMOR 3, RT. 006/RW. 002, KELURAHAN KALIBARU, KECAMATAN CILINCING"
     },
     {
-      "number_id": "3175060504040004",
-      "family_card_id": "3175061701090530",
-      "name": "Rayi Dino Yudhoyono",
-      "gender": "Laki-laki",
-      "pob": "Jakarta",
+      "number_id": "3172025612740009",
+      "family_card_id": "0",
+      "name": "DESY RATNA SARI",
+      "gender": "PEREMPUAN",
+      "pob": "JAKARTA",
       "dob": {
-        "date": "05",
-        "month": "April",
-        "year": "2004"
-      },
-      "valid_until": {
-        "date": "00",
-        "month": "00",
-        "year": "0000"
-      },
-      "religion": "Islam",
-      "pendidikan": "",
-      "type_of_work": "Pelajar",
-      "marriage_state": "Belum Kawin",
-      "status_hubungan_dalam_keluarga": "",
-      "citizenship": "WNI",
-      "address": "DKI Jakarta"
-    },
-    {
-      "number_id": "3175061010050000",
-      "family_card_id": "3175061701090530",
-      "name": "Zaidan Dino Ramadhan",
-      "gender": "Laki-laki",
-      "pob": "Jakarta",
-      "dob": {
-        "date": "10",
-        "month": "Oktober",
-        "year": "2005"
-      },
-      "valid_until": {
-        "date": "00",
-        "month": "00",
-        "year": "0000"
-      },
-      "religion": "Islam",
-      "pendidikan": "",
-      "type_of_work": "Pelajar",
-      "marriage_state": "Belum Kawin",
-      "status_hubungan_dalam_keluarga": "",
-      "citizenship": "WNI",
-      "address": "DKI Jakarta"
-    },
-    {
-      "number_id": "3175063006740025",
-      "family_card_id": "3175061804110060",
-      "name": "HADI PRAYITNO",
-      "gender": "Laki-laki",
-      "pob": "Jakarta",
-      "dob": {
-        "date": "30",
-        "month": "Juni",
+        "date": "16",
+        "month": "12",
         "year": "1974"
       },
       "valid_until": {
@@ -520,205 +136,109 @@
         "month": "00",
         "year": "0000"
       },
-      "religion": "Islam",
+      "religion": "ISLAM",
       "pendidikan": "",
-      "type_of_work": "Karyawan Swasta",
-      "marriage_state": "Kawin",
+      "type_of_work": "MENGURUS RUMAH TANGGA",
+      "marriage_state": "KAWIN",
       "status_hubungan_dalam_keluarga": "",
       "citizenship": "WNI",
-      "address": "DKI Jakarta"
+      "address": "JL. SUNGAI BAMBU VIII NOMOR 18, RT. 004/RW. 008, KELURAHAN SUNGAI BAMBU, KECAMATAN TANJUNG PRIOK"
     },
     {
-      "number_id": "3175064206720010",
-      "family_card_id": "3175061804110060",
-      "name": "Surtiati",
-      "gender": "Perempuan",
-      "pob": "Jakarta",
+      "number_id": "3172025505810011",
+      "family_card_id": "0",
+      "name": "SITI YURIYAH",
+      "gender": "PEREMPUAN",
+      "pob": "JAKARTA",
       "dob": {
-        "date": "02",
-        "month": "Juni",
-        "year": "1972"
+        "date": "15",
+        "month": "05",
+        "year": "1981"
       },
       "valid_until": {
         "date": "00",
         "month": "00",
         "year": "0000"
       },
-      "religion": "Islam",
+      "religion": "ISLAM",
       "pendidikan": "",
-      "type_of_work": "Karyawan Swasta",
-      "marriage_state": "Kawin",
+      "type_of_work": "MENGURUS RUMAH TANGGA",
+      "marriage_state": "KAWIN",
       "status_hubungan_dalam_keluarga": "",
       "citizenship": "WNI",
-      "address": "DKI Jakarta"
+      "address": "JL. SUNGAI BAMBU VIII NOMOR 18, RT. 004/RW. 008, KELURAHAN SUNGAI BAMBU, KECAMATAN TANJUNG PRIOK"
     },
     {
-      "number_id": "3175061606530009",
-      "family_card_id": "3175061601092180",
-      "name": "SLAMET RIYADI",
-      "gender": "Laki-laki",
-      "pob": "Jogjakarta",
+      "number_id": "317202701250018",
+      "family_card_id": "0",
+      "name": "SITI YURIYAH",
+      "gender": "PEREMPUAN",
+      "pob": "JAKARTA",
       "dob": {
-        "date": "16",
-        "month": "Juni",
-        "year": "1953"
+        "date": "30",
+        "month": "12",
+        "year": "1952"
       },
       "valid_until": {
         "date": "00",
         "month": "00",
         "year": "0000"
       },
-      "religion": "Islam",
+      "religion": "ISLAM",
       "pendidikan": "",
-      "type_of_work": "Pedagang",
-      "marriage_state": "Kawin",
+      "type_of_work": "MENGURUS RUMAH TANGGA",
+      "marriage_state": "KAWIN",
       "status_hubungan_dalam_keluarga": "",
       "citizenship": "WNI",
-      "address": "DKI Jakarta"
+      "address": "JL. SUNGAI BAMBU IV NOMOR 18, RT. 004/RW. 008, KELURAHAN SUNGAI BAMBU, KECAMATAN TANJUNG PRIOK"
     },
     {
-      "number_id": "3175064202850024",
-      "family_card_id": "3175061601092180",
-      "name": "Ani Rahmawati",
-      "gender": "Perempuan",
-      "pob": "Jakarta",
-      "dob": {
-        "date": "02",
-        "month": "Februari",
-        "year": "1985"
-      },
-      "valid_until": {
-        "date": "00",
-        "month": "00",
-        "year": "0000"
-      },
-      "religion": "Islam",
-      "pendidikan": "",
-      "type_of_work": "Karyawan Swasta",
-      "marriage_state": "Kawin",
-      "status_hubungan_dalam_keluarga": "",
-      "citizenship": "WNI",
-      "address": "DKI Jakarta"
-    },
-    {
-      "number_id": "3175061606540000",
-      "family_card_id": "3175062001094722",
-      "name": "SUNAKAM",
-      "gender": "Laki-laki",
-      "pob": "Prembun",
+      "number_id": "3172021604960003",
+      "family_card_id": "0",
+      "name": "MUHAMMAD FAKHRI PRATAMA",
+      "gender": "LAKI-LAKI",
+      "pob": "JAKARTA",
       "dob": {
         "date": "16",
-        "month": "Juni",
-        "year": "1954"
+        "month": "04",
+        "year": "1996"
       },
       "valid_until": {
         "date": "00",
         "month": "00",
         "year": "0000"
       },
-      "religion": "Islam",
+      "religion": "ISLAM",
       "pendidikan": "",
-      "type_of_work": "Wiraswasta",
-      "marriage_state": "Kawin",
+      "type_of_work": "PELAJAR/MAHASISWA",
+      "marriage_state": "BALUM KAWIN",
       "status_hubungan_dalam_keluarga": "",
       "citizenship": "WNI",
-      "address": "DKI Jakarta"
+      "address": "JL. SUNGAI BAMBU VIII NOMOR 18, RT. 004/RW. 008, KELURAHAN SUNGAI BAMBU, KECAMATAN TANJUNG PRIOK"
     },
     {
-      "number_id": "3175066106570000",
-      "family_card_id": "3175062001094722",
-      "name": "Sunarsih",
-      "gender": "Perempuan",
-      "pob": "Jogjakarta",
+      "number_id": "3172025206790006",
+      "family_card_id": "0",
+      "name": "YUNI ASTUTI",
+      "gender": "PEREMPUAN",
+      "pob": "JAKARTA",
       "dob": {
-        "date": "21",
-        "month": "Juni",
-        "year": "1957"
+        "date": "12",
+        "month": "06",
+        "year": "1979"
       },
       "valid_until": {
-        "date": "00",
-        "month": "00",
-        "year": "0000"
+        "date": "12",
+        "month": "06",
+        "year": "2016"
       },
-      "religion": "Islam",
+      "religion": "ISLAM",
       "pendidikan": "",
-      "type_of_work": "Ibu Rumah Tangga",
-      "marriage_state": "Kawin",
+      "type_of_work": "MENGURUS RUMAH TANGGA",
+      "marriage_state": "KAWIN",
       "status_hubungan_dalam_keluarga": "",
       "citizenship": "WNI",
-      "address": "DKI Jakarta"
-    },
-    {
-      "number_id": "3175066904800010",
-      "family_card_id": "3175062001094722",
-      "name": "Arie Sujarwatie",
-      "gender": "Perempuan",
-      "pob": "Jakarta",
-      "dob": {
-        "date": "29",
-        "month": "April",
-        "year": "1980"
-      },
-      "valid_until": {
-        "date": "00",
-        "month": "00",
-        "year": "0000"
-      },
-      "religion": "Islam",
-      "pendidikan": "",
-      "type_of_work": "Wiraswasta",
-      "marriage_state": "Belum Kawin",
-      "status_hubungan_dalam_keluarga": "",
-      "citizenship": "WNI",
-      "address": "DKI Jakarta"
-    },
-    {
-      "number_id": "3175061004840034",
-      "family_card_id": "3175062001094722",
-      "name": "Tri Winarko",
-      "gender": "Laki-laki",
-      "pob": "Jakarta",
-      "dob": {
-        "date": "10",
-        "month": "April",
-        "year": "1984"
-      },
-      "valid_until": {
-        "date": "00",
-        "month": "00",
-        "year": "0000"
-      },
-      "religion": "Islam",
-      "pendidikan": "",
-      "type_of_work": "Karyawan Swasta",
-      "marriage_state": "Belum Kawin",
-      "status_hubungan_dalam_keluarga": "",
-      "citizenship": "WNI",
-      "address": "DKI Jakarta"
-    },
-    {
-      "number_id": "3175066512850020",
-      "family_card_id": "3175062001094722",
-      "name": "Pundi Utami",
-      "gender": "Perempuan",
-      "pob": "Jakarta",
-      "dob": {
-        "date": "26",
-        "month": "Desember",
-        "year": "1995"
-      },
-      "valid_until": {
-        "date": "00",
-        "month": "00",
-        "year": "0000"
-      },
-      "religion": "Islam",
-      "pendidikan": "",
-      "type_of_work": "Karyawan Swasta",
-      "marriage_state": "Belum Kawin",
-      "status_hubungan_dalam_keluarga": "",
-      "citizenship": "WNI",
-      "address": "DKI Jakarta"
+      "address": "JL. SUNGAI BAMBU VIII NOMOR 18, RT. 004/RW. 008, KELURAHAN SUNGAI BAMBU, KECAMATAN TANJUNG PRIOK"
     }
   ]
 }

@@ -79,6 +79,207 @@
                 android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@id/editTextName" />
 
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextPob"
+                style="@style/TextRegularBlack16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/background_edit_text_form_citizen"
+                android:hint="Tempat Lahir"
+                android:padding="10dp"
+                app:layout_constraintWidth_percent=".85"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewInfoName" />
+
+            <ImageView
+                android:id="@+id/imageScanPob"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@mipmap/ic_camera"
+                app:layout_constraintWidth_percent=".12"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintTop_toTopOf="@id/editTextPob"
+                app:layout_constraintBottom_toBottomOf="@id/editTextPob"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewInfoPob"
+                style="@style/TextRegularRed12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/info_empty_pob"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/editTextPob" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextDob"
+                style="@style/TextRegularBlack16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/background_edit_text_form_citizen"
+                android:hint="Tanggal Lahir"
+                android:padding="10dp"
+                app:layout_constraintWidth_percent=".85"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewInfoPob" />
+
+            <ImageView
+                android:id="@+id/imageScanDob"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@mipmap/ic_camera"
+                app:layout_constraintWidth_percent=".12"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintTop_toTopOf="@id/editTextDob"
+                app:layout_constraintBottom_toBottomOf="@id/editTextDob"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextAddress"
+                style="@style/TextRegularBlack16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/background_edit_text_form_citizen"
+                android:hint="Alamat"
+                android:padding="10dp"
+                app:layout_constraintWidth_percent=".85"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/editTextDob" />
+
+            <ImageView
+                android:id="@+id/imageScanAddress"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@mipmap/ic_camera"
+                app:layout_constraintWidth_percent=".12"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintTop_toTopOf="@id/editTextAddress"
+                app:layout_constraintBottom_toBottomOf="@id/editTextAddress"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextReligion"
+                style="@style/TextRegularBlack16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/background_edit_text_form_citizen"
+                android:hint="Agama"
+                android:padding="10dp"
+                app:layout_constraintWidth_percent=".85"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/editTextAddress" />
+
+            <ImageView
+                android:id="@+id/imageScanReligion"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@mipmap/ic_camera"
+                app:layout_constraintWidth_percent=".12"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintTop_toTopOf="@id/editTextReligion"
+                app:layout_constraintBottom_toBottomOf="@id/editTextReligion"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextMarriageState"
+                style="@style/TextRegularBlack16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/background_edit_text_form_citizen"
+                android:hint="Status Perkawinan"
+                android:padding="10dp"
+                app:layout_constraintWidth_percent=".85"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/editTextReligion" />
+
+            <ImageView
+                android:id="@+id/imageScanMarriageState"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@mipmap/ic_camera"
+                app:layout_constraintWidth_percent=".12"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintTop_toTopOf="@id/editTextMarriageState"
+                app:layout_constraintBottom_toBottomOf="@id/editTextMarriageState"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextTypeOfWork"
+                style="@style/TextRegularBlack16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/background_edit_text_form_citizen"
+                android:hint="Jenis Pekerjaan"
+                android:padding="10dp"
+                app:layout_constraintWidth_percent=".85"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/editTextMarriageState" />
+
+            <ImageView
+                android:id="@+id/imageScanTypeOfWork"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@mipmap/ic_camera"
+                app:layout_constraintWidth_percent=".12"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintTop_toTopOf="@id/editTextTypeOfWork"
+                app:layout_constraintBottom_toBottomOf="@id/editTextTypeOfWork"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextCitizens"
+                style="@style/TextRegularBlack16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/background_edit_text_form_citizen"
+                android:hint="Kewarganegaraan"
+                android:padding="10dp"
+                app:layout_constraintWidth_percent=".85"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/editTextTypeOfWork" />
+
+            <ImageView
+                android:id="@+id/imageScanCitizens"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@mipmap/ic_camera"
+                app:layout_constraintWidth_percent=".12"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintTop_toTopOf="@id/editTextCitizens"
+                app:layout_constraintBottom_toBottomOf="@id/editTextCitizens"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextValidUntil"
+                style="@style/TextRegularBlack16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/background_edit_text_form_citizen"
+                android:hint="Berlaku Hingga"
+                android:padding="10dp"
+                app:layout_constraintWidth_percent=".85"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/editTextCitizens" />
+
+            <ImageView
+                android:id="@+id/imageScanValidUntil"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@mipmap/ic_camera"
+                app:layout_constraintWidth_percent=".12"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintTop_toTopOf="@id/editTextValidUntil"
+                app:layout_constraintBottom_toBottomOf="@id/editTextValidUntil"
+                app:layout_constraintRight_toRightOf="parent"/>
+
             <Button
                 android:id="@+id/buttonSave"
                 style="@style/TextBoldWhite14"
@@ -92,7 +293,7 @@
                 android:text="@string/button_save"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textViewInfoName" />
+                app:layout_constraintTop_toBottomOf="@id/editTextValidUntil" />
 
             <Button
                 android:id="@+id/buttonCancel"
@@ -100,14 +301,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="2dp"
                 android:background="@drawable/background_button_red"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?selectableItemBackground"
                 android:text="@string/button_cancel"
                 app:backgroundTint="@null"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/buttonSave" />
